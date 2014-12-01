@@ -1,0 +1,71 @@
+<div ng-init="_filters={nome:{field:'nome',lbl:'Nome',op:'like'},mail:{field:'mail',lbl:'EMail'},end_logradouro:{field:'end_logradouro',lbl:'Logradouro'}}"></div>
+<div ng-init="stat=0"></div>
+{{stat}}
+<div ng-init="tab.icons=['glyphicon glyphicon-search', 'glyphicon glypicon-refresh']"></div>
+<div class="container-fluid" ng-init="tab.title='Orgãos'">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="btn-group">
+			<button class="btn btn-info btn-sm" type="button" ng-repeat="(key, val) in filters" ng-click="removeItem(key,'filters')" title="Deletar?">
+				<span class="badge">{{_filters[key].lbl}}</span> {{val}}
+			</button>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3">
+			<label>Filtrar por:</label>
+			<select class="form-control" ng-options="value.lbl for (key, value) in _filters" ng-model="_filter">
+
+			</select>
+			<span class="help-block">&nbsp;</span>
+		</div>
+		<div class="col-sm-6">
+			<label>Dados</label>
+			<div class="input-group">
+				<input type="text" placeholder="Dados" class="form-control" ng-model="filters[_filter.field]" />
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button" ng-click="Data.list(this,'model/Orgao')" ng-disabled="loader.stat==1" ng-class="{'btn-warning':loader.stat==1}">Carregar!</button>
+				</span>
+			</div>
+			<span class="help-block">&nbsp;</span>
+		</div>
+	</div>
+
+	<div class="alert alert-warning" role="alert" ng-hide="loader.total>0" ng-if="loader.stat==2">
+		<strong>Ops!</strong> Nenhum registro encontrado. 
+		<a class="alert-link" href="javascript:void(0);" ng-click="Data.newTab('views/secretaria_cadastrar.html')">Cadastrar agora?</a>
+	</div>
+	<div class="alert alert-info" role="alert" ng-hide="loader.total>0" ng-if="!loader.stat">
+		<strong>Olá!</strong> Digite adicione algum filtro para sua pesquisa, ou se preferir, você pode buscar sem utilizar filtros. Basta apertar o botão.
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<div pagination="loader" class="pull-right"></div>
+			<table class="table table-bordered table-hover table-condensed" ng-if="loader.total>0">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Nome</th>
+						<th>Endereço</th>
+						<th>E-mail</th>
+						<th>Fone/Fax</th>
+						<th colspan="2" style="margin-left: 2px">Operações</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in loader.data">
+						<td>{{item.id}}</td>
+						<td>{{item.nome}}</td>
+						<td>{{item.end_logradouro}}, N° {{item.end_numero}}, {{item.end_bairro}}</td>
+						<td>{{item.mail}}</td>
+						<td>{{item.tel}}</td>
+						<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+						<td><a class="btn btn-small btn-info" href="#"><i class="glyphicon glyphicon-search"></i> </a></td>
+					</tr>
+				</tbody>
+			</table>
+			<div pagination class="pull-right"></div>
+		</div>
+	</div>
+</div>

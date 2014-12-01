@@ -1,0 +1,225 @@
+<div id="content" ng-init="Data.tabs[$parent.tab.i].title='Consultar Servidor'">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-11">
+				<div class="page-header">
+					<h2>Consultar Servidor</h2>
+				</div>
+				<!-- Inputs -->
+				<form role="form">
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="filtrar">Filtrar por:</label>
+							<select id="filtrar" name="filtrar" class="form-control">
+								<option value="0">Selecione...</option>
+								<option value="1">Nome</option>
+								<option value="2">Matrícula</option>
+								<option value="3">CPF</option>
+								<option value="4">Secretaria</option>
+								<option value="5">Unidade</option>
+								<option value="6">Todos</option>
+							</select>
+							<span class="help-block">&nbsp;</span>
+						</div>
+						<div class="col-xs-4">
+							<label for="dados">Dados</label>
+							<input id="dados" type="text" placeholder="Dados" class="form-control" title="Dados da busca. Ex: Jose da Silva Junior " bs-tooltip />
+						</div>
+
+					</div>
+					<div class="row">
+						<div class="form-group col-xs-3" ng-class="{'has-error': datepickerForm.date.$invalid}">
+							<label class="control-label"><i class="fa fa-calendar"></i> Data de Nascimento</label>
+							<input class="form-control" ng-model="selectedDate" name="date" bs-datepicker type="text" data-date-format="dd/MM/yyyy" data-max-date="today" data-min-date="01/01/1850" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-2">
+							<button type="button" class="btn btn-primary">
+								Buscar
+							</button>
+						</div>
+					</div>
+					<div class="alert alert-warning" role="alert">
+						<strong>Ops!</strong> Nenhum registro encontrado. <a class="alert-link" href="javascript:void(0);" ng-click="Data.newTab('views/rh/servidores/cadastrar.html')">Cadastrar agora?</a>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<table class="table table-bordered table-hover table-condensed">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Nome</th>
+										<th>Matrícula</th>
+										<th>CPF</th>
+										<th>Secretaria</th>
+										<th>Unidade</th>
+										<th>Tipo de cargo</th>
+										<th>Cargo</th>
+										<th colspan="2" style="margin-left: 2px">Operações</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>José da silva</td>
+										<td>028015247874</td>
+										<td>028015247874</td>
+										<td>Secretaria de Saúde</td>
+										<td>Centro de Especialidades</td>
+										<td>Efetivo</td>
+										<td>Tecnico de Enfermagem</td>
+										<td><a class="btn btn-small btn-warning"  href="javascript:void(0);" ng-click="Data.newTab('views/rh/servidores/editar.html')"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td>
+										<button type="button" class="btn btn-small btn-info" data-animation="am-fade-and-slide-top"
+										data-template="views/exemplos/modal/modal.servidor.html" bs-modal='{"name":"Padre Cícero","cpf":"123.456.789-10","secretaria":"Secretaria da Educação","unidade":"Unidade tal","cargo":"Professor","cargo_tp":"Tipo do Cargo"}'>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>CDS01</td>
+										<td>outrcargo</td>
+										<td>028015247874</td>
+										<td>1647</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td>
+										<button type="button" class="btn btn-small btn-info" data-animation="am-fade-and-slide-top"
+										data-template="views/exemplos/modal/modal.servidor.html" bs-modal='{"name":"Padre Cícero","cpf":"123.456.789-10","secretaria":"Secretaria da Educação","unidade":"Unidade tal","cargo":"Professor","cargo_tp":"Tipo do Cargo"}'>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>CDS01</td>
+										<td>maisumcargo</td>
+										<td>028015247874</td>
+										<td>1000,00</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td>
+										<button type="button" class="btn btn-small btn-info" data-animation="am-fade-and-slide-top"
+										data-template="views/exemplos/modal/modal.servidor.html" bs-modal='{"name":"Padre Cícero","cpf":"123.456.789-10","secretaria":"Secretaria da Educação","unidade":"Unidade tal","cargo":"Professor","cargo_tp":"Tipo do Cargo"}'>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>CDS01</td>
+										<td>outro</td>
+										<td>028015247874</td>
+										<td>1000,00</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td>
+										<button type="button" class="btn btn-small btn-info" data-animation="am-fade-and-slide-top"
+										data-template="views/exemplos/modal/modal.servidor.html" bs-modal='{"name":"Padre Cícero","cpf":"123.456.789-10","secretaria":"Secretaria da Educação","unidade":"Unidade tal","cargo":"Professor","cargo_tp":"Tipo do Cargo"}'>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>CDS01</td>
+										<td>Coordenador de Unidade</td>
+										<td>028015247874</td>
+										<td>1000,00</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td>
+										<button type="button" class="btn btn-small btn-info" data-animation="am-fade-and-slide-top"
+										data-template="views/exemplos/modal/modal.servidor.html" bs-modal='{"name":"Padre Cícero","cpf":"123.456.789-10","secretaria":"Secretaria da Educação","unidade":"Unidade tal","cargo":"Professor","cargo_tp":"Tipo do Cargo"}'>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td>CDS03</td>
+										<td>Assessor parlametnar</td>
+										<td>028015247874</td>
+										<td>800,00</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td>
+										<button type="button" class="btn btn-small btn-info" data-animation="am-fade-and-slide-top"
+										data-template="views/exemplos/modal/modal.servidor.html" bs-modal='{"name":"Padre Cícero","cpf":"123.456.789-10","secretaria":"Secretaria da Educação","unidade":"Unidade tal","cargo":"Professor","cargo_tp":"Tipo do Cargo"}'>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td>CDE01</td>
+										<td>Assistente executivo</td>
+										<td>028015247874</td>
+										<td>12</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td>
+										<button type="button" class="btn btn-small btn-info" data-animation="am-fade-and-slide-top"
+										data-template="views/exemplos/modal/modal.servidor.html" bs-modal='{"name":"Padre Cícero","cpf":"123.456.789-10","secretaria":"Secretaria da Educação","unidade":"Unidade tal","cargo":"Professor","cargo_tp":"Tipo do Cargo"}'>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td>CDS07</td>
+										<td>Secretario</td>
+										<td>028015247874</td>
+										<td>5.000,00</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td>
+										<button type="button" class="btn btn-small btn-info" data-animation="am-fade-and-slide-top"
+										data-template="views/exemplos/modal/modal.servidor.html" bs-modal='{"name":"Padre Cícero","cpf":"123.456.789-10","secretaria":"Secretaria da Educação","unidade":"Unidade tal","cargo":"Professor","cargo_tp":"Tipo do Cargo"}'>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+									</tr>
+								</tbody>
+							</table>
+							<strong>Mostrando 10 registro(s) de 26</strong>
+						</div>
+
+						<ul class="pagination">
+							<li>
+								<a href="#">&laquo;</a>
+							</li>
+							<li>
+								<a href="#">1</a>
+							</li>
+							<li>
+								<a href="#">2</a>
+							</li>
+							<li>
+								<a href="#">3</a>
+							</li>
+							<li>
+								<a href="#">4</a>
+							</li>
+							<li>
+								<a href="#">5</a>
+							</li>
+							<li>
+								<a href="#">&raquo;</a>
+							</li>
+						</ul>
+					</div><!-- tabela total -->
+					<hr>
+				</form><!-- Inputs -->
+			</div><!-- col -->
+		</div><!-- row -->
+	</div><!-- container -->
+</div><!-- content -->

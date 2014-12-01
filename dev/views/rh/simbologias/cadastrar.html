@@ -1,0 +1,46 @@
+			<div id="content" ng-init="Data.tabs[$parent.tab.i].title='Cadastrar Simbologia'">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-11">
+							<div class="page-header">
+								<h2>Cadastrar Simbologia</h2>
+							</div>
+							<div class="alert alert-danger" role="alert">
+								<strong>Ops!</strong> Ocorreu um <a class="alert-link" href="arquivodeajuda">erro</a> ao tentar concluir esta ação, tente novamente ou contate o <a class="alert-link" href="linkdapagcontato">suporte</a>.
+
+							</div>
+							<div class="alert alert-success" role="alert">
+								<strong>Ok!</strong> Dados gravados com sucesso.
+							</div>
+							<!-- Inputs -->
+							<form role="form">
+								<div class="row">
+									<div class="col-xs-3">
+										<label for="nome">Nomeclatura da Simbologia</label>
+										<input id="nome" class="form-control" type="text" placeholder="Nomeclatura da simbologia" title="Nomeclatura da Simbologia. Ex: CDS01 " bs-tooltip />
+									</div>
+									<div class="col-xs-2">
+										<label for="sal_base">Sal base</label>
+										<input id="sal_base" class="form-control" type="text" placeholder="Salario base" title="Salário base da Simbologia. Ex: 72400 " bs-tooltip/>
+									</div>
+									<div class="col-xs-2">
+									    <label for="check">Editar</label>
+									    <div class="dorm-inline">
+									    	<input type="checkbox" title="Habilitando este campo, você será capaz de alterar o valor do Salário Base, que por padrão trará o valor do Salário Mínimo" bs-tooltip>
+									    </div>
+									</div>
+								</div>
+								<hr>
+								<div align="right" class="footer">
+									<button type="button" class="btn btn-success">
+										Salvar
+									</button>
+									<button type="button" class="btn btn-danger">
+										Cancelar
+									</button>
+								</div>
+							</form><!-- Inputs -->
+						</div>
+					</div>
+				</div><!-- container -->
+			</div>

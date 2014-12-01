@@ -1,0 +1,269 @@
+<div class="container" ng-init="Data.tabs[$parent.tab.i].title='Consultar Unidades'">
+	<div class="row">
+		<div class="col-xs-11">
+			<div class="page-header">
+				<h2>Unidades</h2>
+			</div>
+			<!-- Inputs -->
+			<form role="form">
+				<div class="row">
+					<div class="col-xs-3">
+						<label for="filtrar">Filtrar por:</label>
+						<select id="filtrar" name="filtrar" class="form-control">
+							<option value="0">Selecione...</option>
+							<option value="1">Nome</option>
+							<option value="2">Nome A > Z</option>
+							<option value="3">Nome Z > A</option>
+							<option value="4">Secretaria</option>
+							<option value="5">Todos</option>
+						</select>
+						<span class="help-block">&nbsp;</span>
+					</div>
+					<div class="col-xs-5">
+						<label for="dados">Dados</label>
+						<input id="dados" type="text" placeholder="Dados" class="form-control" title="Dados da busca. Ex: Ouvidoria " bs-tooltip />
+					</div>
+				</div>
+				<div class="row">
+						<div class="col-xs-2">
+							<button type="button" class="btn btn-primary">
+								Buscar
+							</button>
+						</div>
+					</div>
+					<div class="alert alert-warning" role="alert">
+						<strong>Ops!</strong> Nenhum registro encontrado.
+						<a class="alert-link" href="javascript:void(0);" ng-click="Data.newTab('views/rh/unidades/cadastrar.html')">Cadastrar agora?</a>
+					</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<table class="table table-bordered table-hover table-condensed">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Nome</th>
+									<th>Endereço</th>
+									<th>E-mail</th>
+									<th>Fone/Fax</th>
+									<th colspan="2" style="margin-left: 2px">Operações</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>Recursos Humanos</td>
+									<td>Rua Tal, N° 12, Centro</td>
+									<td>epdemiologia.saude@crato.ce.gov.br</td>
+									<td>(88)9999 9999</a></td>
+									<td><a class="btn btn-small btn-warning"  href="javascript:void(0);" ng-click="Data.newTab('views/rh/unidades/editar.html')"><i class="glyphicon glyphicon-edit"></i> </a></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-info" data-placement="top-right" title="Detalhes"
+										data-content="Esta Unidade é parte integrante da SECRETARIA DE SAÚDE e tem como coordenador atual: Antonio de Sousa Cruz"
+										data-trigger="focus" bs-popover>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>Recursos Humanos</td>
+									<td>Rua Tal, N° 8, São Miguel</td>
+									<td>seduc@crato.ce.gov.br</td>
+									<td>(88)9999 9999</td>
+									<td><a class="btn btn-small btn-warning"  href="javascript:void(0);" ng-click="Data.newTab('views/rh/unidades/editar.html')"><i class="glyphicon glyphicon-edit"></i> </a></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-info" data-placement="top-right" title="Detalhes"
+										data-content="Esta Unidade é parte integrante da SECRETARIA DE EDUCAÇÃO e tem como coordenador atual: francisca Severina"
+										data-trigger="focus" bs-popover>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>Recursos Humanos</td>
+									<td>Rua Tal, N° 5, Centro</td>
+									<td>seplad@crato.ce.gov.br</td>
+									<td>(88)9999 9999</td></a></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-warning" title="Editar" bs-tooltip />
+											<i class="glyphicon glyphicon-edit"></i>
+										</button></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-info" data-placement="top-right" title="Detalhes"
+										data-content="Esta Unidade é parte integrante da SECRETARIA DE DESENVOLVIMENTO SOCIAL e tem como coordenador atual: Antonia Lindimara"
+										data-trigger="focus" bs-popover>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>PACS</td>
+									<td>Rua Tal, N° 5, Centro</td>
+									<td>segri@crato.ce.gov.br</td>
+									<td>(88)9999 9999</td></a></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-warning" title="Editar" bs-tooltip />
+											<i class="glyphicon glyphicon-edit"></i>
+										</button></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-info" data-placement="top-right" title="Detalhes"
+										data-content="Esta Unidade é parte integrante da SECRETARIA DE SAÚDE e tem como coordenador atual: Antonio de Sousa Cruz"
+										data-trigger="focus" bs-popover>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>IPTU</td>
+									<td>Rua Tal, N° 5, Centro</td>
+									<td>segov@crato.ce.gov.br</td>
+									<td>(88)9999 9999</td></a></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-warning" title="Editar" bs-tooltip />
+											<i class="glyphicon glyphicon-edit"></i>
+										</button></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-info" data-placement="top-right" title="Detalhes"
+										data-content="Esta Unidade é parte integrante da SECRETARIA DE SAÚDE e tem como coordenador atual: Antonio de Sousa Cruz"
+										data-trigger="focus" bs-popover>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+								</tr>
+								<tr>
+									<td>6</td>
+									<td>Auditoria</td>
+									<td>Rua Tal, N° 5, Centro</td>
+									<td>seinfra@crato.ce.gov.br</td>
+									<td>(88)9999 9999</td></a></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-warning" title="Editar" bs-tooltip />
+											<i class="glyphicon glyphicon-edit"></i>
+										</button></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-info" data-placement="top-right" title="Detalhes"
+										data-content="Esta Unidade é parte integrante da SECRETARIA DE SAÚDE e tem como coordenador atual: Antonio de Sousa Cruz"
+										data-trigger="focus" bs-popover>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+								</tr>
+								<tr>
+									<td>7</td>
+									<td>Secretaria de Cultura</td>
+									<td>Rua Tal, N° 5, Centro</td>
+									<td>secult@crato.ce.gov.br</td>
+									<td>(88)9999 9999</td></a></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-warning" title="Editar" bs-tooltip />
+											<i class="glyphicon glyphicon-edit"></i>
+										</button></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-info" data-placement="top-right" title="Detalhes"
+										data-content="Esta Unidade é parte integrante da SECRETARIA DE SAÚDE e tem como coordenador atual: Antonio de Sousa Cruz"
+										data-trigger="focus" bs-popover>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+								</tr>
+								<tr>
+									<td>8</td>
+									<td>Secretaria de Planejamento e Administração</td>
+									<td>Rua Tal, N° 5, Centro</td>
+									<td>seplad@crato.ce.gov.br</td>
+									<td>(88)9999 9999</td></a></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-warning" title="Editar" bs-tooltip />
+											<i class="glyphicon glyphicon-edit"></i>
+										</button></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-info" data-placement="top-right" title="Detalhes"
+										data-content="Esta Unidade é parte integrante da SECRETARIA DE SAÚDE e tem como coordenador atual: Antonio de Sousa Cruz"
+										data-trigger="focus" bs-popover>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+								</tr>
+								<tr>
+									<td>9</td>
+									<td>Secretaria de Finanças</td>
+									<td>Rua Tal, N° 5, Centro</td>
+									<td>sefina@crato.ce.gov.br</td>
+									<td>(88)9999 9999</td></a></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-warning" title="Editar" bs-tooltip />
+											<i class="glyphicon glyphicon-edit"></i>
+										</button></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-info" data-placement="top-right" title="Detalhes"
+										data-content="Esta Unidade é parte integrante da SECRETARIA DE SAÚDE e tem como coordenador atual: Antonio de Sousa Cruz"
+										data-trigger="focus" bs-popover>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+								</tr>
+								<tr>
+									<td>10</td>
+									<td>Gabinete do Prefeito</td>
+									<td>Rua Tal, N° 5, Centro</td>
+									<td>gabinete@crato.ce.gov.br</td>
+									<td>(88)9999 9999</td></a></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-warning" title="Editar" bs-tooltip />
+											<i class="glyphicon glyphicon-edit"></i>
+										</button></td>
+									<td>
+									<button
+										type="button" class="btn btn-small btn-info" data-placement="top-right" title="Detalhes"
+										data-content="Esta Unidade é parte integrante da SECRETARIA DE SAÚDE e tem como coordenador atual: Antonio de Sousa Cruz"
+										data-trigger="focus" bs-popover>
+											<i class="glyphicon glyphicon-search"></i>
+										</button></td>
+								</tr>
+							</tbody>
+						</table>
+						<strong>Mostrando 10 registro(s) de 26</strong>
+					</div>
+
+					<ul class="pagination">
+						<li>
+							<a href="#">&laquo;</a>
+						</li>
+						<li>
+							<a href="#">1</a>
+						</li>
+						<li>
+							<a href="#">2</a>
+						</li>
+						<li>
+							<a href="#">3</a>
+						</li>
+						<li>
+							<a href="#">4</a>
+						</li>
+						<li>
+							<a href="#">5</a>
+						</li>
+						<li>
+							<a href="#">&raquo;</a>
+						</li>
+					</ul>
+				</div>
+				<hr>
+				<div align="right" class="footer">
+				</div>
+			</form><!-- Inputs -->
+		</div>
+	</div>
+</div>

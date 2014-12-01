@@ -1,0 +1,145 @@
+<div id="content" ng-init="Data.tabs[$parent.tab.i].title='Consulta Simbologia'">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-11">
+				<div class="page-header">
+					<h2>Simbologias</h2>
+				</div>
+				<!-- Inputs -->
+				<form role="form">
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="filtrar">Filtrar por:</label>
+							<select id="filtrar" name="filtrar" class="form-control">
+								<option value="0">Selecione...</option>
+								<option value="1">Nomeclatura</option>
+								<option value="2">Sal base min => max</option>
+								<option value="3">sal base max <= min</option>
+								<option value="4">Todos</option>
+							</select>
+							<span class="help-block">&nbsp;</span>
+						</div>
+						<div class="col-xs-2">
+							<label for="dados">Dados</label>
+							<input id="dados" type="text" placeholder="Dados" class="form-control" title="Dados da pesquisa. Ex: CDS01" bs-tooltip />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-2">
+							<button type="button" class="btn btn-primary">
+								Buscar
+							</button>
+						</div>
+					</div>
+					<div class="alert alert-warning" role="alert">
+						<strong>Ops!</strong> Nenhum registro encontrado.
+						<a class="alert-link" href="javascript:void(0);" ng-click="Data.newTab('views/rh/simbologias/cadastrar.html')">Cadastrar agora?</a>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<table class="table table-bordered table-hover table-condensed">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Nomeclatura</th>
+										<th>Cargo</th>
+										<th colspan="2" style="margin-left: 2px">Operações</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>CDS01</td>
+										<td>1.500,00</td>
+										<td><a class="btn btn-small btn-warning"  href="javascript:void(0);" ng-click="Data.newTab('views/rh/simbologias/editar.html')"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td><a class="btn btn-small btn-info" href="#"><i class="glyphicon glyphicon-search"></i> </a></td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>CDS01</td>
+										<td>1647</td>
+										<td><a class="btn btn-small btn-warning"  href="javascript:void(0);" ng-click="Data.newTab('views/rh/simbologias/editar.html')"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td><a class="btn btn-small btn-info" href="#"><i class="glyphicon glyphicon-search"></i> </a></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>CDS01</td>
+										<td>1000,00</td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td><a class="btn btn-small btn-info" href="#"><i class="glyphicon glyphicon-search"></i> </a></td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>CDS01</td>
+										<td>1000,00</td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td><a class="btn btn-small btn-info" href="#"><i class="glyphicon glyphicon-search"></i> </a></td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>CDS01</td>
+										<td>1000,00</td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td><a class="btn btn-small btn-info" href="#"><i class="glyphicon glyphicon-search"></i> </a></td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td>CDS03</td>
+										<td>800,00</td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td><a class="btn btn-small btn-info" href="#"><i class="glyphicon glyphicon-search"></i> </a></td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td>CDE01</td>
+										<td>12</td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td><a class="btn btn-small btn-info" href="#"><i class="glyphicon glyphicon-search"></i> </a></td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td>CDS07</td>
+										<td>5.000,00</td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+										<td><a class="btn btn-small btn-info" href="#"><i class="glyphicon glyphicon-search"></i> </a></td>
+									</tr>
+								</tbody>
+							</table>
+							<strong>Mostrando 10 registro(s) de 26</strong>
+						</div>
+
+						<ul class="pagination">
+							<li>
+								<a href="#">&laquo;</a>
+							</li>
+							<li>
+								<a href="#">1</a>
+							</li>
+							<li>
+								<a href="#">2</a>
+							</li>
+							<li>
+								<a href="#">3</a>
+							</li>
+							<li>
+								<a href="#">4</a>
+							</li>
+							<li>
+								<a href="#">5</a>
+							</li>
+							<li>
+								<a href="#">&raquo;</a>
+							</li>
+						</ul>
+					</div>
+					<hr>
+					<div align="right" class="footer"></div>
+					<!--<button type="submit" class="btn btn-default">
+					Submit
+					</button> -->
+				</form><!-- Inputs -->
+			</div>
+		</div>
+
+	</div><!-- container -->
+</div>

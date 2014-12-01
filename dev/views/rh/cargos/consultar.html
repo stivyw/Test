@@ -1,0 +1,152 @@
+<div id="content" ng-init="Data.tabs[$parent.tab.i].title='Consultar Cargos'">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-11">
+				<div class="page-header">
+					<h2>Consultar Cargos</h2>
+				</div>
+				<!-- Inputs -->
+				<form role="form">
+					<div class="row">
+						<div class="col-xs-3">
+							<label for="filtrar">Filtrar por:</label>
+							<select id="filtrar" name="filtrar" class="form-control">
+								<option value="0">Selecione...</option>
+								<option value="1">Nome</option>
+								<option value="2">Secretaria</option>
+								<option value="3">ANS - Atividades de nível superior</option>
+								<option value="4">AAD - Atividades de apoio administrativo</option>
+								<option value="5">AAO - Atividades de apoio operacional</option>
+								<option value="6">Efetivo</option>
+								<option value="7">Temporario</option>
+								<option value="8">Comissionado</option>
+								<option value="9">Eletivo</option>
+								<option value="10">Estatutario</option>
+								<option value="12">Todos</option>
+							</select>
+							<span class="help-block">&nbsp;</span>
+						</div>
+						<div class="col-xs-5">
+							<label for="dados">Dados</label>
+							<input id="dados" type="text" placeholder="Dados" class="form-control" title="Dados para busca. Ex: Secretaria de Saúde" bs-tooltip />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-2">
+							<button type="button" class="btn btn-primary">
+								Buscar
+							</button>
+						</div>
+					</div>
+					<div class="alert alert-warning" role="alert">
+						<strong>Ops!</strong> Nenhum registro encontrado.
+						<a class="alert-link" href="javascript:void(0);" ng-click="Data.newTab({url:'views/rh/cargos/editar.html'})">Cadastrar agora?</a>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<table class="table table-bordered table-hover table-condensed">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Nome</th>
+										<th>Secretaria</th>
+										<th>Quantidade</th>
+										<th>Operações</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>Médico</td>
+										<td>Secretaria de Saúde</td>
+										<td>348</td>
+										<td><a class="btn btn-small btn-warning"  href="javascript:void(0);" ng-click="Data.newTab('views/rh/cargos/editar.html')"><i class="glyphicon glyphicon-edit"></i> </a></td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>Professor</td>
+										<td>Secretaria de Educação</td>
+										<td>1647</td>
+										<td><a class="btn btn-small btn-warning"  href="javascript:void(0);" ng-click="Data.newTab('views/rh/cargos/editar.html')"><i class="glyphicon glyphicon-edit"></i> </a></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>Psicologo</td>
+										<td>Secretaria de Educação</td>
+										<td>12</td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>Psicologo</td>
+										<td>Secretaria de Saúde</td>
+										<td>85</td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>Enfermeiro</td>
+										<td>Secretaria de Saúde</td>
+										<td>126</td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td>Auxiliar Administrativo</td>
+										<td>Secretaria de finanças</td>
+										<td>3</td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td>Auxiliar Administrativo</td>
+										<td>Secretaria de Cultura</td>
+										<td>12</td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td>Assistente Executivo</td>
+										<td>Gabinete do prefeito</td>
+										<td>2</td>
+										<td><a class="btn btn-small btn-warning" href="#"><i class="glyphicon glyphicon-edit"></i> </a></td>
+									</tr>
+								</tbody>
+							</table>
+							<strong>Mostrando 10 registro(s) de 26</strong>
+						</div>
+
+						<ul class="pagination">
+							<li>
+								<a href="#">&laquo;</a>
+							</li>
+							<li>
+								<a href="#">1</a>
+							</li>
+							<li>
+								<a href="#">2</a>
+							</li>
+							<li>
+								<a href="#">3</a>
+							</li>
+							<li>
+								<a href="#">4</a>
+							</li>
+							<li>
+								<a href="#">5</a>
+							</li>
+							<li>
+								<a href="#">&raquo;</a>
+							</li>
+						</ul>
+					</div>
+					<hr>
+					<div align="right" class="footer">
+						
+					</div>
+				</form><!-- Inputs -->
+			</div>
+		</div>
+
+	</div><!-- container -->
+</div><!-- Fim content -->

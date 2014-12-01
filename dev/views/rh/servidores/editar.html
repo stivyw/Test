@@ -1,0 +1,310 @@
+<div ng-init="tab.title='Servidores'"></div>
+<div ng-init="tab.icon='glyphicon glyphicon-edit'"></div>
+<div ng-init="edit=Data.edit({url:'model/Servidor', scope: tab}).load(tab.id)"></div>
+<div ng-if="!tab.id" ng-init="tab.stat=2">Teste</div>
+<div ng-if="!tab.id" ng-init="edit.disabled=false"></div>
+
+
+<alert-array type="danger" arr="edit.res.error">
+	<strong>Ops!</strong> Erro ao tentar concluir a ação, corrija os erros mostrados a seguir e tente novamente ou contate o <a class="alert-link" href="http://caririweb.com/suport" target="_blank">suporte</a>.
+</alert-array>
+
+<div class="alert alert-success" role="alert" ng-if="edit.res.ok">
+	<strong>Ok!</strong> Dados gravados com sucesso.
+</div>
+
+
+<ul class="nav nav-tabs" role="tablist" ng-init="Data.tabs[$parent.tab.i].title='Editar Servidor'">
+	<li ng-class="{active:SelfTab==1}"><a ng-click="SelfTab=1" href="javascript:void(0);" ng-init="SelfTab=1">Dados Pessoais</a></li>
+	<li ng-class="{active:SelfTab==2}"><a ng-click="SelfTab=2" href="javascript:void(0);">Dados Residênciais</a></li>
+	<li ng-class="{active:SelfTab==3}"><a ng-click="SelfTab=3" href="javascript:void(0);">Dados Funcionais</a></li>
+	<li ng-class="{active:SelfTab==4}"><a ng-click="SelfTab=4" href="javascript:void(0);">Anexos</a></li>
+	<li ng-class="{active:SelfTab==5}"><a ng-click="SelfTab=5" href="javascript:void(0);">Lotação</a></li>
+</ul>
+
+
+<div class="tab-content">
+	<div ng-class="{active:SelfTab==1}" class="tab-pane">
+		<!-- Pessoais -->
+		<div class="row">
+			<input-text  form="edit.form" class="col-md-6" disabled="edit.disabled" name="nome" label="Nome" >Informe o nome do servidor</input-text>
+			<input-select form="edit.form" class="col-md-2" disabled="edit.disabled" name="estado_civil" label="Estado Civil" opts="Data.CFG.SELECTS.ESTADO_CIVIL"></input-select>
+			<div class="col-xs-3">
+				<label>Sexo</label>
+				<div class="btn-group" ng-model="edit.form.sexo" bs-radio-group>
+				  <label class="btn btn-default" for="sexo1"><input type="radio" id="sexo1" class="btn btn-default" value="1" ng-disabled="edit.disabled" checked> Masculino</label>
+				  <label class="btn btn-default" for="sexo2"><input type="radio" id="sexo2" class="btn btn-default" value="2" ng-disabled="edit.disabled"> Feminino</label>
+				</div>
+				<span class="help-block">&nbsp;</span>
+			</div>
+		</div>
+		<div class="row">
+			<input-text  form="edit.form" class="col-md-6" disabled="edit.disabled" name="filiacao_mae" label="Nome da mãe" >Nome da mãe do servidor</input-text>
+			<input-text  form="edit.form" class="col-md-6" disabled="edit.disabled" name="filiacao_pai" label="Nome do pai" >Nome do pai do servidor</input-text>
+		</div>
+		<div class="row">
+			<input-cal  form="edit.form" class="col-md-2" disabled="edit.disabled" name="data_nasc" label="Data de Nascimento" min="01/01/1850" max="today">Ex: 06/07/1987</input-cal>
+			<input-text  form="edit.form" class="col-md-3" disabled="edit.disabled" name="nacionalidade" label="Nacionalidade" >Nacionalidade do Servidor. Ex: Brasileiro</input-text>
+			<input-select form="edit.form" class="col-md-2" disabled="edit.disabled" name="end_uf" label="Estado" opts="Data.CFG.SELECTS.UFS"></input-select>
+			<input-select form="edit.form" class="col-md-2" disabled="edit.disabled" name="municipio_nascimento" label="Município de nascimento" opts="Data.CFG.SELECTS.MUNICIPIOS[edit.form.end_uf]"></input-select>
+
+		</div>
+		<div class="row">
+			<input-text form="edit.form" class="col-md-2" disabled="edit.disabled" name="tel1" label="Telefone 1" >Telefone de contato do Servidor</input-text>
+			<input-text form="edit.form" class="col-md-2" disabled="edit.disabled" name="tel2" label="Telefone 2" >Telefone de contato do Servidor</input-text>
+			<input-text form="edit.form" class="col-md-4" disabled="edit.disabled" name="mail" label="Email" >Ex: servidor@gmail.com</input-text>
+		</div>
+		<div class="row">
+			<input-select form="edit.form" class="col-md-2" disabled="edit.disabled" name="nivel_esc" label="Escolaridade" opts="Data.CFG.SELECTS.ESCOLARIDADE"></input-select>
+			<input-text  form="edit.form" class="col-md-3" disabled="edit.disabled" name="conselho_classe" label="Conselho de classe" >Insira o conselho de classe (caso possua) do Servidor. Ex: Conselho Regional de Engenharia</input-text>
+			<input-text  form="edit.form" class="col-xs-1" disabled="edit.disabled" name="num_conselho" label="Nº" >Ex: 1235</input-text>
+		</div>
+	</div><!-- Fim Pessoais -->
+	<div ng-class="{active:SelfTab==2}" class="tab-pane">
+	<!-- Residenciais -->
+		<div class="row">
+			<input-text form="edit.form" class="col-md-2" disabled="edit.disabled" name="end_cep" label="CEP" >
+				<a href="http://www.buscacep.correios.com.br/"target="_blank"><small><u><i>Buscar CEP</i></u></small></a>
+			</input-text>
+			<input-select form="edit.form" class="col-md-2" disabled="edit.disabled" name="end_tipo" label="Tipo de logradouro:" opts="Data.CFG.SELECTS.TPS_LOGRADOURO">Tipo de logradouro de residência do Servidor</input-select>
+			<input-text form="edit.form" class="col-md-4" disabled="edit.disabled" name="end_logradouro" label="Logradouro" >Logradouro de residência do Servidor</input-text>
+			<input-text form="edit.form" class="col-md-3" disabled="edit.disabled" name="end_bairro" label="Bairro" >Bairro de residência do Servidor</input-text>
+			<input-text form="edit.form" class="col-md-1" disabled="edit.disabled" name="end_numero" label="Número" >Ex: S/N</input-text>
+		</div>
+		<div class="row">
+			<input-text form="edit.form" class="col-md-4" disabled="edit.disabled" name="end_municipio" label="Município" >Município de residência do Servidor</input-text>
+			<input-text form="edit.form" class="col-md-6" disabled="edit.disabled" name="end_comp" label="Complemento" >Complemento de residência do Servidor</input-text>
+		</div>
+	</div><!-- Fim Residênciais -->
+	<div ng-class="{active:SelfTab==3}" class="tab-pane">
+		<div class="row">
+			<!-- A partir daqui não poderá ser editado, serão campos apenas de consulta -->
+			<div class="col-xs-4">
+				<label for="secretaria">Secretaria/Órgão</label>
+				<input type="text" id="secretaria" class="form-control" disabled="" title="Secretaria de lotação do Servidor. Obs: Este campo não poderá ser editado nesta tela, pois está vinculado a
+				Lotação do Servidor no menu 'Tabelas' Submenu Servidores > botão 'Editar' > botão 'Lotar' " bs-tooltip  />
+			</div>
+			<div class="col-xs-4">
+				<label for="unidade">Unidade</label>
+				<input type="text" id="unidade" class="form-control" disabled="" title="Unidade de lotação do Servidor. Obs: Este campo não poderá ser editado nesta tela, pois está vinculado a
+				Lotação do Servidor no menu 'Tabelas' Submenu Servidores > botão 'Editar' > botão 'Lotar' " bs-tooltip/>
+			</div>
+			<div class="col-xs-3">
+				<label for="funcao">Função</label>
+				<input type="text" id="funcao" class="form-control" disabled="" title="Cargo de lotação do Servidor. Obs: Este campo não poderá ser editado nesta tela, pois está vinculado a
+				Lotação do Servidor no menu 'Tabelas' Submenu Servidores > botão 'Editar' > botão 'Lotar' " bs-tooltip/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2">
+				<label for="salario">Salario</label>
+				<input type="text" id="salario" class="form-control" disabled="" title="Salário do Servidor. Obs: Este campo não poderá ser editado nesta tela, pois está vinculado a
+				Lotação do Servidor no menu 'Tabelas' Submenu Servidores > botão 'Editar' > botão 'Lotar' " bs-tooltip />
+			</div>
+			<div class="col-xs-2">
+				<label for="carga_horaria">Carga horária</label>
+				<input type="text" id="carga_horaria" class="form-control" disabled="" title="Carga horária do Servidor. Obs: Este campo não poderá ser editado nesta tela, pois está vinculado a
+				Lotação do Servidor no menu 'Tabelas' Submenu Servidores > botão 'Editar' > botão 'Lotar' " bs-tooltip />
+			</div>
+		</div><!-- Fim da leitura os campos -->
+		
+		<div class="row"><!-- Funcionais -->
+			<div class="col-xs-2">
+				<label for="matricula">Matrícula</label>
+				<input type="text" id="matricula" placeholder="Matricula" class="form-control" title="Insira o cod de matrícula do servidor. Ex: 25042014" bs-tooltip  />
+			</div>
+			<div class="col-xs-2">
+				<label for="data_admissao">Data de Admissão</label>
+				<input type="text" id="data_admissao" placeholder="Data de Admissão" class="form-control" title="Insira a data de admissão do Servidor" bs-tooltip  />
+			</div>
+			<div class="col-xs-2">
+				<label for="vinculo_empregaticio">Vínculo</label>
+				<select name="vinculo_empregaticio" class="form-control">
+					<option value="0">Selecione...</option>
+					<option value="1">Cargo em comissão</option>
+					<option value="2">Efetivo</option>
+					<option value="3">Eletivo</option>
+					<option value="4">Estatutario</option>
+					<option value="5">Temporario</option>
+					<option value="6">Outro...</option>
+				</select>
+			</div>
+			<div class="col-xs-2">
+				<label for="natureza">Natureza</label>
+				<select name="natureza" class="form-control">
+					<option value="0">Selecione...</option>
+					<option value="1">Cargo em comissão</option>
+					<option value="2">Efetivo</option>
+					<option value="3">Eletivo</option>
+					<option value="4">Temporario</option>
+					<option value="5">Outro...</option>
+				</select>
+			</div>
+			<div class="col-xs-2">
+				<label for="tipo_admissao">Tipo de Admissão</label>
+				<select name="tipo_admissao" class="form-control">
+					<option value="0">Selecione...</option>
+					<option value="1">Cargo em comissão</option>
+					<option value="2">Concurso público</option>
+					<option value="3">Contrato temporario</option>
+					<option value="4">Eletivo</option>
+					<option value="5">Estatuto</option>
+					<option value="5">Outro...</option>
+				</select>
+			</div>
+			<div class="col-xs-2">
+				<label class="radio">Situação</label>
+				<div class="radio-inline">
+					<input type="radio" name="optionsRadios" id="situacaoativo" value="option1" checked>
+					Ativo
+				</div>
+				<div class="radio-inline">
+					<input type="radio" name="optionsRadios" id="situacaoinativo" value="option2">
+					Inativo
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2">
+				<label for="ini_contrato_temp">Ini contrato temp</label>
+				<input type="text" id="ini_contrato_temp" placeholder="Inicio" class="form-control" title="Insira a data de início do contrato temporário do Servidor. Obs: Campo obrigatório para servidores vinculados como: 'Contrato Temporário'" bs-tooltip  />
+			</div>
+			<div class="col-xs-2">
+				<label for="fim_contrato_temp">Fim contrato temp</label>
+				<input type="text" id="fim_contrato_temp" placeholder="Final" class="form-control" title="Insira a data de término do contrato temporário do Servidor. Obs: Campo obrigatório para servidores vinculados como: 'Contrato Temporário'" bs-tooltip />
+			</div>
+			<div class="col-xs-2">
+				<label for="ordem">Ordem</label>
+				<input type="text" id="ordem" placeholder="Ordem" class="form-control" title="Ordem" bs-tooltip  />
+			</div>
+			<div class="col-xs-2">
+				<label for="serie">Série</label>
+				<input type="text" id="serie" placeholder="Série" class="form-control" title="Série" bs-tooltip  />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label for="tipo_previdencia">Tipo de Previdência</label>
+				<input type="text" id="tpo_previdencia" placeholder="Tipo de Previdência" class="form-control" title="Insira o tipo de Previdência do Servidor. Ex: Previdência Municipal" bs-tooltip  />
+			</div>
+		</div><!-- Fim Funcionais -->
+	</div>
+<!-- Anexos -->
+	<div ng-class="{active:SelfTab==4}" class="tab-pane">
+		<span class="help-block">&nbsp;</span>
+		<div class="row">
+			<div class="col-xs-12">
+				<legend>
+					<strong>Selecione os documentos entregues pelo Servidor</strong>
+				</legend>
+			</div>
+		</div>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Documentos</th>
+					<th>Buscar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="danger" >
+					<td>RG</td>
+					<td>
+					<input type="file" id="" name="rg" placeholder="Selecionar..."  />
+					</td>
+				</tr>
+				<tr class="danger" >
+					<td>CPF</td>
+					<td>
+					<input type="file" id="" name="cpf" placeholder="Selecionar..." />
+					</td>
+				</tr>
+				<tr class="danger" >
+					<td>Comprovante de Residência</td>
+					<td>
+					<input type="file" id="" name="comprovante_residencia" placeholder="Selecionar..."/>
+					</td>
+				</tr>
+				<tr class="danger" >
+					<td>CTPS</td>
+					<td>
+					<input type="file" id="" name="ctps" placeholder="Selecionar..." />
+					</td>
+				</tr>
+				<tr class="danger" >
+					<td>Título de Eleitor</td>
+					<td>
+					<input type="file" id="" name="titulo_eleitor" placeholder="Selecionar..." />
+					</td>
+				</tr>
+				<tr class="danger" >
+					<td>Diploma Nível Médio</td>
+					<td>
+					<input type="file" id="" name="diploma_nivel_medio" placeholder="Selecionar..." />
+					</td>
+				</tr>
+				<tr class="danger" >
+					<td>Diploma Nível Superior</td>
+					<td>
+					<input type="file" id="" name="diploma_nivel_superior" placeholder="Selecionar..." />
+					</td>
+				</tr>
+				<tr class="danger" >
+					<td>Foto 3x4</td>
+					<td>
+					<input type="file" id="" name="foto" placeholder="Selecionar..." />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div><!-- Fim anexos -->
+	<div ng-class="{active:SelfTab==5}" class="tab-pane">
+	<!-- Lotação -->
+		<div class="row">
+			<div class="col-xs-3">
+				<label for="tipo_cargo">Tipo de Cargo</label>
+				<input type="text" class="form-control" ng-model="url"
+				ng-options="unidade for unidade in unidades"
+				ng-init="unidades=['Secretaria da Educação','Secretaria da Securança','Secretaria da Saúde','Secretaria do Esporte']"
+				placeholder="Tipo de Cargo" bs-typeahead title="Informe o tipo de Cargo. Ex: Efetivo" bs-tooltip/>
+			</div>
+			<div class="col-xs-4">
+				<label for="cargo">Cargo</label>
+				<input type="text" class="form-control" ng-model="url"
+				ng-options="unidade for unidade in unidades"
+				ng-init="unidades=['Secretaria da Educação','Secretaria da Securança','Secretaria da Saúde','Secretaria do Esporte']"
+				placeholder="Cargo" bs-typeahead title="Informe o Cargo em que o servidor será lotado. Ex: Auxiliar Administrativo" bs-tooltip />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label for="secretaria">Secretaria/Órgão</label>
+				<input type="text" class="form-control" ng-model="url"
+				ng-options="unidade for unidade in unidades"
+				ng-init="unidades=['Secretaria da Educação','Secretaria da Securança','Secretaria da Saúde','Secretaria do Esporte']"
+				placeholder="Tipo de Cargo" bs-typeahead title="Informe a Secretaria em quem o Servidor será lotado. Ex: Secretaria de Educação" bs-tooltip/>
+			</div>
+			<div class="col-xs-3">
+				<label for="secretaria">Unidade</label>
+				<input type="text" class="form-control" ng-model="url"
+				ng-options="unidade for unidade in unidades"
+				ng-init="unidades=['Secretaria da Educação','Secretaria da Securança','Secretaria da Saúde','Secretaria do Esporte']"
+				placeholder="Tipo de Cargo" bs-typeahead title="Informe a Unidade em quem o Servidor será lotado. Ex: Creche Nossa Senhora da Penha" bs-tooltip/>
+				<span class="help-block">&nbsp;</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label for="check">
+					<input type="checkbox" title="Habilitando este campo, você será capaz de editar os dados de lotação do Servidor" data-placement="right" bs-tooltip>
+					Habilitar campos de edição</label>
+			</div>
+		</div>
+	</div><!-- Fim Lotação -->
+	<form-footer class="footer" align="right">
+		<button ng-disabled="edit.disabled" class="btn btn-small btn-primary" data-animation="am-fade-and-slide-top"
+			data-template="views/rh/servidores/modal.lotar.html" bs-modal='{"name":"Padre Cícero","cpf":"123.456.789-10","secretaria":"Secretaria da Educação","unidade":"Unidade tal","cargo":"Professor","cargo_tp":"Tipo do Cargo"}'>
+			Lotar
+		</button>
+	</form-footer>
+</div>
