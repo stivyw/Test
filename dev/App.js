@@ -225,48 +225,32 @@ App.run(function($http, $location) {
 
 //DIRECTIVES
 
-App.directive('inputText2', function() {
+var c_o = 0;
+App.directive('inputTxt', function() {
   return {
-    templateUrl: 'sw/form/text2.html',
+    templateUrl: 'sw/form/txt.html',
     transclude:true,
     link: function(scope, element, attr){
-    	scope.name = attr.name;
+    	scope.name = 'obj_' + (++c_o);
     	scope.label = attr.label;
     	scope.mask = attr.mask;
     	scope.placeholder = attr.placeholder;
     	//scope.fm = scope.$parent.edit;
     },
     scope: {
-    	model: '=',
-    	disabled:'='
-
-    }
-  };
-});
-App.directive('inputText', function() {
-  return {
-    templateUrl: 'sw/form/text.html',
-    transclude:true,
-    link: function(scope, element, attr){
-    	scope.name = attr.name;
-    	scope.label = attr.label;
-    	scope.mask = attr.mask;
-    	scope.placeholder = attr.placeholder;
-    	//scope.fm = scope.$parent.edit;
-    },
-    scope: {
-    	fm: '=form',
+    	md: '=',
     	disabled:'='
 
     }
   };
 });
 App.directive('inputCal', function() {
+	
   return {
     templateUrl: 'sw/form/cal.html',
     transclude:true,
     link: function(scope, element, attr){
-    	scope.name = attr.name;
+    	scope.name = 'obj_' + (++c_o);
     	scope.label = attr.label;
     	//scope.mask = attr.mask;
     	scope.placeholder = attr.placeholder;
@@ -275,22 +259,22 @@ App.directive('inputCal', function() {
     	//scope.fm = scope.$parent.edit;
     },
     scope: {
-    	fm: '=form',
+    	md: '=',
     	disabled:'='
 
     }
   };
 });
-App.directive('inputSelect', function() {
+App.directive('inputSel', function() {
   return {
-    templateUrl: 'sw/form/select.html',
+    templateUrl: 'sw/form/sel.html',
     transclude:true,
     link: function(scope, element, attr){
-    	scope.name = attr.name;
+    	scope.name = 'obj_' + (++c_o);
     	scope.label = attr.label;
     },
     scope: {
-    	fm: '=form',
+    	md: '=',
     	disabled:'=',
     	opts:'='
 
@@ -298,16 +282,16 @@ App.directive('inputSelect', function() {
   };
 });
 
-App.directive('inputRadio', function() {
+App.directive('inputRad', function() {
   return {
-    templateUrl: 'sw/form/radio.html',
+    templateUrl: 'sw/form/rad.html',
     transclude: true,
     link: function(scope, element, attr){
-    	scope.name = attr.name;
+    	scope.name = 'obj_' + (++c_o);
     	scope.label = attr.label;
     },
     scope: {
-    	fm: '=form',
+    	md: '=',
     	disabled:'=',
     	opts:'='
 
@@ -322,7 +306,7 @@ App.directive('alertArray', function() {
     	scope.cl='alert-' + attr.type;
     },
     scope: {
-    	arr: '=arr'
+    	arr: '='
     }
   };
 });

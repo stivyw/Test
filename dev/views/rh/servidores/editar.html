@@ -25,55 +25,55 @@
 
 <div class="tab-content">
 	<div ng-class="{active:SelfTab==1}" class="tab-pane">
-		<!-- Pessoais -->
+		<!-- Pessoais -->{{edit.form}}
 		<div class="row">
-			<input-text  form="edit.form" class="col-md-6" disabled="edit.disabled" name="nome" label="Nome" >Informe o nome do servidor</input-text>
-			<input-select form="edit.form" class="col-md-2" disabled="edit.disabled" name="estado_civil" label="Estado Civil" opts="Data.CFG.SELECTS.ESTADO_CIVIL"></input-select>
-			<input-radio  form="edit.form" class="col-md-3" disabled="edit.disabled" name="sexo" label="Sexo" opts="Data.CFG.SELECTS.SEXO" >Sexo do servidor</input-radio>
+			<input-txt disabled="edit.disabled" class="col-md-6" md="edit.form.nome" label="Nome" >Informe o nome do servidor</input-txt>
+			<input-sel disabled="edit.disabled" class="col-md-2" md="edit.form.estado_civil" label="Estado Civil" opts="Data.CFG.SELECTS.ESTADO_CIVIL"></input-sel>
+			<input-rad disabled="edit.disabled" class="col-md-3" md="edit.form.sexo" label="Sexo" opts="Data.CFG.SELECTS.SEXO" >Sexo do servidor</input-rad>
 
 		</div>
 		<div class="row">
-			<input-text  form="edit.form" class="col-md-6" disabled="edit.disabled" name="filiacao_mae" label="Nome da mãe" >Nome da mãe do servidor</input-text>
-			<input-text  form="edit.form" class="col-md-6" disabled="edit.disabled" name="filiacao_pai" label="Nome do pai" >Nome do pai do servidor</input-text>
+			<input-txt disabled="edit.disabled" class="col-md-6" md="edit.form.filiacao_mae" label="Nome da mãe" >Nome da mãe do servidor</input-txt>
+			<input-txt disabled="edit.disabled" class="col-md-6" md="edit.form.filiacao_pai" label="Nome do pai" >Nome do pai do servidor</input-txt>
 		</div>
 		<div class="row">
-			<input-cal  form="edit.form" class="col-md-2" disabled="edit.disabled" name="data_nasc" label="Data de Nascimento" min="01/01/1850" max="today">Ex: 06/07/1987</input-cal>
-			<input-text  form="edit.form" class="col-md-3" disabled="edit.disabled" name="nacionalidade" label="Nacionalidade" >Nacionalidade do Servidor. Ex: Brasileiro</input-text>
-			<input-select form="edit.form" class="col-md-2" disabled="edit.disabled" name="end_uf" label="Estado" opts="Data.CFG.SELECTS.UFS"></input-select>
-			<input-select form="edit.form" class="col-md-2" disabled="edit.disabled" name="municipio_nascimento" label="Município de nascimento" opts="Data.CFG.SELECTS.MUNICIPIOS[edit.form.end_uf]"></input-select>
+			<input-cal disabled="edit.disabled" class="col-md-2" md="edit.form.data_nasc" label="Data de Nascimento" min="01/01/1850" max="today">Ex: 06/07/1987</input-cal>
+			<input-txt disabled="edit.disabled" class="col-md-3" md="edit.form.nacionalidade" label="Nacionalidade" >Nacionalidade do Servidor. Ex: Brasileiro</input-txt>
+			<input-sel disabled="edit.disabled" class="col-md-2" md="edit.form.end_uf" label="Estado" opts="Data.CFG.SELECTS.UFS"></input-sel>
+			<input-sel disabled="edit.disabled" class="col-md-2" md="edit.form.municipio_nascimento" label="Município de nascimento" opts="Data.CFG.SELECTS.MUNICIPIOS[edit.form.end_uf]"></input-sel>
 
 		</div>
 		<div class="row">
-			<input-text form="edit.form" class="col-md-2" disabled="edit.disabled" name="tel1" label="Telefone 1" >Telefone de contato do Servidor</input-text>
-			<input-text form="edit.form" class="col-md-2" disabled="edit.disabled" name="tel2" label="Telefone 2" >Telefone de contato do Servidor</input-text>
-			<input-text form="edit.form" class="col-md-4" disabled="edit.disabled" name="mail" label="Email" >Ex: servidor@gmail.com</input-text>
+			<input-txt disabled="edit.disabled" class="col-md-2" md="edit.form.tel1" label="Telefone 1" >Telefone de contato do Servidor</input-txt>
+			<input-txt disabled="edit.disabled" class="col-md-2" md="edit.form.tel2" label="Telefone 2" >Telefone de contato do Servidor</input-txt>
+			<input-txt disabled="edit.disabled" class="col-md-4" md="edit.form.mail" label="Email" >Ex: servidor@gmail.com</input-txt>
 		</div>
 		<div class="row">
-			<input-select form="edit.form" class="col-md-2" disabled="edit.disabled" name="nivel_esc" label="Escolaridade" opts="Data.CFG.SELECTS.ESCOLARIDADE"></input-select>
-			<input-text  form="edit.form" class="col-md-3" disabled="edit.disabled" name="conselho_classe" label="Conselho de classe" >Insira o conselho de classe (caso possua) do Servidor. Ex: Conselho Regional de Engenharia</input-text>
-			<input-text  form="edit.form" class="col-xs-1" disabled="edit.disabled" name="num_conselho" label="Nº" >Ex: 1235</input-text>
+			<input-sel disabled="edit.disabled" class="col-md-2" md="edit.form.nivel_esc" label="Escolaridade" opts="Data.CFG.SELECTS.ESCOLARIDADE"></input-sel>
+			<input-txt disabled="edit.disabled" class="col-md-3" md="edit.form.conselho_classe" label="Conselho de classe" >Insira o conselho de classe (caso possua) do Servidor. Ex: Conselho Regional de Engenharia</input-txt>
+			<input-txt disabled="edit.disabled" class="col-md-1" md="edit.form.num_conselho" label="Nº" >Ex: 1235</input-txt>
 		</div>
 	</div><!-- Fim Pessoais -->
 	<div ng-class="{active:SelfTab==2}" class="tab-pane">
 	<!-- Residenciais -->
 		<div class="row">
-			<input-text form="edit.form" class="col-md-2" disabled="edit.disabled" name="end_cep" label="CEP" >
+			<input-txt disabled="edit.disabled" class="col-md-2" md="edit.form.end_cep" label="CEP" >
 				<a href="http://www.buscacep.correios.com.br/"target="_blank"><small><u><i>Buscar CEP</i></u></small></a>
-			</input-text>
-			<input-select form="edit.form" class="col-md-2" disabled="edit.disabled" name="end_tipo" label="Tipo de logradouro:" opts="Data.CFG.SELECTS.TPS_LOGRADOURO">Tipo de logradouro de residência do Servidor</input-select>
-			<input-text form="edit.form" class="col-md-4" disabled="edit.disabled" name="end_logradouro" label="Logradouro" >Logradouro de residência do Servidor</input-text>
-			<input-text form="edit.form" class="col-md-3" disabled="edit.disabled" name="end_bairro" label="Bairro" >Bairro de residência do Servidor</input-text>
-			<input-text form="edit.form" class="col-md-1" disabled="edit.disabled" name="end_numero" label="Número" >Ex: S/N</input-text>
+			</input-txt>
+			<input-sel disabled="edit.disabled" class="col-md-2" md="edit.form.end_tipo" label="Tipo de logradouro:" opts="Data.CFG.SELECTS.TPS_LOGRADOURO">Tipo de logradouro de residência do Servidor</input-sel>
+			<input-txt disabled="edit.disabled" class="col-md-4" md="edit.form.end_logradouro" label="Logradouro" >Logradouro de residência do Servidor</input-txt>
+			<input-txt disabled="edit.disabled" class="col-md-3" md="edit.form.end_bairro" label="Bairro" >Bairro de residência do Servidor</input-txt>
+			<input-txt disabled="edit.disabled" class="col-md-1" md="edit.form.end_numero" label="Número" >Ex: S/N</input-txt>
 		</div>
 		<div class="row">
-			<input-text form="edit.form" class="col-md-4" disabled="edit.disabled" name="end_cidade" label="Município" >Município de residência do Servidor</input-text>
-			<input-text form="edit.form" class="col-md-6" disabled="edit.disabled" name="end_complemento" label="Complemento" >Complemento de residência do Servidor</input-text>
+			<input-txt disabled="edit.disabled" class="col-md-4" md="edit.form.end_cidade" label="Município" >Município de residência do Servidor</input-txt>
+			<input-txt disabled="edit.disabled" class="col-md-6" md="edit.form.end_complemento" label="Complemento" >Complemento de residência do Servidor</input-txt>
 		</div>
 	</div><!-- Fim Residênciais -->
 	<div ng-class="{active:SelfTab==3}" class="tab-pane">
 		<div class="row">
 			<!-- A partir daqui não poderá ser editado, serão campos apenas de consulta -->
-			<input-text2 style="display:block" model="edit.form.end_bairro" class="col-md-4" disabled="edit.disabled" label="Secretaria/Órgão" >Testando model</input-text2>
+			<input-txt model="edit.form.secretaria" class="col-md-4" name="nome" disabled="edit.disabled" label="Secretaria/Órgão" >Testando model</input-txt>
 
 			<div class="col-xs-4">
 				<label for="secretaria">Secretaria/Órgão</label>
