@@ -29,19 +29,8 @@
 		<div class="row">
 			<input-text  form="edit.form" class="col-md-6" disabled="edit.disabled" name="nome" label="Nome" >Informe o nome do servidor</input-text>
 			<input-select form="edit.form" class="col-md-2" disabled="edit.disabled" name="estado_civil" label="Estado Civil" opts="Data.CFG.SELECTS.ESTADO_CIVIL"></input-select>
+			<input-radio  form="edit.form" class="col-md-3" disabled="edit.disabled" name="sexo" label="Sexo" opts="Data.CFG.SELECTS.SEXO" >Sexo do servidor</input-radio>
 
-
-
-<input-radiogroup  form="edit.form" class="col-md-3" disabled="edit.disabled" name="sexo" label="Sexo" opts="Data.CFG.SELECTS.SEXO" >Sexo do servidor</input-radiogroup>
-			<div class="col-xs-3">
-
-				<label>Sexo</label>
-				<div class="btn-group" ng-model="edit.form.sexo" bs-radio-group>
-				  <label class="btn btn-default" ng-class="{disabled:edit.disabled}" for="sexo1"><input type="radio" id="sexo1" class="btn btn-default" value="M" ng-disabled="edit.disabled" ng-checked> Masculino</label>
-				  <label class="btn btn-default" ng-class="{disabled:edit.disabled}" for="sexo2"><input type="radio" id="sexo2" class="btn btn-default" value="F" ng-disabled="edit.disabled"> Feminino</label>
-				</div>
-				<span class="help-block">&nbsp;</span>
-			</div>
 		</div>
 		<div class="row">
 			<input-text  form="edit.form" class="col-md-6" disabled="edit.disabled" name="filiacao_mae" label="Nome da mãe" >Nome da mãe do servidor</input-text>
@@ -77,17 +66,20 @@
 			<input-text form="edit.form" class="col-md-1" disabled="edit.disabled" name="end_numero" label="Número" >Ex: S/N</input-text>
 		</div>
 		<div class="row">
-			<input-text form="edit.form" class="col-md-4" disabled="edit.disabled" name="end_municipio" label="Município" >Município de residência do Servidor</input-text>
-			<input-text form="edit.form" class="col-md-6" disabled="edit.disabled" name="end_comp" label="Complemento" >Complemento de residência do Servidor</input-text>
+			<input-text form="edit.form" class="col-md-4" disabled="edit.disabled" name="end_cidade" label="Município" >Município de residência do Servidor</input-text>
+			<input-text form="edit.form" class="col-md-6" disabled="edit.disabled" name="end_complemento" label="Complemento" >Complemento de residência do Servidor</input-text>
 		</div>
 	</div><!-- Fim Residênciais -->
 	<div ng-class="{active:SelfTab==3}" class="tab-pane">
 		<div class="row">
 			<!-- A partir daqui não poderá ser editado, serão campos apenas de consulta -->
+			<input-text2 style="display:block" model="edit.form.end_bairro" class="col-md-4" disabled="edit.disabled" label="Secretaria/Órgão" >Testando model</input-text2>
+
 			<div class="col-xs-4">
 				<label for="secretaria">Secretaria/Órgão</label>
-				<input type="text" id="secretaria" class="form-control" disabled="" title="Secretaria de lotação do Servidor. Obs: Este campo não poderá ser editado nesta tela, pois está vinculado a
-				Lotação do Servidor no menu 'Tabelas' Submenu Servidores > botão 'Editar' > botão 'Lotar' " bs-tooltip  />
+				<!--input type="text" id="secretaria" class="form-control" ng-model="edit.form.end_bairro" disabled="" title="Secretaria de lotação do Servidor. Obs: Este campo não poderá ser editado nesta tela, pois está vinculado a
+				Lotação do Servidor no menu 'Tabelas' Submenu Servidores > botão 'Editar' > botão 'Lotar' " bs-tooltip  /-->
+				<input class="form-control" type="text" ng-model="edit.form.end_bairro" placeholder="Readonly input here…" readonly>
 			</div>
 			<div class="col-xs-4">
 				<label for="unidade">Unidade</label>

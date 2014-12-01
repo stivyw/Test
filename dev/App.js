@@ -225,6 +225,24 @@ App.run(function($http, $location) {
 
 //DIRECTIVES
 
+App.directive('inputText2', function() {
+  return {
+    templateUrl: 'sw/form/text2.html',
+    transclude:true,
+    link: function(scope, element, attr){
+    	scope.name = attr.name;
+    	scope.label = attr.label;
+    	scope.mask = attr.mask;
+    	scope.placeholder = attr.placeholder;
+    	//scope.fm = scope.$parent.edit;
+    },
+    scope: {
+    	model: '=',
+    	disabled:'='
+
+    }
+  };
+});
 App.directive('inputText', function() {
   return {
     templateUrl: 'sw/form/text.html',
@@ -280,9 +298,10 @@ App.directive('inputSelect', function() {
   };
 });
 
-App.directive('inputRadiogroup', function() {
+App.directive('inputRadio', function() {
   return {
-    templateUrl: 'sw/form/radiogroup.html',
+    templateUrl: 'sw/form/radio.html',
+    transclude: true,
     link: function(scope, element, attr){
     	scope.name = attr.name;
     	scope.label = attr.label;

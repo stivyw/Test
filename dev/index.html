@@ -83,6 +83,11 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/ng-template" id="sw/form/text2.html">
+<label for="{{name}}">{{label}}</label>
+<input ng-disabled="disabled" id="{{name}}" ng-model="model" class="form-control" type="text" placeholder="{{placeholder}}" ui-mask="{{mask}}">
+<span class="help-block"><span ng-transclude></span>&nbsp;</span>
+	</script>
 	<script type="text/ng-template" id="sw/form/text.html">
 <label for="{{name}}">{{label}}</label>
 <input ng-disabled="disabled" id="{{name}}" ng-model="fm[name]" class="form-control" type="text" placeholder="{{placeholder}}" title="Nome da Secretaria. Ex: Secretaria de Segurança Pública" ui-mask="{{mask}}">
@@ -114,17 +119,17 @@
 </button>
 </div>
 	</script>
-	<script type="text/ng-template" id="sw/form/radiogroup.html">
+	<script type="text/ng-template" id="sw/form/radio.html">
 <label>{{label}}</label>
 <div class="btn-group" ng-model="fm[name]" bs-radio-group>
   <label ng-repeat="(key, val) in opts" class="btn btn-default" ng-class="{disabled:disabled}" for="{{name + '_' + $index}}"><input type="radio" id="{{name + '_' + $index}}" class="btn btn-default" value="{{key}}" ng-disabled="disabled"> {{val}}</label>
 </div>
-<span class="help-block">&nbsp;{{fm[name]}}</span>
+<span class="help-block"><span ng-transclude></span>&nbsp;</span>
 	</script>
 	<script type="text/ng-template" id="sw/form/cal.html">
 <label for="{{name}}"><span class="glyphicon glyphicon-calendar"></span> {{label}}</label>
 <input class="form-control" id="{{name}}" ng-model="fm[name]" bs-datepicker data-container="body" type="text" data-date-format="dd/MM/yyyy" data-max-date="{{max}}" data-min-date="{{min}}" />
-<span class="help-block">&nbsp;</span>
+<span class="help-block"><span ng-transclude></span>&nbsp;</span>
 	</script>
 
 </body>
