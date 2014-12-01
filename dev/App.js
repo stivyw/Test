@@ -279,6 +279,22 @@ App.directive('inputSelect', function() {
     }
   };
 });
+
+App.directive('inputRadiogroup', function() {
+  return {
+    templateUrl: 'sw/form/radiogroup.html',
+    link: function(scope, element, attr){
+    	scope.name = attr.name;
+    	scope.label = attr.label;
+    },
+    scope: {
+    	fm: '=form',
+    	disabled:'=',
+    	opts:'='
+
+    }
+  };
+});
 App.directive('alertArray', function() {
   return {
     templateUrl: 'sw/alert_array.html',

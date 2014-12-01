@@ -29,11 +29,16 @@
 		<div class="row">
 			<input-text  form="edit.form" class="col-md-6" disabled="edit.disabled" name="nome" label="Nome" >Informe o nome do servidor</input-text>
 			<input-select form="edit.form" class="col-md-2" disabled="edit.disabled" name="estado_civil" label="Estado Civil" opts="Data.CFG.SELECTS.ESTADO_CIVIL"></input-select>
+
+
+
+<input-radiogroup  form="edit.form" class="col-md-3" disabled="edit.disabled" name="sexo" label="Sexo" opts="Data.CFG.SELECTS.SEXO" >Sexo do servidor</input-radiogroup>
 			<div class="col-xs-3">
+
 				<label>Sexo</label>
 				<div class="btn-group" ng-model="edit.form.sexo" bs-radio-group>
-				  <label class="btn btn-default" for="sexo1"><input type="radio" id="sexo1" class="btn btn-default" value="1" ng-disabled="edit.disabled" checked> Masculino</label>
-				  <label class="btn btn-default" for="sexo2"><input type="radio" id="sexo2" class="btn btn-default" value="2" ng-disabled="edit.disabled"> Feminino</label>
+				  <label class="btn btn-default" ng-class="{disabled:edit.disabled}" for="sexo1"><input type="radio" id="sexo1" class="btn btn-default" value="M" ng-disabled="edit.disabled" ng-checked> Masculino</label>
+				  <label class="btn btn-default" ng-class="{disabled:edit.disabled}" for="sexo2"><input type="radio" id="sexo2" class="btn btn-default" value="F" ng-disabled="edit.disabled"> Feminino</label>
 				</div>
 				<span class="help-block">&nbsp;</span>
 			</div>

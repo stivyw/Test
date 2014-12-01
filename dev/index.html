@@ -115,18 +115,17 @@
 </div>
 	</script>
 	<script type="text/ng-template" id="sw/form/radiogroup.html">
-<div class="col-xs-3">
-	<label for="{{name}}">{{label}}</label>
-	<div class="btn-group" ng-model="fm">
-	  <label class="btn btn-default" for="{{item.name + '_' + $index}}"><input type="radio" id="{{item.name + '_' + $index}}" class="btn btn-default" value="{{item.val}}" ng-disabled="disabled" checked> {{item.label}}</label>
-	</div>
-	<span class="help-block">&nbsp;</span>
+<label>{{label}}</label>
+<div class="btn-group" ng-model="fm[name]" bs-radio-group>
+  <label ng-repeat="(key, val) in opts" class="btn btn-default" ng-class="{disabled:disabled}" for="{{name + '_' + $index}}"><input type="radio" id="{{name + '_' + $index}}" class="btn btn-default" value="{{key}}" ng-disabled="disabled"> {{val}}</label>
 </div>
+<span class="help-block">&nbsp;{{fm[name]}}</span>
 	</script>
 	<script type="text/ng-template" id="sw/form/cal.html">
 <label for="{{name}}"><span class="glyphicon glyphicon-calendar"></span> {{label}}</label>
 <input class="form-control" id="{{name}}" ng-model="fm[name]" bs-datepicker data-container="body" type="text" data-date-format="dd/MM/yyyy" data-max-date="{{max}}" data-min-date="{{min}}" />
 <span class="help-block">&nbsp;</span>
 	</script>
+
 </body>
 </html>

@@ -28,6 +28,7 @@
 		"ESCOLARIDADE": ["Selecione...", "Fundamental Incompleto", "Fundamental Completo","Médio Completo", "Médio Incompleto", "Superior Completo", "Superior Incompleto"],
 		"ESTADO_CIVIL": ["Selecione...", "Solteiro", "Casado","Divorciado", "Viúvo"],
 		"UFS": {"AL":"Alagoas", "CE":"Ceará","BA":"Bahia","RJ":"Rio de Janeiro"},
-		"MUNICIPIOS": {"AL":["Atalaia", "Maceió"], "CE":["Juazeiro do Norte", "Barbalha", "Crato"],"BA":["Juazeiro"],"RJ":["Rio de Janeiro","Favela"]}
+		"MUNICIPIOS": {"AL":["Atalaia", "Maceió"], "CE":["Juazeiro do Norte", "Barbalha", "Crato"],"BA":["Juazeiro"],"RJ":["Rio de Janeiro","Favela"]},
+		"SEXO" : {"F":"Feminino","M":"Masculino"}
 	}
 }
