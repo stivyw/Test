@@ -116,7 +116,19 @@
 <span class="help-block"><span ng-transclude></span>&nbsp;</span>
 	</script>
 
+
+
 	<script type="text/ng-template" id="sw/form/rad.html">
+<label>{{label}}</label>
+<div class="btn-group" ng-model="$parent.md" bs-radio-group>
+  <label ng-repeat="(key, val) in opts" class="btn btn-default" ng-class="{disabled:disabled}" for="{{name + '_' + $index}}">
+  	<input type="radio" id="{{name + '_' + $index}}" class="btn btn-default" value="{{key}}" ng-disabled="disabled"> {{val}}
+  </label>
+</div>
+<span class="help-block"><span ng-transclude></span>&nbsp;</span>
+	</script>
+
+	<script type="text/ng-template" id="sw/form/rad2.html">
 <label>{{label}} {{md}}</label>
 <div class="btn-group" ng-model="md" bs-radio-group>
   <label ng-repeat="(key, val) in opts" class="btn btn-default" ng-class="{disabled:disabled}" for="{{name + '_' + $index}}">
@@ -125,6 +137,9 @@
 </div>
 <span class="help-block"><span ng-transclude></span>&nbsp;</span>
 	</script>
+
+
+
 	<script type="text/ng-template" id="sw/form/cal.html">
 <label for="{{name}}"><span class="glyphicon glyphicon-calendar"></span> {{label}}</label>
 <input class="form-control" id="{{name}}" ng-model="md" bs-datepicker data-container="body" type="text" data-date-format="dd/MM/yyyy" data-max-date="{{max}}" data-min-date="{{min}}" />
