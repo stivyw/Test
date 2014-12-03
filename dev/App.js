@@ -18,7 +18,7 @@ App.run(function($http, $location) {
 
 		return {
 			debug:false,
-			base: 'http://stivyw.no-ip.org/Test/public',
+			base: 'http://stivyw.no-ip.org:5/Test/public',
 			tabPrefix: 'tab_',
 			tabIndex:0,
 			tabs:[],
@@ -28,7 +28,6 @@ App.run(function($http, $location) {
 			},
 			newTab: function(p){
 				p=angular.copy(p);
-				console.log(p);
 				p.i = this.tabs.length;
 				this.tabs.push(p);
 				this.tabIndex = p.i;
