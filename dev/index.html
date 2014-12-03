@@ -84,7 +84,7 @@
 		</div>
 	</div>
 
-	<script type="text/ng-template" id="sw/alert_array.html">
+	<script type="text/ng-template" id="sw/bs/alert.html">
 <div class="alert" role="alert" ng-if="arr" ng-class="cl">
 	<div ng-transclude></div>
 	<div ng-repeat="item in arr">
@@ -94,7 +94,7 @@
 </div>
 	</script>
 
-	<script type="text/ng-template" id="sw/form/footer.html">
+	<script type="text/ng-template" id="sw/bs/footer.html">
 <div class="btn-group" ng-transclude></div>
 <div class="btn-group">
 <button class="btn" ng-init="edit.disabled=true" ng-click="edit.toggleCancel()" ng-class="{'btn-info':edit.disabled,'btn-danger':!edit.disabled}" ng-disabled="tab.stat==1">
@@ -105,17 +105,17 @@
 </button>
 </div>
 	</script>
-	<script type="text/ng-template" id="sw/form/txt.html">
+	<script type="text/ng-template" id="sw/bs/txt.html">
 <label for="{{name}}">{{label}}</label>
 <input ng-disabled="disabled" id="{{name}}" ng-model="md" class="form-control" type="text" placeholder="{{placeholder}}" ui-mask="{{mask}}">
 <span class="help-block"><span ng-transclude></span>&nbsp;</span>
 	</script>
-	<script type="text/ng-template" id="sw/form/sel.html">
+	<script type="text/ng-template" id="sw/bs/sel.html">
 <label for="{{name}}">{{label}}</label>
 <select ng-disabled="disabled" id="{{name}}" ng-model="md" class="form-control" ng-options="key as value for (key, value) in opts"></select>
 <span class="help-block"><span ng-transclude></span>&nbsp;</span>
 	</script>
-	<script type="text/ng-template" id="sw/form/rad.html">
+	<script type="text/ng-template" id="sw/bs/rad.html">
 <label>{{label}}</label>
 <div class="btn-group" ng-model="$parent.md" bs-radio-group>
   <label ng-repeat="(key, val) in opts" class="btn btn-default" ng-class="{disabled:disabled}" for="{{name + '_' + $index}}">
@@ -124,7 +124,7 @@
 </div>
 <span class="help-block"><span ng-transclude></span>&nbsp;</span>
 	</script>
-	<script type="text/ng-template" id="sw/form/cal.html">
+	<script type="text/ng-template" id="sw/bs/cal.html">
 <label for="{{name}}"><span class="glyphicon glyphicon-calendar"></span> {{label}}</label>
 <input class="form-control" id="{{name}}" ng-model="md" bs-datepicker data-container="body" type="text" data-date-format="dd/MM/yyyy" data-max-date="{{max}}" data-min-date="{{min}}" ng-disabled="disabled" />
 <span class="help-block"><span ng-transclude></span>&nbsp;</span>

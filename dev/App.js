@@ -225,9 +225,9 @@ App.run(function($http, $location) {
 //DIRECTIVES
 
 var c_o = 0;
-App.directive('inputTxt', function() {
+App.directive('bsTxt', function() {
   return {
-    templateUrl: 'sw/form/txt.html',
+    templateUrl: 'sw/bs/txt.html',
     transclude:true,
     link: function(scope, element, attr){
     	scope.name = 'obj_' + (++c_o);
@@ -243,10 +243,10 @@ App.directive('inputTxt', function() {
     }
   };
 });
-App.directive('inputCal', function() {
+App.directive('bsCal', function() {
 	
   return {
-    templateUrl: 'sw/form/cal.html',
+    templateUrl: 'sw/bs/cal.html',
     transclude:true,
     link: function(scope, element, attr){
     	scope.name = 'obj_' + (++c_o);
@@ -264,9 +264,9 @@ App.directive('inputCal', function() {
     }
   };
 });
-App.directive('inputSel', function() {
+App.directive('bsSel', function() {
   return {
-    templateUrl: 'sw/form/sel.html',
+    templateUrl: 'sw/bs/sel.html',
     transclude:true,
     link: function(scope, element, attr){
     	scope.name = 'obj_' + (++c_o);
@@ -281,9 +281,9 @@ App.directive('inputSel', function() {
   };
 });
 
-App.directive('inputRad', function() {
+App.directive('bsRad', function() {
   return {
-    templateUrl: 'sw/form/rad.html',
+    templateUrl: 'sw/bs/rad.html',
     transclude: true,
     link: function(scope, element, attr){
     	scope.name = 'obj_' + (++c_o);
@@ -297,9 +297,9 @@ App.directive('inputRad', function() {
     }
   };
 });
-App.directive('alertArray', function() {
+App.directive('bsAlert', function() {
   return {
-    templateUrl: 'sw/alert_array.html',
+    templateUrl: 'sw/bs/alert.html',
     transclude:true,
     link: function(scope, element, attr){
     	scope.cl='alert-' + attr.type;
@@ -309,10 +309,10 @@ App.directive('alertArray', function() {
     }
   };
 });
-App.directive('formFooter', function() {
+App.directive('bsFooter', function() {
   return {
   	transclude:true,
-    templateUrl: 'sw/form/footer.html'
+    templateUrl: 'sw/bs/footer.html'
   };
 });
 

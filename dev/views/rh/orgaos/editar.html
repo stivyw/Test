@@ -8,9 +8,9 @@
 	<div class="row">
 		<div class="col-xs-12">
 
-			<alert-array type="danger" arr="edit.res.error">
+			<bs-alert type="danger" arr="edit.res.error">
 				<strong>Ops!</strong> Erro ao tentar concluir a ação, corrija os erros mostrados a seguir e tente novamente ou contate o <a class="alert-link" href="http://caririweb.com/suport" target="_blank">suporte</a>.
-			</alert-array>
+			</bs-alert>
 
 			<div class="alert alert-success" role="alert" ng-if="edit.res.ok">
 				<strong>Ok!</strong> Dados gravados com sucesso.
@@ -18,21 +18,21 @@
 
 			<form>
 				<div class="row">
-					<input-text  form="edit.form" class="col-md-6" disabled="edit.disabled" name="nome" label="Nome" >Informe o seu nome</input-text>
-					<input-text  form="edit.form" class="col-md-3" disabled="edit.disabled" name="tel" label="Telefone" placeholder="(xx)xxxxxxxx" mask="(99)99999999?9">Informe o seu telefone</input-text>
-					<input-text  form="edit.form" class="col-md-3" disabled="edit.disabled" name="mail" label="Email" >Informe o seu nome</input-text>
+					<bs-txt disabled="edit.disabled" class="col-md-6" md="edit.form.nome" label="Nome" >Informe o seu nome</bs-txt>
+					<bs-txt disabled="edit.disabled" class="col-md-3" md="edit.form.tel" label="Telefone" placeholder="(xx)xxxxxxxx">Informe o seu telefone</bs-txt>
+					<bs-txt disabled="edit.disabled" class="col-md-3" md="edit.form.mail" label="Email" >Informe o seu nome</bs-txt>
 				</div>
 				<div class="row">
-					<input-text form="edit.form" class="col-md-2" disabled="edit.disabled" name="end_cep" label="CEP" >
+					<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.end_cep" label="CEP" >
 						<a href="http://www.buscacep.correios.com.br/"target="_blank"><small><u><i>Buscar CEP</i></u></small></a>
-					</input-text>
-					<input-select form="edit.form" class="col-md-2" disabled="edit.disabled" name="end_tipo" label="Tipo de logradouro:" opts="Data.CFG.SELECTS.TPS_LOGRADOURO"></input-select>
-					<input-text form="edit.form" class="col-md-4" disabled="edit.disabled" name="end_logradouro" label="Logradouro" ></input-text>
-					<input-text form="edit.form" class="col-md-3" disabled="edit.disabled" name="end_bairro" label="Bairro" ></input-text>
-					<input-text form="edit.form" class="col-md-1" disabled="edit.disabled" name="end_numero" label="Número" >Número do endereço. Ex: S/N</input-text>
+					</bs-txt>
+					<bs-sel disabled="edit.disabled" class="col-md-2" md="edit.form.end_tipo" label="Tipo de logradouro:" opts="Data.CFG.SELECTS.TPS_LOGRADOURO"></bs-sel>
+					<bs-txt disabled="edit.disabled" class="col-md-4" md="edit.form.end_logradouro" label="Logradouro" ></bs-txt>
+					<bs-txt disabled="edit.disabled" class="col-md-3" md="edit.form.end_bairro" label="Bairro" ></bs-txt>
+					<bs-txt disabled="edit.disabled" class="col-md-1" md="edit.form.end_numero" label="Número" >Número do endereço. Ex: S/N</bs-txt>
 				</div>
 				<hr>
-				<form-footer class="footer" align="right"></form-footer>
+				<bs-footer class="footer" align="right"></bs-footer>
 			</form>
 
 		</div>

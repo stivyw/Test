@@ -5,9 +5,9 @@
 <div ng-if="!tab.id" ng-init="edit.disabled=false"></div>
 
 
-<alert-array type="danger" arr="edit.res.error">
+<bs-alert type="danger" arr="edit.res.error">
 	<strong>Ops!</strong> Erro ao tentar concluir a ação, corrija os erros mostrados a seguir e tente novamente ou contate o <a class="alert-link" href="http://caririweb.com/suport" target="_blank">suporte</a>.
-</alert-array>
+</bs-alert>
 
 <div class="alert alert-success" role="alert" ng-if="edit.res.ok">
 	<strong>Ok!</strong> Dados gravados com sucesso.
@@ -27,92 +27,92 @@
 	<div ng-class="{active:SelfTab==1}" class="tab-pane">
 		<!-- Pessoais -->
 		<div class="row">
-			<input-txt disabled="edit.disabled" class="col-md-6" md="edit.form.nome" label="Nome" >Informe o nome do servidor</input-txt>
-			<input-sel disabled="edit.disabled" class="col-md-2" md="edit.form.estado_civil" label="Estado Civil" opts="Data.CFG.SELECTS.ESTADO_CIVIL"></input-sel>
-			<input-rad disabled="edit.disabled" class="col-md-3" md="edit.form.sexo" label="Sexo" opts="Data.CFG.SELECTS.SEXO" >Sexo do servidor</input-rad>
+			<bs-txt disabled="edit.disabled" class="col-md-6" md="edit.form.nome" label="Nome" >Informe o nome do servidor</bs-txt>
+			<bs-sel disabled="edit.disabled" class="col-md-2" md="edit.form.estado_civil" label="Estado Civil" opts="Data.CFG.SELECTS.ESTADO_CIVIL"></bs-sel>
+			<bs-rad disabled="edit.disabled" class="col-md-3" md="edit.form.sexo" label="Sexo" opts="Data.CFG.SELECTS.SEXO" >Sexo do servidor</bs-rad>
 
 		</div>
 		<div class="row">
-			<input-txt disabled="edit.disabled" class="col-md-6" md="edit.form.filiacao_mae" label="Nome da mãe" >Nome da mãe do servidor</input-txt>
-			<input-txt disabled="edit.disabled" class="col-md-6" md="edit.form.filiacao_pai" label="Nome do pai" >Nome do pai do servidor</input-txt>
+			<bs-txt disabled="edit.disabled" class="col-md-6" md="edit.form.filiacao_mae" label="Nome da mãe" >Nome da mãe do servidor</bs-txt>
+			<bs-txt disabled="edit.disabled" class="col-md-6" md="edit.form.filiacao_pai" label="Nome do pai" >Nome do pai do servidor</bs-txt>
 		</div>
 		<div class="row">
-			<input-cal disabled="edit.disabled" class="col-md-2" md="edit.form.data_nasc" label="Data de Nascimento" min="01/01/1850" max="today">Ex: 06/07/1987</input-cal>
-			<input-txt disabled="edit.disabled" class="col-md-3" md="edit.form.nacionalidade" label="Nacionalidade" >Nacionalidade do Servidor. Ex: Brasileiro</input-txt>
-			<input-sel disabled="edit.disabled" class="col-md-2" md="edit.form.end_uf" label="Estado" opts="Data.CFG.SELECTS.UFS"></input-sel>
-			<input-sel disabled="edit.disabled" class="col-md-2" md="edit.form.municipio_nascimento" label="Município de nascimento" opts="Data.CFG.SELECTS.MUNICIPIOS[edit.form.end_uf]"></input-sel>
+			<bs-cal disabled="edit.disabled" class="col-md-2" md="edit.form.data_nasc" label="Data de Nascimento" min="01/01/1850" max="today">Ex: 06/07/1987</bs-cal>
+			<bs-txt disabled="edit.disabled" class="col-md-3" md="edit.form.nacionalidade" label="Nacionalidade" >Nacionalidade do Servidor. Ex: Brasileiro</bs-txt>
+			<bs-sel disabled="edit.disabled" class="col-md-2" md="edit.form.end_uf" label="Estado" opts="Data.CFG.SELECTS.UFS"></bs-sel>
+			<bs-sel disabled="edit.disabled" class="col-md-2" md="edit.form.municipio_nascimento" label="Município de nascimento" opts="Data.CFG.SELECTS.MUNICIPIOS[edit.form.end_uf]">{{edit.form.municipio_nascimento}}</bs-sel>
 
 		</div>
 		<div class="row">
-			<input-txt disabled="edit.disabled" class="col-md-2" md="edit.form.tel1" label="Telefone 1" >Telefone de contato do Servidor</input-txt>
-			<input-txt disabled="edit.disabled" class="col-md-2" md="edit.form.tel2" label="Telefone 2" >Telefone de contato do Servidor</input-txt>
-			<input-txt disabled="edit.disabled" class="col-md-4" md="edit.form.mail" label="Email" >Ex: servidor@gmail.com</input-txt>
+			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.tel1" label="Telefone 1" >Telefone de contato do Servidor</bs-txt>
+			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.tel2" label="Telefone 2" >Telefone de contato do Servidor</bs-txt>
+			<bs-txt disabled="edit.disabled" class="col-md-4" md="edit.form.mail" label="Email" >Ex: servidor@gmail.com</bs-txt>
 		</div>
 		<div class="row">
-			<input-sel disabled="edit.disabled" class="col-md-2" md="edit.form.nivel_esc" label="Escolaridade" opts="Data.CFG.SELECTS.ESCOLARIDADE"></input-sel>
-			<input-txt disabled="edit.disabled" class="col-md-3" md="edit.form.conselho_classe" label="Conselho de classe" >Insira o conselho de classe (caso possua) do Servidor. Ex: Conselho Regional de Engenharia</input-txt>
-			<input-txt disabled="edit.disabled" class="col-md-1" md="edit.form.num_conselho" label="Nº" >Ex: 1235</input-txt>
+			<bs-sel disabled="edit.disabled" class="col-md-2" md="edit.form.nivel_esc" label="Escolaridade" opts="Data.CFG.SELECTS.ESCOLARIDADE"></bs-sel>
+			<bs-txt disabled="edit.disabled" class="col-md-3" md="edit.form.cons_classe" label="Conselho de classe" >Insira o conselho de classe (caso possua) do Servidor. Ex: Conselho Regional de Engenharia</bs-txt>
+			<bs-txt disabled="edit.disabled" class="col-md-1" md="edit.form.cons_classe_cod" label="Nº" >Ex: 1235</bs-txt>
 		</div>
 	</div><!-- Fim Pessoais -->
 	<div ng-class="{active:SelfTab==2}" class="tab-pane">
 	<!-- Residenciais -->
 		<div class="row">
-			<input-txt disabled="edit.disabled" class="col-md-2" md="edit.form.end_cep" label="CEP" >
+			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.end_cep" label="CEP" >
 				<a href="http://www.buscacep.correios.com.br/"target="_blank"><small><u><i>Buscar CEP</i></u></small></a>
-			</input-txt>
-			<input-sel disabled="edit.disabled" class="col-md-2" md="edit.form.end_tipo" label="Tipo de logradouro:" opts="Data.CFG.SELECTS.TPS_LOGRADOURO">Tipo de logradouro de residência do Servidor</input-sel>
-			<input-txt disabled="edit.disabled" class="col-md-4" md="edit.form.end_logradouro" label="Logradouro" >Logradouro de residência do Servidor</input-txt>
-			<input-txt disabled="edit.disabled" class="col-md-3" md="edit.form.end_bairro" label="Bairro" >Bairro de residência do Servidor</input-txt>
-			<input-txt disabled="edit.disabled" class="col-md-1" md="edit.form.end_numero" label="Número" >Ex: S/N</input-txt>
+			</bs-txt>
+			<bs-sel disabled="edit.disabled" class="col-md-2" md="edit.form.end_tipo" label="Tipo de logradouro:" opts="Data.CFG.SELECTS.TPS_LOGRADOURO">Tipo de logradouro de residência do Servidor</bs-sel>
+			<bs-txt disabled="edit.disabled" class="col-md-4" md="edit.form.end_logradouro" label="Logradouro" >Logradouro de residência do Servidor</bs-txt>
+			<bs-txt disabled="edit.disabled" class="col-md-3" md="edit.form.end_bairro" label="Bairro" >Bairro de residência do Servidor</bs-txt>
+			<bs-txt disabled="edit.disabled" class="col-md-1" md="edit.form.end_numero" label="Número" >Ex: S/N</bs-txt>
 		</div>
 		<div class="row">
-			<input-txt disabled="edit.disabled" class="col-md-4" md="edit.form.end_cidade" label="Município" >Município de residência do Servidor</input-txt>
-			<input-txt disabled="edit.disabled" class="col-md-6" md="edit.form.end_complemento" label="Complemento" >Complemento de residência do Servidor</input-txt>
+			<bs-txt disabled="edit.disabled" class="col-md-4" md="edit.form.end_cidade" label="Município" >Município de residência do Servidor</bs-txt>
+			<bs-txt disabled="edit.disabled" class="col-md-6" md="edit.form.end_complemento" label="Complemento" >Complemento de residência do Servidor</bs-txt>
 		</div>
 	</div><!-- Fim Residênciais -->
 	<div ng-class="{active:SelfTab==3}" class="tab-pane">
 		<div class="row">
 			<!-- A partir daqui não poderá ser editado, serão campos apenas de consulta -->
-			<input-txt model="edit.form.secretaria" class="col-md-4" name="nome" disabled="edit.disabled" label="Secretaria/Órgão" >Testando model</input-txt>
-
 			<div class="col-xs-4">
 				<label for="secretaria">Secretaria/Órgão</label>
 				<!--input type="text" id="secretaria" class="form-control" ng-model="edit.form.end_bairro" disabled="" title="Secretaria de lotação do Servidor. Obs: Este campo não poderá ser editado nesta tela, pois está vinculado a
 				Lotação do Servidor no menu 'Tabelas' Submenu Servidores > botão 'Editar' > botão 'Lotar' " bs-tooltip  /-->
-				<input class="form-control" type="text" ng-model="edit.form.end_bairro" placeholder="Readonly input here…" readonly>
+				<input class="form-control" type="text" value="{{edit.form.end_bairro}}" readonly>
 			</div>
 			<div class="col-xs-4">
 				<label for="unidade">Unidade</label>
-				<input type="text" id="unidade" class="form-control" disabled="" title="Unidade de lotação do Servidor. Obs: Este campo não poderá ser editado nesta tela, pois está vinculado a
-				Lotação do Servidor no menu 'Tabelas' Submenu Servidores > botão 'Editar' > botão 'Lotar' " bs-tooltip/>
+				<input type="text" class="form-control" title="" readonly/>
+				<span>Unidade de lotação do Servidor.</span>
 			</div>
 			<div class="col-xs-3">
 				<label for="funcao">Função</label>
-				<input type="text" id="funcao" class="form-control" disabled="" title="Cargo de lotação do Servidor. Obs: Este campo não poderá ser editado nesta tela, pois está vinculado a
-				Lotação do Servidor no menu 'Tabelas' Submenu Servidores > botão 'Editar' > botão 'Lotar' " bs-tooltip/>
+				<input type="text" id="funcao" class="form-control" disabled="" readonly/>
+				<span>Cargo de lotação do Servidor.</span>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-2">
 				<label for="salario">Salario</label>
-				<input type="text" id="salario" class="form-control" disabled="" title="Salário do Servidor. Obs: Este campo não poderá ser editado nesta tela, pois está vinculado a
-				Lotação do Servidor no menu 'Tabelas' Submenu Servidores > botão 'Editar' > botão 'Lotar' " bs-tooltip />
+				<input type="text" id="salario" class="form-control" readonly />
+				<span>Salário do Servidor.</span>
 			</div>
 			<div class="col-xs-2">
 				<label for="carga_horaria">Carga horária</label>
-				<input type="text" id="carga_horaria" class="form-control" disabled="" title="Carga horária do Servidor. Obs: Este campo não poderá ser editado nesta tela, pois está vinculado a
-				Lotação do Servidor no menu 'Tabelas' Submenu Servidores > botão 'Editar' > botão 'Lotar' " bs-tooltip />
+				<input type="text" id="carga_horaria" class="form-control" readonly />
+				<span>Carga horária do Servidor.</span>
 			</div>
 		</div><!-- Fim da leitura os campos -->
 		
 		<div class="row"><!-- Funcionais -->
 			<div class="col-xs-2">
 				<label for="matricula">Matrícula</label>
-				<input type="text" id="matricula" placeholder="Matricula" class="form-control" title="Insira o cod de matrícula do servidor. Ex: 25042014" bs-tooltip  />
+				<input type="text" id="matricula" placeholder="Matricula" class="form-control" readonly />
+				<span>Cod. de matrícula do Servidor.</span>
 			</div>
 			<div class="col-xs-2">
 				<label for="data_admissao">Data de Admissão</label>
 				<input type="text" id="data_admissao" placeholder="Data de Admissão" class="form-control" title="Insira a data de admissão do Servidor" bs-tooltip  />
+				<span>Cod. de matrícula do Servidor.</span>
 			</div>
 			<div class="col-xs-2">
 				<label for="vinculo_empregaticio">Vínculo</label>
@@ -298,10 +298,10 @@
 			</div>
 		</div>
 	</div><!-- Fim Lotação -->
-	<form-footer class="footer" align="right">
+	<bs-footer class="footer" align="right">
 		<button ng-disabled="edit.disabled" class="btn btn-small btn-primary" data-animation="am-fade-and-slide-top"
 			data-template="views/rh/servidores/modal.lotar.html" bs-modal='{"name":"Padre Cícero","cpf":"123.456.789-10","secretaria":"Secretaria da Educação","unidade":"Unidade tal","cargo":"Professor","cargo_tp":"Tipo do Cargo"}'>
 			Lotar
 		</button>
-	</form-footer>
+	</bs-footer>
 </div>
