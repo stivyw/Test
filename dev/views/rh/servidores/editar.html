@@ -94,36 +94,27 @@
 			<!-- -->
 		</div>
 		<div class="row">
+			<bs-txt disabled="edit.disabled" class="col-sm-2" md="edit.form.matricula" label="Cod. Matrícula" >Cod. Matrícula do servidor</bs-txt>
 			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.salario" label="Salário" >Salário do Servidor</bs-txt>
+			<!--div class="col-md-2">
+				<label>Salário do Servidor</label>
+				<div class="input-group">
+				  <input ng-disabled="edit.disabled" ng-model="edit.form.salario" type="text" class="form-control" placeholder="Salário">
+				  <span class="input-group-btn">
+				    <button  ng-disabled="edit.disabled" class="btn btn-default" ng-model="">Mudar</button>
+				  </span>
+				</div>
+				<span class="help-block">&nbsp;</span>
+			</div-->
+
 			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.carga_horaria" label="Carga Horária" >Carga horária do Servidor</bs-txt>
 		</div><!-- Fim da leitura os campos -->
 		
 		<div class="row"><!-- Funcionais -->
-			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.matricula" label="Cod. Matrícula" >Cod. Matrícula do servidor</bs-txt>
 			<bs-cal disabled="edit.disabled" class="col-md-2" md="edit.form.data_admissao" label="Data de admissão" >Data de admissão do Servidor</bs-cal>
-			<div class="col-xs-2">
-				<label for="vinculo_empregaticio">Vínculo</label>
-				<select name="vinculo_empregaticio" class="form-control">
-					<option value="0">Selecione...</option>
-					<option value="1">Cargo em comissão</option>
-					<option value="2">Efetivo</option>
-					<option value="3">Eletivo</option>
-					<option value="4">Estatutario</option>
-					<option value="5">Temporario</option>
-					<option value="6">Outro...</option>
-				</select>
-			</div>
-			<div class="col-xs-2">
-				<label for="natureza">Natureza</label>
-				<select name="natureza" class="form-control">
-					<option value="0">Selecione...</option>
-					<option value="1">Cargo em comissão</option>
-					<option value="2">Efetivo</option>
-					<option value="3">Eletivo</option>
-					<option value="4">Temporario</option>
-					<option value="5">Outro...</option>
-				</select>
-			</div>
+
+			<bs-sel disabled="edit.disabled" class="col-md-2" md="edit.form.tipo_admissao" label="Tipo de admissão"
+				opts="['Selecione...', 'Cargo em comissão', 'Concurso público', 'Contrato temporario', 'Eletivo', 'Estatuto', 'Outro']"></bs-sel>
 			<bs-rad disabled="edit.disabled" class="col-md-2" md="edit.form.situacao" label="Situação" opts="{A:'Ativo',I:'Inativo'}" ></bs-rad>
 		</div>
 		<div class="row">
