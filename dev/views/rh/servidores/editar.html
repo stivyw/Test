@@ -13,6 +13,10 @@
 	<strong>Ok!</strong> Dados gravados com sucesso.
 </div>
 
+<div class="alert alert-warning" role="alert" ng-if="edit.res.item.situacao=='I'">
+	<strong><span class="glyphicon glyphicon-exclamation-sign"></span></strong>
+	O servidor <strong>{{edit.form.nome}}</strong> está inativo. Na aba eventos, você pode ver quando ele foi desativado.
+</div>
 
 <ul class="nav nav-tabs" role="tablist" ng-init="Data.tabs[$parent.tab.i].title='Editar Servidor'">
 	<li ng-class="{active:SelfTab==1}"><a ng-click="SelfTab=1" href="javascript:void(0);" ng-init="SelfTab=1">Dados Pessoais</a></li>
@@ -72,11 +76,9 @@
 	</div><!-- Fim Residênciais -->
 	<div ng-class="{active:SelfTab==3}" class="tab-pane">
 		<div class="row">
-			<!-- A partir daqui não poderá ser editado, serão campos apenas de consulta -->
+			<!-- A partir daqui não poderá ser editado, serão campos apenas de consulta - ->
 			<div class="col-xs-4">
 				<label for="secretaria">Secretaria/Órgão</label>
-				<!--input type="text" id="secretaria" class="form-control" ng-model="edit.form.end_bairro" disabled="" title="Secretaria de lotação do Servidor. Obs: Este campo não poderá ser editado nesta tela, pois está vinculado a
-				Lotação do Servidor no menu 'Tabelas' Submenu Servidores > botão 'Editar' > botão 'Lotar' " bs-tooltip  /-->
 				<input class="form-control" type="text" value="{{edit.form.end_bairro}}" readonly>
 			</div>
 			<div class="col-xs-4">
@@ -89,6 +91,7 @@
 				<input type="text" id="funcao" class="form-control" disabled="" readonly/>
 				<span>Cargo de lotação do Servidor.</span>
 			</div>
+			<!-- -->
 		</div>
 		<div class="row">
 			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.salario" label="Salário" >Salário do Servidor</bs-txt>
@@ -121,44 +124,22 @@
 					<option value="5">Outro...</option>
 				</select>
 			</div>
-			<div class="col-xs-2">
-				<label for="tipo_admissao">Tipo de Admissão</label>
-				<select name="tipo_admissao" class="form-control">
-					<option value="0">Selecione...</option>
-					<option value="1">Cargo em comissão</option>
-					<option value="2">Concurso público</option>
-					<option value="3">Contrato temporario</option>
-					<option value="4">Eletivo</option>
-					<option value="5">Estatuto</option>
-					<option value="5">Outro...</option>
-				</select>
-			</div>
-			<bs-rad disabled="edit.disabled" class="col-md-2" md="edit.form.situacao" label="Situação" opts="{1:'Ativo',2:'Inativo'}" >{{edit.form.situacao}}</bs-rad>
+			<bs-rad disabled="edit.disabled" class="col-md-2" md="edit.form.situacao" label="Situação" opts="{A:'Ativo',I:'Inativo'}" ></bs-rad>
 		</div>
 		<div class="row">
-			
-			<bs-cal disabled="edit.disabled" class="col-md-2" md="edit.form.data_admissao" label="Data de admissão" >Data de início do contrato</bs-cal>
-
+			<bs-sel disabled="edit.disabled" class="col-md-2" md="edit.form.tipo_admissao" label="Tipo de admissão"
+				opts="['Selecione...', 'Cargo em comissão', 'Concurso público', 'Contrato temporario', 'Eletivo', 'Estatuto', 'Outro']"></bs-sel>
+<div ng-if="edit.form.tipo_admissao==3">
 			<bs-cal disabled="edit.disabled" class="col-md-2" md="edit.form.contratotemp_ini" label="Início do contrato" >Contrato temp Ini</bs-cal>
 			<bs-cal disabled="edit.disabled" class="col-md-2" md="edit.form.contratotemp_fim" label="Fim do contrato" >Contrato temp Fim</bs-cal>
+</div>
 
-			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.ordem" label="Fim do contrato" >Contrato temp Fim</bs-txt>
-			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.serie" label="Fim do contrato" >Contrato temp Fim</bs-txt>
-
-			<div class="col-xs-2">
-				<label for="ordem">Ordem</label>
-				<input type="text" id="ordem" placeholder="Ordem" class="form-control" title="Ordem" bs-tooltip  />
-			</div>
-			<div class="col-xs-2">
-				<label for="serie">Série</label>
-				<input type="text" id="serie" placeholder="Série" class="form-control" title="Série" bs-tooltip  />
-			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-3">
-				<label for="tipo_previdencia">Tipo de Previdência</label>
-				<input type="text" id="tpo_previdencia" placeholder="Tipo de Previdência" class="form-control" title="Insira o tipo de Previdência do Servidor. Ex: Previdência Municipal" bs-tooltip  />
-			</div>
+			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.ordem" label="Ordem" >Ordem</bs-txt>
+			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.serie" label="Série" >Série</bs-txt>
+
+			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.tipo_previdencia" label="Tipo de Previdência" >Tipo de Previdência do Servidor</bs-txt>
 		</div><!-- Fim Funcionais -->
 	</div>
 <!-- Anexos -->
