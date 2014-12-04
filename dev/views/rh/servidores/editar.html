@@ -91,29 +91,13 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-2">
-				<label for="salario">Salario</label>
-				<input type="text" id="salario" class="form-control" readonly />
-				<span>Salário do Servidor.</span>
-			</div>
-			<div class="col-xs-2">
-				<label for="carga_horaria">Carga horária</label>
-				<input type="text" id="carga_horaria" class="form-control" readonly />
-				<span>Carga horária do Servidor.</span>
-			</div>
+			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.salario" label="Salário" >Salário do Servidor</bs-txt>
+			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.carga_horaria" label="Carga Horária" >Carga horária do Servidor</bs-txt>
 		</div><!-- Fim da leitura os campos -->
 		
 		<div class="row"><!-- Funcionais -->
-			<div class="col-xs-2">
-				<label for="matricula">Matrícula</label>
-				<input type="text" id="matricula" placeholder="Matricula" class="form-control" readonly />
-				<span>Cod. de matrícula do Servidor.</span>
-			</div>
-			<div class="col-xs-2">
-				<label for="data_admissao">Data de Admissão</label>
-				<input type="text" id="data_admissao" placeholder="Data de Admissão" class="form-control" title="Insira a data de admissão do Servidor" bs-tooltip  />
-				<span>Cod. de matrícula do Servidor.</span>
-			</div>
+			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.matricula" label="Cod. Matrícula" >Cod. Matrícula do servidor</bs-txt>
+			<bs-cal disabled="edit.disabled" class="col-md-2" md="edit.form.data_admissao" label="Data de admissão" >Data de admissão do Servidor</bs-cal>
 			<div class="col-xs-2">
 				<label for="vinculo_empregaticio">Vínculo</label>
 				<select name="vinculo_empregaticio" class="form-control">
@@ -149,27 +133,18 @@
 					<option value="5">Outro...</option>
 				</select>
 			</div>
-			<div class="col-xs-2">
-				<label class="radio">Situação</label>
-				<div class="radio-inline">
-					<input type="radio" name="optionsRadios" id="situacaoativo" value="option1" checked>
-					Ativo
-				</div>
-				<div class="radio-inline">
-					<input type="radio" name="optionsRadios" id="situacaoinativo" value="option2">
-					Inativo
-				</div>
-			</div>
+			<bs-rad disabled="edit.disabled" class="col-md-2" md="edit.form.situacao" label="Situação" opts="{1:'Ativo',2:'Inativo'}" >{{edit.form.situacao}}</bs-rad>
 		</div>
 		<div class="row">
-			<div class="col-xs-2">
-				<label for="ini_contrato_temp">Ini contrato temp</label>
-				<input type="text" id="ini_contrato_temp" placeholder="Inicio" class="form-control" title="Insira a data de início do contrato temporário do Servidor. Obs: Campo obrigatório para servidores vinculados como: 'Contrato Temporário'" bs-tooltip  />
-			</div>
-			<div class="col-xs-2">
-				<label for="fim_contrato_temp">Fim contrato temp</label>
-				<input type="text" id="fim_contrato_temp" placeholder="Final" class="form-control" title="Insira a data de término do contrato temporário do Servidor. Obs: Campo obrigatório para servidores vinculados como: 'Contrato Temporário'" bs-tooltip />
-			</div>
+			
+			<bs-cal disabled="edit.disabled" class="col-md-2" md="edit.form.data_admissao" label="Data de admissão" >Data de início do contrato</bs-cal>
+
+			<bs-cal disabled="edit.disabled" class="col-md-2" md="edit.form.contratotemp_ini" label="Início do contrato" >Contrato temp Ini</bs-cal>
+			<bs-cal disabled="edit.disabled" class="col-md-2" md="edit.form.contratotemp_fim" label="Fim do contrato" >Contrato temp Fim</bs-cal>
+
+			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.ordem" label="Fim do contrato" >Contrato temp Fim</bs-txt>
+			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.serie" label="Fim do contrato" >Contrato temp Fim</bs-txt>
+
 			<div class="col-xs-2">
 				<label for="ordem">Ordem</label>
 				<input type="text" id="ordem" placeholder="Ordem" class="form-control" title="Ordem" bs-tooltip  />
