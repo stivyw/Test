@@ -131,9 +131,8 @@ App.run(function($http, $location) {
 				return o;
 			},
 			file: function(o){
-				if(!o)return;
+				!o && (o={});
 				!o.url && (o.url = 'tools/upload');
-				console.log(o);
 				o.upload=function(){
 					console.log(this.scope);
 					if(this.scope){
@@ -332,13 +331,15 @@ App.directive('bsUpl', function() {
   return {
     templateUrl: 'sw/bs/upl.html',
     transclude: true,
+    replace: true,
     link: function(scope, element, attr){
     	scope.name = 'obj_' + (++c_o);
     	scope.label = attr.label;
     },
     scope: {
     	md: '=',
-    	disabled:'='
+    	disabled:'=',
+    	sfile:'='
     }
   };
 });

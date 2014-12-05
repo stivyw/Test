@@ -102,17 +102,6 @@
 </div>
 	</script>
 
-	<script type="text/ng-template" id="sw/bs/footer.html">
-<div class="btn-group" ng-transclude></div>
-<div class="btn-group">
-<button class="btn" ng-init="edit.disabled=true" ng-click="edit.toggleCancel()" ng-class="{'btn-info':edit.disabled,'btn-danger':!edit.disabled}" ng-disabled="tab.stat==1">
-	{{edit.disabled?'Editar':'Cancelar'}}
-</button>
-<button type="submit" class="btn" ng-disabled="edit.disabled||tab.stat==1" ng-class="{'btn-success':tab.stat!=1,'btn-warning':tab.stat==1}" ng-click="edit.save()">
-	{{tab.stat==2?'Salvar':'Carregando...'}}
-</button>
-</div>
-	</script>
 	<script type="text/ng-template" id="sw/bs/txt.html">
 <label for="{{name}}">{{label}}</label>
 <input ng-disabled="disabled" id="{{name}}" ng-model="md" class="form-control" type="text" placeholder="{{placeholder}}" ui-mask="{{mask}}">
@@ -133,25 +122,15 @@
 <span class="help-block"><span ng-transclude></span>&nbsp;</span>
 	</script>
 
-	<script type="text/ng-template" id="sw/bs/upl.html">
-
-<div ng-init="file=$parent.Data.file({scope:md})"></div>
-<label for="{{name}}"><input id="{{name}}" ng-model="md2" type="file"/>{{md2}}</label>
-<!buttonng-file-select ng-file-change="file=$parent.Data.upload({fls:$files, scope:afs})" ng-disabled="disabled" class="btn btn-success" type="button">
-	<span class="glyphicon glyphicon-upload"></span>
-</button>
-<a href="{{'/files/' + md.name +'.'+ md.ext}}" class="btn btn-info" target="_blank" ng-disabled="disabled" ><span class="glyphicon glyphicon-search"></span></a>
-	<button ng-click="Data.upload({scope:edit.form, del:'cpf'})" ng-disabled="disabled" class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove-circle"></span></button>
-</div>
-
-<label>{{label}}</label>
-<div class="btn-group" ng-model="$parent.md" bs-radio-group>
-  <label ng-repeat="(key, val) in opts" class="btn btn-default" ng-class="{disabled:disabled}" for="{{name + '_' + $index}}">
-  	<input type="radio" id="{{name + '_' + $index}}" class="btn btn-default" value="{{key}}" ng-disabled="disabled"> {{val}}
-  </label>
-</div>
-<span class="help-block"><span ng-transclude></span>&nbsp;</span>
-	</script>
+	<script type="text/ng-template" id="sw/bs/upl.html"><div>
+	<label>{{file}}a</label>
+	<button ng-file-select ng-file-change="file.upload({fls:$files, scope:md})" ng-disabled="disabled" class="btn btn-success" type="button">
+		<span class="glyphicon glyphicon-upload"></span> 
+	</button>
+	<a href="{{'/files/' + md.name +'.'+ md.ext}}" class="btn btn-info" target="_blank" ng-disabled="disabled" ><span class="glyphicon glyphicon-search"></span></a>
+		<button ng-click="Data.upload({scope:edit.form, del:'cpf'})" ng-disabled="disabled" class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove-circle"></span></button>
+	</div>
+</div></script>
 
 	<script type="text/ng-template" id="sw/bs/cal.html">
 <label for="{{name}}"><span class="glyphicon glyphicon-calendar"></span> {{label}}</label>
@@ -159,5 +138,16 @@
 <span class="help-block"><span ng-transclude></span>&nbsp;</span>
 	</script>
 
+	<script type="text/ng-template" id="sw/bs/footer.html">
+<div class="btn-group" ng-transclude></div>
+<div class="btn-group">
+<button class="btn" ng-init="edit.disabled=true" ng-click="edit.toggleCancel()" ng-class="{'btn-info':edit.disabled,'btn-danger':!edit.disabled}" ng-disabled="tab.stat==1">
+	{{edit.disabled?'Editar':'Cancelar'}}
+</button>
+<button type="submit" class="btn" ng-disabled="edit.disabled||tab.stat==1" ng-class="{'btn-success':tab.stat!=1,'btn-warning':tab.stat==1}" ng-click="edit.save()">
+	{{tab.stat==2?'Salvar':'Carregando...'}}
+</button>
+</div>
+	</script>
 </body>
 </html>
