@@ -49,6 +49,13 @@ App.run(function($http, $location) {
 					console.log(x);
 				});
 			},
+			post:function(o){
+				$http.post(this.base + '/api/v1/' + o.url, o.data).success(function(x){
+					//console.log(x);
+					o.res = x;
+				});
+				return o;
+			},
 			edit: function(o){
 				var BASE = this.base + '/api/v1/';
 				!o.params && (o.params = {});
@@ -124,7 +131,19 @@ App.run(function($http, $location) {
 				return o;
 			},
 			upload: function(c){
-				var o=[];
+				var o={files:[]};
+				!c.url && (c.url = 'tools/upload');
+				if(c.del){
+					if(c.scope && c.scope.media && c.scope.media[c.del]){
+						$http.post(this.base + '/' + c.url, c.scope.media[c.del]).success(function(x){
+							console.log(x);
+							o.res = x;
+
+						});
+						delete c.scope.media[c.del];
+					}
+					return o;
+				}
 				if(c.fls && c.fls.length)
 					for (var i = 0; i < c.fls.length; i++) {
 						var file = c.fls[i];
@@ -134,7 +153,8 @@ App.run(function($http, $location) {
 							//headers: {'Authorization': 'xxx'}, // only for html5
 							//withCredentials: true,
 							//data: {myObj: $scope.myModelObj},
-							//fileFormDataName: 'teste',
+							//fileName:'file_name' ,
+							//fileFormDataName: '/tmp/teste',
 							file: file
 						}).progress(function(evt) {
 							evt.config.file.progress = parseInt(100.0 * evt.loaded / evt.total);
@@ -153,7 +173,7 @@ App.run(function($http, $location) {
 							}
 						})
 						//.error(function(){	file.error = [{message:'Erro desconhecido'}];	});
-						o.push(file);
+						o.files.push(file);
 					}
 				
 				return o;
@@ -286,6 +306,22 @@ App.directive('bsSel', function() {
 App.directive('bsRad', function() {
   return {
     templateUrl: 'sw/bs/rad.html',
+    transclude: true,
+    link: function(scope, element, attr){
+    	scope.name = 'obj_' + (++c_o);
+    	scope.label = attr.label;
+    },
+    scope: {
+    	md: '=',
+    	disabled:'=',
+    	opts:'='
+
+    }
+  };
+});
+App.directive('bsUpl', function() {
+  return {
+    templateUrl: 'sw/bs/upl.html',
     transclude: true,
     link: function(scope, element, attr){
     	scope.name = 'obj_' + (++c_o);

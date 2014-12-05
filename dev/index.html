@@ -132,6 +132,25 @@
 </div>
 <span class="help-block"><span ng-transclude></span>&nbsp;</span>
 	</script>
+
+	<script type="text/ng-template" id="sw/bs/upl.html">
+{{md}}
+<button ng-file-select ng-file-change="up=Data.upload({url:'tools/upload',fls:$files, scope:edit.form, ind:'cpf'})" ng-disabled="disabled" class="btn btn-success" type="button">
+	<span class="glyphicon glyphicon-upload"></span>
+</button>
+<a href="{{'/files/' + md.name +'.'+ md.ext}}" class="btn btn-info" target="_blank" ng-disabled="disabled" ><span class="glyphicon glyphicon-search"></span></a>
+	<button ng-click="Data.upload({url:scope:edit.form, del:'cpf'})" ng-disabled="edit.disabled" class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove-circle"></span></button>
+</div>
+
+<label>{{label}}</label>
+<div class="btn-group" ng-model="$parent.md" bs-radio-group>
+  <label ng-repeat="(key, val) in opts" class="btn btn-default" ng-class="{disabled:disabled}" for="{{name + '_' + $index}}">
+  	<input type="radio" id="{{name + '_' + $index}}" class="btn btn-default" value="{{key}}" ng-disabled="disabled"> {{val}}
+  </label>
+</div>
+<span class="help-block"><span ng-transclude></span>&nbsp;</span>
+	</script>
+
 	<script type="text/ng-template" id="sw/bs/cal.html">
 <label for="{{name}}"><span class="glyphicon glyphicon-calendar"></span> {{label}}</label>
 <input class="form-control" id="{{name}}" ng-model="md" bs-datepicker data-container="body" type="text" data-date-format="dd/MM/yyyy" data-max-date="{{max}}" data-min-date="{{min}}" ng-disabled="disabled" />

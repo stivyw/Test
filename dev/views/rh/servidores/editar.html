@@ -177,9 +177,14 @@
 				<tr ng-class="{danger:!edit.form.media.cpf}" >
 <td>
 	CPF
-<a ng-show="edit.form.media.cpf" href="{{'/files/' + edit.form.media.cpf.name +'.'+ edit.form.media.cpf.ext}}" target="_blank">Visualizar</a>
+
 </td><td>
-<button ng-file-select ng-file-change="cpf=Data.upload({url:'tools/upload',fls:$files, scope:edit.form, ind:'cpf'})" class="btn btn-default btn-block" ng-disabled="edit.disabled">Enviar</button>
+<button ng-show="!edit.form.media.cpf" ng-file-select ng-file-change="cpf=Data.upload({url:'tools/upload',fls:$files, scope:edit.form, ind:'cpf'})" ng-disabled="edit.disabled" class="btn btn-success" type="button"><span class="glyphicon glyphicon-upload"></span></button>
+<div class="btn-group" ng-show="edit.form.media.cpf">
+	<a href="{{'/files/' + edit.form.media.cpf.name +'.'+ edit.form.media.cpf.ext}}" class="btn btn-info" target="_blank" ng-disabled="edit.disabled" ><span class="glyphicon glyphicon-search"></span></a>
+	<button ng-click="Data.upload({url:'tools/remove', scope:edit.form, del:'cpf'})" ng-disabled="edit.disabled" class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove-circle"></span></button>
+</div>
+
 <div class="progress" ng-show="cpf">
   <div class="progress-bar progress-bar-success progress-bar-striped" ng-style="{width:cpf[0].progress + '%'}">
 {{cpf[0].progress}}
