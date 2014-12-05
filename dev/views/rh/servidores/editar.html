@@ -165,18 +165,11 @@
 			<tbody>
 
 				<tr class="danger" >
-<td>RG</td><td>
-
-<button ng-file-select ng-file-model="files.rg" ng-file-change="Data.upload($files, $event)" class="btn btn-default">Enviar</button>
-
-
-    
-
-
-{{files}}
-<div class="progress">
-  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" style="width:40%">
-    {{files.progress}}%
+<td>RG{{edit.form.media}}</td><td>
+<button ng-file-select ng-file-change="rg=Data.upload({url:'tools/upload',fls:$files, scope:edit.form, ind:'rg'})" class="btn btn-default">Enviar</button>
+<div class="progress" ng-show="rg">
+  <div class="progress-bar progress-bar-success progress-bar-striped" ng-class="{'progress-bar-success':!rg.error,'progress-bar-danger':rg.error}" ng-style="{width:rg[0].progress + '%'}">
+{{rg[0].progress}}
   </div>
 </div>
 
@@ -186,7 +179,12 @@
 
 				<tr class="danger" >
 <td>CPF</td><td>
-{{files.cpf}}</td>
+<button ng-file-select ng-file-change="cpf=Data.upload({url:'tools/upload',fls:$files, scope:edit.form, ind:'cpf'})" class="btn btn-default">Enviar</button>
+<div class="progress" ng-show="cpf">
+  <div class="progress-bar progress-bar-success progress-bar-striped" ng-style="{width:cpf[0].progress + '%'}">
+{{cpf[0].progress}}
+  </div>
+</div>
 				</tr>
 				<tr class="danger" >
 					<td>Comprovante de Residência</td>
