@@ -134,13 +134,14 @@ App.run(function($http, $location) {
 							//headers: {'Authorization': 'xxx'}, // only for html5
 							//withCredentials: true,
 							//data: {myObj: $scope.myModelObj},
+							//fileFormDataName: 'teste',
 							file: file
 						}).progress(function(evt) {
 							evt.config.file.progress = parseInt(100.0 * evt.loaded / evt.total);
 						}).success(function(data, status, headers, config) {
 							// file is uploaded successfully config.file.name
 							config.file.progress = 100;
-
+							console.log(data);
 							if(data.error){
 								o.error=data.error;
 								return;
@@ -215,39 +216,6 @@ App.run(function($http, $location) {
 				console.log(o);
 				return o;
 			}
-/** /
-			list: function(s, u){
-				s.stat=1;
-				s.loader = {};
-				s.url = this.base + '/api/v1/' + u;
-				s.next=function(){
-					if(this.loader.current_page<this.loader.last_page)
-						this.set(this.loader.current_page + 1);
-				};
-				s.prev=function(){
-					if(this.loader.current_page>1)
-						this.set(this.loader.current_page-1);
-				};
-				s.set=function(n){
-					if(!n || n<1 || n>this.loader.last_page)
-						n=1;
-					var scope = s;
-					scope.stat=1;
-					$http.get(this.url, {params:{filters:this.filters,page:n,per_page:this.per_page||null}}).success(function(x){
-						var loader = x;
-						scope.stat = 2;
-						scope.loader = loader;
-						console.log('List');
-						console.log(scope.loader);
-						s.pg_label = (((x.current_page-1) * x.per_page) + 1) + '-' + 
-							(x.current_page == x.last_page ? x.total : (x.current_page * x.per_page)) + '/' + 
-							(x.total);
-					});
-				};
-				s.set();
-				//return res;
-			}
-/**/
 		};
 	});
 /** /
@@ -493,7 +461,8 @@ App.controller('up',[ '$scope', '$upload', 'Data', function($scope, $upload, Dat
         //withCredentials: true,
         data: {myObj: $scope.myModelObj},
         file: file, // single file or a list of files. list is only for html5
-        //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)        //fileFormDataName: myFile, // file formData name ('Content-Disposition'), server side request form name
+        //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)      
+        //fileFormDataName: myFile, // file formData name ('Content-Disposition'), server side request form name
                                     // could be a list of names for multiple files (html5). Default is 'file'
         //formDataAppender: function(formData, key, val){}  // customize how data is added to the formData. 
                                                             // See #40#issuecomment-28612000 for sample code

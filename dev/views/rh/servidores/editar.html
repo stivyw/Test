@@ -165,7 +165,7 @@
 			<tbody>
 
 				<tr ng-class="{danger:!edit.form.media.rg}" >
-<td>RG <a href="{{'/files/' + edit.form.media.rg.name +'.'+ edit.form.media.rg.ext}}" target="_blank">Visualizar</a></td><td>
+<td>RG <a ng-show="edit.form.media.rg" href="{{'/files/' + edit.form.media.rg.name +'.'+ edit.form.media.rg.ext}}" target="_blank">Visualizar</a></td><td>
 <button ng-file-select ng-file-change="rg=Data.upload({url:'tools/upload',fls:$files, scope:edit.form, ind:'rg'})" class="btn btn-default btn-block" ng-disabled="edit.disabled" ng-disabled="edit.disabled">Enviar</button>
 <div class="progress">
   <div class="progress-bar progress-bar-success progress-bar-striped" ng-class="{'progress-bar-success':!rg.error,'progress-bar-danger':rg.error}" ng-style="{width:rg[0].progress + '%'}">
@@ -175,7 +175,10 @@
 </td>
 				</tr>
 				<tr ng-class="{danger:!edit.form.media.cpf}" >
-<td>CPF <a href="{{'/files/' + edit.form.media.cpf.name +'.'+ edit.form.media.cpf.ext}}" target="_blank">Visualizar</a></td><td>
+<td>
+	CPF
+<a ng-show="edit.form.media.cpf" href="{{'/files/' + edit.form.media.cpf.name +'.'+ edit.form.media.cpf.ext}}" target="_blank">Visualizar</a>
+</td><td>
 <button ng-file-select ng-file-change="cpf=Data.upload({url:'tools/upload',fls:$files, scope:edit.form, ind:'cpf'})" class="btn btn-default btn-block" ng-disabled="edit.disabled">Enviar</button>
 <div class="progress" ng-show="cpf">
   <div class="progress-bar progress-bar-success progress-bar-striped" ng-style="{width:cpf[0].progress + '%'}">
@@ -184,7 +187,10 @@
 </div>
 				</tr>
 				<tr ng-class="{danger:!edit.form.media.cp_residencia}" >
-<td>Comprovante de residência</td><td>
+<td>
+	Comprovante de residência
+	<a ng-show="edit.form.media.cp_residencia" href="{{'/files/' + edit.form.media.cp_residencia.name +'.'+ edit.form.media.cp_residencia.ext}}" target="_blank">Visualizar</a>
+</td><td>
 <button ng-file-select ng-file-change="cp_residencia=Data.upload({url:'tools/upload',fls:$files, scope:edit.form, ind:'cp_residencia'})" class="btn btn-default btn-block" ng-disabled="edit.disabled">Enviar</button>
 <div class="progress" ng-show="cp_residencia">
   <div class="progress-bar progress-bar-success progress-bar-striped" ng-style="{width:cp_residencia[0].progress + '%'}">
@@ -193,7 +199,8 @@
 </div>
 				</tr>
 				<tr ng-class="{danger:!edit.form.media.ctps}" >
-<td>CTPS</td><td>
+<td>CTPS
+<a ng-show="edit.form.media.ctps" href="{{'/files/' + edit.form.media.ctps.name +'.'+ edit.form.media.ctps.ext}}" target="_blank">Visualizar</a></td><td>
 <button ng-file-select ng-file-change="ctps=Data.upload({url:'tools/upload',fls:$files, scope:edit.form, ind:'ctps'})" class="btn btn-default btn-block" ng-disabled="edit.disabled">Enviar</button>
 <div class="progress" ng-show="ctps">
   <div class="progress-bar progress-bar-success progress-bar-striped" ng-style="{width:ctps[0].progress + '%'}">
@@ -202,7 +209,9 @@
 </div>
 				</tr>
 				<tr ng-class="{danger:!edit.form.media.titulo}" >
-<td>Título de Eleitor</td><td>
+<td>Título de Eleitor
+<a ng-show="edit.form.media.titulo" href="{{'/files/' + edit.form.media.titulo.name +'.'+ edit.form.media.titulo.ext}}" target="_blank">Visualizar</a>
+</td><td>
 <button ng-file-select ng-file-change="titulo=Data.upload({url:'tools/upload',fls:$files, scope:edit.form, ind:'titulo'})" class="btn btn-default btn-block" ng-disabled="edit.disabled">Enviar</button>
 <div class="progress" ng-show="titulo">
   <div class="progress-bar progress-bar-success progress-bar-striped" ng-style="{width:titulo[0].progress + '%'}">
@@ -211,7 +220,9 @@
 </div>
 				</tr>
 				<tr ng-class="{danger:!edit.form.media.diploma_medio}" >
-<td>Diploma de nível médio</td><td>
+<td>Diploma de nível médio
+<a ng-show="edit.form.media.diploma_medio" href="{{'/files/' + edit.form.media.diploma_medio.name +'.'+ edit.form.media.diploma_medio.ext}}" target="_blank">Visualizar</a>
+</td><td>
 <button ng-file-select ng-file-change="diploma_medio=Data.upload({url:'tools/upload',fls:$files, scope:edit.form, ind:'diploma_medio'})" class="btn btn-default btn-block" ng-disabled="edit.disabled">Enviar</button>
 <div class="progress" ng-show="diploma_medio">
   <div class="progress-bar progress-bar-success progress-bar-striped" ng-style="{width:diploma_medio[0].progress + '%'}">
@@ -220,7 +231,9 @@
 </div>
 				</tr>
 				<tr ng-class="{danger:!edit.form.media.diploma_superior}" >
-<td>Diploma de nível superior</td><td>
+<td>Diploma de nível superior
+<a ng-show="edit.form.media.diploma_superior" href="{{'/files/' + edit.form.media.diploma_superior.name +'.'+ edit.form.media.diploma_superior.ext}}" target="_blank">Visualizar</a>
+</td><td>
 <button ng-file-select ng-file-change="diploma_superior=Data.upload({url:'tools/upload',fls:$files, scope:edit.form, ind:'diploma_superior'})" class="btn btn-default btn-block" ng-disabled="edit.disabled">Enviar</button>
 <div class="progress" ng-show="diploma_superior">
   <div class="progress-bar progress-bar-success progress-bar-striped" ng-style="{width:diploma_superior[0].progress + '%'}">
@@ -229,7 +242,9 @@
 </div>
 				</tr>
 				<tr ng-class="{danger:!edit.form.media.foto}" >
-<td>Foto 3x4</td><td>
+<td>Foto 3x4
+<a ng-show="edit.form.media.foto" href="{{'/files/' + edit.form.media.foto.name +'.'+ edit.form.media.foto.ext}}" target="_blank">Visualizar</a>
+</td><td>
 <button ng-file-select ng-file-change="foto=Data.upload({url:'tools/upload',fls:$files, scope:edit.form, ind:'foto'})" class="btn btn-default btn-block" ng-disabled="edit.disabled">Enviar</button>
 <div class="progress" ng-show="foto">
   <div class="progress-bar progress-bar-success progress-bar-striped" ng-style="{width:foto[0].progress + '%'}">
