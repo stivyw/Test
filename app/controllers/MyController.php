@@ -8,6 +8,8 @@ class MyController extends Controller {
 		$this->res = new stdClass;
 		$this->base = URL::to('/');
 		$this->gbl = App::make('gbl');
+		$this->gbl->files = '/tmp/sw_tmp/www/files';
+		
 
 	}
 	function isModel($name, $abort = false){

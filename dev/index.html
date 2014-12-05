@@ -16,14 +16,21 @@
 	<!--script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script-->
 
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
+
 	<!--script src="http://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.tpl.min.js"></script-->
 	<!--script src="../../assets/angular-strap.min.js"></script>
 	<script src="../../assets/angular-strap.tpl.js"></script-->
 	<script src="../../assets/as/213/angular-strap.min.js"></script>
+	<script src="../../assets/angular-file-upload-master/angular-file-upload.min.js"></script>
 	<script src="../../assets/as/ui-utils/mask/mask.js"></script>
+	
 	<script src="../../assets/as/as.tpl.js"></script>
 	<script src="App.js"></script>
+
+
+
+	
 	
 </head>
 <body>
@@ -71,7 +78,8 @@
 			<ul class="nav nav-tabs ngNav">
 			  <li ng-repeat="tab in Data.tabs" class="ngTab" ng-class="{active : Data.tabIndex == tab.i}">
 				<a ng-click="Data.tabIndex = tab.i" href="#" ng-class="{'loading':!tab.stat,'ok':tab.stat==2,'error':tab.stat==3}">
-				 	<span ng-if="tab.icon" class="glyphicon" ng-class="tab.icon"></span> {{tab.title}}
+				 	<span ng-if="tab.icon" class="glyphicon" ng-class="tab.icon"></span>
+				 	<span ng-if="!tab.icon&&!tab.stat" class="glyphicon glyphicon-refresh" ng-class="tab.icon"></span> {{tab.title}}
 				</a>
 				<span class="close" ng-if="!tab.fix" ng-click="Data.closeTab(tab.i)">&times;</span>
 			  </li>

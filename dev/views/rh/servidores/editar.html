@@ -22,8 +22,8 @@
 	<li ng-class="{active:SelfTab==1}"><a ng-click="SelfTab=1" href="javascript:void(0);" ng-init="SelfTab=1">Dados Pessoais</a></li>
 	<li ng-class="{active:SelfTab==2}"><a ng-click="SelfTab=2" href="javascript:void(0);">Dados Residênciais</a></li>
 	<li ng-class="{active:SelfTab==3}"><a ng-click="SelfTab=3" href="javascript:void(0);">Dados Funcionais</a></li>
-	<li ng-class="{active:SelfTab==4}"><a ng-click="SelfTab=4" href="javascript:void(0);">Anexos</a></li>
-	<li ng-class="{active:SelfTab==5}"><a ng-click="SelfTab=5" href="javascript:void(0);">Lotação</a></li>
+	<li ng-class="{active:SelfTab==4}"><a ng-click="SelfTab=4" href="javascript:void(0);">Lotação</a></li>
+	<li ng-class="{active:SelfTab==5}"><a ng-click="SelfTab=5" href="javascript:void(0);">Anexos</a></li>
 </ul>
 
 
@@ -76,24 +76,6 @@
 	</div><!-- Fim Residênciais -->
 	<div ng-class="{active:SelfTab==3}" class="tab-pane">
 		<div class="row">
-			<!-- A partir daqui não poderá ser editado, serão campos apenas de consulta - ->
-			<div class="col-xs-4">
-				<label for="secretaria">Secretaria/Órgão</label>
-				<input class="form-control" type="text" value="{{edit.form.end_bairro}}" readonly>
-			</div>
-			<div class="col-xs-4">
-				<label for="unidade">Unidade</label>
-				<input type="text" class="form-control" title="" readonly/>
-				<span>Unidade de lotação do Servidor.</span>
-			</div>
-			<div class="col-xs-3">
-				<label for="funcao">Função</label>
-				<input type="text" id="funcao" class="form-control" disabled="" readonly/>
-				<span>Cargo de lotação do Servidor.</span>
-			</div>
-			<!-- -->
-		</div>
-		<div class="row">
 			<bs-txt disabled="edit.disabled" class="col-sm-2" md="edit.form.matricula" label="Cod. Matrícula" >Cod. Matrícula do servidor</bs-txt>
 			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.salario" label="Salário" >Salário do Servidor</bs-txt>
 			<!--div class="col-md-2">
@@ -120,10 +102,10 @@
 		<div class="row">
 			<bs-sel disabled="edit.disabled" class="col-md-2" md="edit.form.tipo_admissao" label="Tipo de admissão"
 				opts="['Selecione...', 'Cargo em comissão', 'Concurso público', 'Contrato temporario', 'Eletivo', 'Estatuto', 'Outro']"></bs-sel>
-<div ng-if="edit.form.tipo_admissao==3">
-			<bs-cal disabled="edit.disabled" class="col-md-2" md="edit.form.contratotemp_ini" label="Início do contrato" >Contrato temp Ini</bs-cal>
-			<bs-cal disabled="edit.disabled" class="col-md-2" md="edit.form.contratotemp_fim" label="Fim do contrato" >Contrato temp Fim</bs-cal>
-</div>
+			<div ng-if="edit.form.tipo_admissao==3">
+<bs-cal disabled="edit.disabled" class="col-md-2" md="edit.form.contratotemp_ini" label="Início do contrato" >Contrato temp Ini</bs-cal>
+<bs-cal disabled="edit.disabled" class="col-md-2" md="edit.form.contratotemp_fim" label="Fim do contrato" >Contrato temp Fim</bs-cal>
+			</div>
 
 		</div>
 		<div class="row">
@@ -133,8 +115,38 @@
 			<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.tipo_previdencia" label="Tipo de Previdência" >Tipo de Previdência do Servidor</bs-txt>
 		</div><!-- Fim Funcionais -->
 	</div>
-<!-- Anexos -->
+
 	<div ng-class="{active:SelfTab==4}" class="tab-pane">
+	<!-- Lotação -->
+		<div class="row">
+			<div class="col-xs-4">
+				<label>Secretaria/Órgão</label>
+				<input type="text" class="form-control" value="{{edit.form.vaga}}" readonly>
+				<span class="help-block">Para editar vá até o menu RH > Secretaria/Órgãos</span>
+			</div>
+			<div class="col-xs-4">
+				<label>Unidade</label>
+				<input type="text" class="form-control" value="{{edit.form.vaga}}" readonly/>
+				<span class="help-block">Para editar vá até o menu RH > Unidades</span>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-xs-4">
+				<label>Cargo</label>
+				<input type="text" class="form-control" value="{{edit.form.vaga}}" readonly/>
+				<span class="help-block">Para editar vá até o menu RH > Cargos</span>
+			</div>
+
+			<div class="col-xs-4">
+				<label>Tipo de Cargo</label>
+				<input type="text" class="form-control" value="{{edit.form.vaga}}" readonly/>
+				<span class="help-block">&nbsp;</span>
+			</div>
+		</div>
+	</div>
+<!-- Anexos -->
+	<div ng-class="{active:SelfTab==5}" class="tab-pane">
 		<span class="help-block">&nbsp;</span>
 		<div class="row">
 			<div class="col-xs-12">
@@ -150,18 +162,16 @@
 					<th>Buscar</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody ng-controller="up">
+
 				<tr class="danger" >
-					<td>RG</td>
-					<td>
-					<input type="file" id="" name="rg" placeholder="Selecionar..."  />
-					</td>
+<td>RG</td><td><button ng-file-select ng-model="files.rg" class="btn btn-default">Enviar</button></td>
+<td>{{files.rg}}</td>
 				</tr>
+
 				<tr class="danger" >
-					<td>CPF</td>
-					<td>
-					<input type="file" id="" name="cpf" placeholder="Selecionar..." />
-					</td>
+<td>CPF</td><td><button ng-file-select ng-model="files.cpf" class="btn btn-default">Enviar</button></td>
+<td>{{files.cpf}}</td>
 				</tr>
 				<tr class="danger" >
 					<td>Comprovante de Residência</td>
@@ -202,49 +212,6 @@
 			</tbody>
 		</table>
 	</div><!-- Fim anexos -->
-	<div ng-class="{active:SelfTab==5}" class="tab-pane">
-	<!-- Lotação -->
-		<div class="row">
-			<div class="col-xs-3">
-				<label for="tipo_cargo">Tipo de Cargo</label>
-				<input type="text" class="form-control" ng-model="url"
-				ng-options="unidade for unidade in unidades"
-				ng-init="unidades=['Secretaria da Educação','Secretaria da Securança','Secretaria da Saúde','Secretaria do Esporte']"
-				placeholder="Tipo de Cargo" bs-typeahead title="Informe o tipo de Cargo. Ex: Efetivo" bs-tooltip/>
-			</div>
-			<div class="col-xs-4">
-				<label for="cargo">Cargo</label>
-				<input type="text" class="form-control" ng-model="url"
-				ng-options="unidade for unidade in unidades"
-				ng-init="unidades=['Secretaria da Educação','Secretaria da Securança','Secretaria da Saúde','Secretaria do Esporte']"
-				placeholder="Cargo" bs-typeahead title="Informe o Cargo em que o servidor será lotado. Ex: Auxiliar Administrativo" bs-tooltip />
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-3">
-				<label for="secretaria">Secretaria/Órgão</label>
-				<input type="text" class="form-control" ng-model="url"
-				ng-options="unidade for unidade in unidades"
-				ng-init="unidades=['Secretaria da Educação','Secretaria da Securança','Secretaria da Saúde','Secretaria do Esporte']"
-				placeholder="Tipo de Cargo" bs-typeahead title="Informe a Secretaria em quem o Servidor será lotado. Ex: Secretaria de Educação" bs-tooltip/>
-			</div>
-			<div class="col-xs-3">
-				<label for="secretaria">Unidade</label>
-				<input type="text" class="form-control" ng-model="url"
-				ng-options="unidade for unidade in unidades"
-				ng-init="unidades=['Secretaria da Educação','Secretaria da Securança','Secretaria da Saúde','Secretaria do Esporte']"
-				placeholder="Tipo de Cargo" bs-typeahead title="Informe a Unidade em quem o Servidor será lotado. Ex: Creche Nossa Senhora da Penha" bs-tooltip/>
-				<span class="help-block">&nbsp;</span>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-3">
-				<label for="check">
-					<input type="checkbox" title="Habilitando este campo, você será capaz de editar os dados de lotação do Servidor" data-placement="right" bs-tooltip>
-					Habilitar campos de edição</label>
-			</div>
-		</div>
-	</div><!-- Fim Lotação -->
 	<bs-footer class="footer" align="right">
 		<button ng-disabled="edit.disabled" class="btn btn-small btn-primary" data-animation="am-fade-and-slide-top"
 			data-template="views/rh/servidores/modal.lotar.html" bs-modal='{"name":"Padre Cícero","cpf":"123.456.789-10","secretaria":"Secretaria da Educação","unidade":"Unidade tal","cargo":"Professor","cargo_tp":"Tipo do Cargo"}'>
