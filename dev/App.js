@@ -14,7 +14,7 @@ App.run(function($http, $location) {
 });
 /**/
 
-	App.service('Data', function ($http) {
+	App.service('Data', function ($http, $upload) {
 
 		return {
 			debug:false,
@@ -121,6 +121,11 @@ App.run(function($http, $location) {
 						this.set(this.res.item);
 					this.res && (this.res.ok = false);
 				};
+				return o;
+			},
+			upload: function(o,a){
+				console.log(o);
+				console.log(a);
 				return o;
 			},
 
@@ -449,7 +454,7 @@ App.filter('range', function() {
 App.controller('up',[ '$scope', '$upload', 'Data', function($scope, $upload, Data) {
   $scope.$watch('files', function() {
   	if($scope.files)
-//    for (var i = 0; i < $scope.files.length; i++) {
+    //for (var i = 0; i < $scope.files.length; i++) {
 	for(var i in $scope.files){
       var file = $scope.files[i];
       $scope.upload = $upload.upload({

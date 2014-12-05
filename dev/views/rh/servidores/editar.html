@@ -162,16 +162,31 @@
 					<th>Buscar</th>
 				</tr>
 			</thead>
-			<tbody ng-controller="up">
+			<tbody>
 
 				<tr class="danger" >
-<td>RG</td><td><button ng-file-select ng-model="files.rg" class="btn btn-default">Enviar</button></td>
-<td>{{files.rg}}</td>
+<td>RG</td><td>
+
+<button ng-file-select ng-file-model="files.rg" ng-file-change="Data.upload($files, $event)" class="btn btn-default">Enviar</button>
+
+
+    
+
+
+{{files}}
+<div class="progress">
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" style="width:40%">
+    {{files.progress}}%
+  </div>
+</div>
+
+</td>
+
 				</tr>
 
 				<tr class="danger" >
-<td>CPF</td><td><button ng-file-select ng-model="files.cpf" class="btn btn-default">Enviar</button></td>
-<td>{{files.cpf}}</td>
+<td>CPF</td><td>
+{{files.cpf}}</td>
 				</tr>
 				<tr class="danger" >
 					<td>Comprovante de Residência</td>
