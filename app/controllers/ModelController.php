@@ -14,7 +14,7 @@ class ModelController extends MyController {
 		$this->isModel($model, true);
 
 		if(!empty($id)){
-			$this->res->item = $model::find($id);
+			$this->res->item = $model::find($id)->onSelect();
 			return Response::json($this->res);
 		}
 
@@ -59,7 +59,7 @@ class ModelController extends MyController {
 		}
 		$item->byPost();
 		$this->res->ok = $item->save();
-		$this->res->item = $item;
+		$this->res->item = $item->onSelect();
 		return Response::json($this->res);
 	}
 	public function missingMethods($model = null, $args = null){

@@ -62,10 +62,10 @@ App.run(function($http, $location) {
 						var url = BASE + this.url + (this.id ? '/' + this.id: '');
 						
 						console.log('Edit.load');
-						console.log(url);
 
 						$http.get(url, {params:this.params}).success(function(x){
 							o.res = x;
+							console.log(x);
 							o.set(o.res.item);
 							if(o.res.error){
 								o.scope && (o.scope.stat = 3);

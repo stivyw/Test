@@ -12,4 +12,24 @@ class Servidor extends MyModel{
 
 			}
 		}
-	}}
+	}
+	public function byPost(){
+		foreach($this->attributes as $k=>$v){
+			$pval = Input::get($k);
+			if($k=='media'){
+				if(is_object($pval) || is_array($pval))
+					$pval = @serialize($pval);
+			}
+			if($pval && $pval!==$this->$k)
+				$this->$k = $pval;
+
+		}
+	}
+	public function onSelect(){
+		if(!empty($this->media))
+			$this->media = @unserialize($this->media);
+		else
+			$this->media = array();
+		return $this;
+	}
+}
