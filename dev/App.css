@@ -782,7 +782,7 @@ background-color: #f56954 !important;
   padding:10px;
   min-height:200px;
 }
-label, bs-txt, bs-sel, bs-cal, bs-rad, bs-chk, bs-array, bs-footer{
+label, bs-txt, bs-sel, bs-cal, bs-rad, bs-chk, bs-upl, bs-array, bs-footer{
   display:block;
 }
 .btn-default.disabled.active{

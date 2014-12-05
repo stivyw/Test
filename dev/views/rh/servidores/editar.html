@@ -163,6 +163,13 @@
 				</tr>
 			</thead>
 			<tbody>
+				<tr ng-class="{danger:!edit.form.media.cpf}" >
+<td>
+	CPF
+{{edit.form.media}}
+</td><td>
+<bs-upl md="edit.form.media" ></bs-upl>
+				</tr>
 
 				<tr ng-class="{danger:!edit.form.media.rg}" >
 <td>RG <a ng-show="edit.form.media.rg" href="{{'/files/' + edit.form.media.rg.name +'.'+ edit.form.media.rg.ext}}" target="_blank">Visualizar</a></td><td>

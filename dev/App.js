@@ -130,53 +130,62 @@ App.run(function($http, $location) {
 				};
 				return o;
 			},
-			upload: function(c){
-				var o={files:[]};
-				!c.url && (c.url = 'tools/upload');
-				if(c.del){
-					if(c.scope && c.scope.media && c.scope.media[c.del]){
-						$http.post(this.base + '/' + c.url, c.scope.media[c.del]).success(function(x){
-							console.log(x);
-							o.res = x;
+			file: function(o){
+				if(!o)return;
+				!o.url && (o.url = 'tools/upload');
+				console.log(o);
+				o.upload=function(){
+					console.log(this.scope);
+					if(this.scope){
+						this.scope.teste = 'teste';
+					}
+					return;
+					
+					if(c.del){
+						if(c.scope && c.scope.media && c.scope.media[c.del]){
+							$http.post(this.base + '/' + c.url, c.scope.media[c.del]).success(function(x){
+								console.log(x);
+								o.res = x;
 
-						});
-						delete c.scope.media[c.del];
+							});
+							delete c.scope.media[c.del];
+						}
+						return o;
 					}
+					if(c.fls && c.fls.length)
+						for (var i = 0; i < c.fls.length; i++) {
+							var file = c.fls[i];
+							var upload = $upload.upload({
+								url: this.base + '/' + c.url,
+								//method: 'POST' or 'PUT',
+								//headers: {'Authorization': 'xxx'}, // only for html5
+								//withCredentials: true,
+								//data: {myObj: $scope.myModelObj},
+								fileName:'file_name' ,
+								//fileFormDataName: '/tmp/teste',
+								file: file
+							}).progress(function(evt) {
+								evt.config.file.progress = parseInt(100.0 * evt.loaded / evt.total);
+							}).success(function(data, status, headers, config) {
+								// file is uploaded successfully config.file.name
+								config.file.progress = 100;
+								console.log(data);
+								if(data.error){
+									o.error=data.error;
+									return;
+								}
+								if(c.scope){
+									!c.scope.media && (c.scope.media = {});
+									var ind = c.ind||'img';
+								 	c.scope.media[ind] = data;
+								}
+							})
+							//.error(function(){	file.error = [{message:'Erro desconhecido'}];	});
+							o.files.push(file);
+						}
+					
 					return o;
-				}
-				if(c.fls && c.fls.length)
-					for (var i = 0; i < c.fls.length; i++) {
-						var file = c.fls[i];
-						var upload = $upload.upload({
-							url: this.base + '/' + c.url,
-							//method: 'POST' or 'PUT',
-							//headers: {'Authorization': 'xxx'}, // only for html5
-							//withCredentials: true,
-							//data: {myObj: $scope.myModelObj},
-							//fileName:'file_name' ,
-							//fileFormDataName: '/tmp/teste',
-							file: file
-						}).progress(function(evt) {
-							evt.config.file.progress = parseInt(100.0 * evt.loaded / evt.total);
-						}).success(function(data, status, headers, config) {
-							// file is uploaded successfully config.file.name
-							config.file.progress = 100;
-							console.log(data);
-							if(data.error){
-								o.error=data.error;
-								return;
-							}
-							if(c.scope){
-								!c.scope.media && (c.scope.media = {});
-								var ind = c.ind||'img';
-							 	c.scope.media[ind] = data;
-							}
-						})
-						//.error(function(){	file.error = [{message:'Erro desconhecido'}];	});
-						o.files.push(file);
-					}
-				
-				return o;
+				};
 			},
 
 			list: function(o){
@@ -329,9 +338,7 @@ App.directive('bsUpl', function() {
     },
     scope: {
     	md: '=',
-    	disabled:'=',
-    	opts:'='
-
+    	disabled:'='
     }
   };
 });
