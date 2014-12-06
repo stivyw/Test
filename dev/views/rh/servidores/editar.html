@@ -13,7 +13,7 @@
 	<strong>Ok!</strong> Dados gravados com sucesso.
 </div>
 
-<div class="alert alert-warning" role="alert" ng-if="edit.res.item.situacao=='I'">
+<div class="alert alert-warning" ng-if="edit.res.item.situacao=='I'">
 	<strong><span class="glyphicon glyphicon-exclamation-sign"></span></strong>
 	O servidor <strong>{{edit.form.nome}}</strong> está inativo. Na aba eventos, você pode ver quando ele foi desativado.
 </div>
@@ -166,9 +166,9 @@
 				<tr ng-class="{danger:!edit.form.media.cpf}" >
 <td>
 	CPF
-{{edit.form.media}}
+{{edit.form}}
 </td><td>
-<bs-upl md="edit.form.media" label="Teste" ></bs-upl>
+<bs-upl md="edit.form" label="Teste" ></bs-upl>
 				</tr>
 
 				<tr ng-class="{danger:!edit.form.media.rg}" >

@@ -128,18 +128,23 @@ App.run(function($http, $location) {
 						this.set(this.res.item);
 					this.res && (this.res.ok = false);
 				};
+				o.upload = function(file){
+					file.test='asf';
+					console.log(file);
+					return file;
+				};
 				return o;
 			},
 			file: function(o){
-				!o && (o={});
+				
 				!o.url && (o.url = 'tools/upload');
-				o.upload=function(){
+				var res={};
+				o.upload=function(data){
 					console.log(this.scope);
-					if(this.scope){
-						this.scope.teste = 'teste';
-					}
-					return;
-					
+					var val = {};
+					val.teste=1;
+					setInterval(function(){val.teste++},1000);
+					return val;
 					if(c.del){
 						if(c.scope && c.scope.media && c.scope.media[c.del]){
 							$http.post(this.base + '/' + c.url, c.scope.media[c.del]).success(function(x){
@@ -149,7 +154,7 @@ App.run(function($http, $location) {
 							});
 							delete c.scope.media[c.del];
 						}
-						return o;
+						return false;
 					}
 					if(c.fls && c.fls.length)
 						for (var i = 0; i < c.fls.length; i++) {
@@ -185,6 +190,7 @@ App.run(function($http, $location) {
 					
 					return o;
 				};
+				return o;
 			},
 
 			list: function(o){
@@ -327,18 +333,22 @@ App.directive('bsRad', function() {
     }
   };
 });
-App.directive('bsUpl', function() {
+App.directive('bsUpl', function(Data) {
   return {
     templateUrl: 'sw/bs/upl.html',
     transclude: true,
     link: function(scope, element, attr){
     	scope.name = 'obj_' + (++c_o);
     	scope.label = attr.label;
+    	scope.file=Data.file({scope:{}});
+    	scope.$watch('res', function(val){
+    		if(val && val.teste)
+    			this.md=val.teste;
+    	})
     },
     scope: {
     	md: '=',
-    	disabled:'=',
-    	sfile:'='
+    	disabled:'='
     }
   };
 });
