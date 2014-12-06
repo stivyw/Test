@@ -331,7 +331,6 @@ App.directive('bsUpl', function() {
   return {
     templateUrl: 'sw/bs/upl.html',
     transclude: true,
-    replace: true,
     link: function(scope, element, attr){
     	scope.name = 'obj_' + (++c_o);
     	scope.label = attr.label;
