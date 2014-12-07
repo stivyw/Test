@@ -124,7 +124,7 @@
 
 	<script type="text/ng-template" id="sw/bs/upl.html">
 <label>{{file}}</label>
-<button ng-file-select ng-file-change="upload({fls:$files})" ng-disabled="disabled" class="btn btn-success" type="button">
+<button ng-file-select ng-file-change="upload($files)" ng-disabled="disabled" class="btn btn-success" type="button">
 	<span class="glyphicon glyphicon-upload"></span> 
 </button>
 <a href="{{'/files/' + md.name +'.'+ md.ext}}" class="btn btn-info" target="_blank" ng-disabled="disabled" ><span class="glyphicon glyphicon-search"></span></a>

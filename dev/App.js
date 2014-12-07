@@ -131,6 +131,7 @@ App.run(function($http, $location) {
 			},
 			upload: function(o){
 				if(!o) return;
+				o.res && (o.res = []);
 				!o.url && (o.url = 'tools/upload');
 				o.scope && (o.scope.stat = 1);
 				if(o.del){
@@ -146,24 +147,27 @@ App.run(function($http, $location) {
 
 					var l = o.fls.length;
 					o.progress = function(){
-						if(this.files){
-							this.loaded = 0;
-							for (var i = 0; i < this.files.length; i++) {
-								var file = this.files[i];
-								
-							}
+						var loaded = 0;
+						for (var i = 0; i < this.fls.length; i++) {
+							var file = this.fls[i];
+							if(file.progress)
+								loaded += file.progress||0;
 						}
+						this.loaded = loaded;
+						this.scope && (this.scope.progress = this.loaded);
 					};
 
 					for (var i = 0; i < l; i++) {
 						var file = o.fls[i];
+						file.i=i;
+						file.progress=1;
 						$upload.upload({
-							url: this.base + '/' + c.url,
+							url: this.base + '/' + o.url,
 							//method: 'POST' or 'PUT',
 							//headers: {'Authorization': 'xxx'}, // only for html5
 							//withCredentials: true,
 							//data: {myObj: $scope.myModelObj},
-							fileName:'file_name' ,
+							//fileName:'file_name' ,
 							//fileFormDataName: '/tmp/teste',
 							file: file
 						}).progress(function(evt) {
@@ -171,14 +175,19 @@ App.run(function($http, $location) {
 							o.progress();
 						}).success(function(data, status, headers, config) {
 							// file is uploaded successfully config.file.name
-							config.file.progress = 100;
+							if(config.file.progress)
+								delete config.file.progress;
 							console.log(data);
+							var ind = config.file.i;
 							if(data.error){
-								o.error=data.error;
-								return;
+								config.file.error=data.error;
+								o.res && o.res[ind]=false;
+							}else{
+								config.file.res = data;
+								o.res && (o.res[ind]=data);
 							}
 						}).error(function(){	file.error = [{message:'Erro desconhecido'}];	});
-						o.files.push(file);
+						
 					}
 				}
 				return o;
@@ -331,11 +340,11 @@ App.directive('bsUpl', function(Data) {
     link: function(scope, element, attr){
     	scope.name = 'obj_' + (++c_o);
     	scope.label = attr.label;
-    	scope.file={};
-    	var file=Data.file();
+    	
+    	//var file=Data.file({});
 
-    	scope.upload = function(fls){
-    		file.upload(fls);
+    	scope.upload = function(files){
+    		var file = Data.upload({fls:files,res:true});
     		this.md = file.res;
     	};
     },
