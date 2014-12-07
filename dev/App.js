@@ -128,68 +128,59 @@ App.run(function($http, $location) {
 						this.set(this.res.item);
 					this.res && (this.res.ok = false);
 				};
-				o.upload = function(file){
-					file.test='asf';
-					console.log(file);
-					return file;
-				};
-				return o;
 			},
-			file: function(o){
-				
+			upload: function(o){
+				if(!o) return;
 				!o.url && (o.url = 'tools/upload');
-				var res={};
-				o.upload=function(data){
-					console.log(this.scope);
-					var val = {};
-					val.teste=1;
-					setInterval(function(){val.teste++},1000);
-					return val;
-					if(c.del){
-						if(c.scope && c.scope.media && c.scope.media[c.del]){
-							$http.post(this.base + '/' + c.url, c.scope.media[c.del]).success(function(x){
-								console.log(x);
-								o.res = x;
+				o.scope && (o.scope.stat = 1);
+				if(o.del){
+					$http.post(this.base + '/' + o.url, o.del).success(function(x){
+						o.scope && (o.scope.stat = (x.error? 3 : 2));
+						o.res = x;
+					}).error(function(){
+						o.scope && (o.scope.stat = 3);
+						o.res={error:[{message: "Verifique sua conexão com a internet."}]};
+					});
+				}else
+				if(o.fls && o.fls.length){
 
-							});
-							delete c.scope.media[c.del];
+					var l = o.fls.length;
+					o.progress = function(){
+						if(this.files){
+							this.loaded = 0;
+							for (var i = 0; i < this.files.length; i++) {
+								var file = this.files[i];
+								
+							}
 						}
-						return false;
+					};
+
+					for (var i = 0; i < l; i++) {
+						var file = o.fls[i];
+						$upload.upload({
+							url: this.base + '/' + c.url,
+							//method: 'POST' or 'PUT',
+							//headers: {'Authorization': 'xxx'}, // only for html5
+							//withCredentials: true,
+							//data: {myObj: $scope.myModelObj},
+							fileName:'file_name' ,
+							//fileFormDataName: '/tmp/teste',
+							file: file
+						}).progress(function(evt) {
+							evt.config.file.progress = parseInt(100.0 * evt.loaded / evt.total);
+							o.progress();
+						}).success(function(data, status, headers, config) {
+							// file is uploaded successfully config.file.name
+							config.file.progress = 100;
+							console.log(data);
+							if(data.error){
+								o.error=data.error;
+								return;
+							}
+						}).error(function(){	file.error = [{message:'Erro desconhecido'}];	});
+						o.files.push(file);
 					}
-					if(c.fls && c.fls.length)
-						for (var i = 0; i < c.fls.length; i++) {
-							var file = c.fls[i];
-							var upload = $upload.upload({
-								url: this.base + '/' + c.url,
-								//method: 'POST' or 'PUT',
-								//headers: {'Authorization': 'xxx'}, // only for html5
-								//withCredentials: true,
-								//data: {myObj: $scope.myModelObj},
-								fileName:'file_name' ,
-								//fileFormDataName: '/tmp/teste',
-								file: file
-							}).progress(function(evt) {
-								evt.config.file.progress = parseInt(100.0 * evt.loaded / evt.total);
-							}).success(function(data, status, headers, config) {
-								// file is uploaded successfully config.file.name
-								config.file.progress = 100;
-								console.log(data);
-								if(data.error){
-									o.error=data.error;
-									return;
-								}
-								if(c.scope){
-									!c.scope.media && (c.scope.media = {});
-									var ind = c.ind||'img';
-								 	c.scope.media[ind] = data;
-								}
-							})
-							//.error(function(){	file.error = [{message:'Erro desconhecido'}];	});
-							o.files.push(file);
-						}
-					
-					return o;
-				};
+				}
 				return o;
 			},
 
@@ -340,11 +331,13 @@ App.directive('bsUpl', function(Data) {
     link: function(scope, element, attr){
     	scope.name = 'obj_' + (++c_o);
     	scope.label = attr.label;
-    	scope.file=Data.file({scope:{}});
-    	scope.$watch('res', function(val){
-    		if(val && val.teste)
-    			this.md=val.teste;
-    	})
+    	scope.file={};
+    	var file=Data.file();
+
+    	scope.upload = function(fls){
+    		file.upload(fls);
+    		this.md = file.res;
+    	};
     },
     scope: {
     	md: '=',
