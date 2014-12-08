@@ -136,7 +136,7 @@ img {
 }
 
 header{
-	background:url(img/header.png);
+	
 	top:0;
 	height:50px;
 	width:100%;
@@ -788,4 +788,11 @@ label, bs-txt, bs-sel, bs-cal, bs-rad, bs-chk, bs-upl, bs-array, bs-footer{
 .btn-default.disabled.active{
   -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
   box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+}
+.bsUpl .progress{
+  height:34px;
+  
+}
+.bsUpl .progress .bar{
+  height:34px;
 }

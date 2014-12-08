@@ -59,7 +59,7 @@ App.run(function($http, $location) {
 			edit: function(o){
 				var BASE = this.base + '/api/v1/';
 				!o.params && (o.params = {});
-				
+				console.log(o);
 				o.load=function(id){
 					if(id){
 						
@@ -357,6 +357,7 @@ App.directive('bsUpl', function(Data) {
     	scope.remove = function(file){
 			var up = Data.upload({del:file});
 			this.md = null;
+			this.file = null;
     	};
     },
     scope: {
