@@ -793,6 +793,6 @@ label, bs-txt, bs-sel, bs-cal, bs-rad, bs-chk, bs-upl, bs-array, bs-footer{
   height:34px;
   
 }
-.bsUpl .progress .bar{
+.bs-upl .progress .bar{
   height:34px;
 }

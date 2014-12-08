@@ -89,7 +89,7 @@ App.run(function($http, $location) {
 					}
 					return this;
 				};
-				o.form = {};
+				//o.form = {};
 				o.set=function(item){
 					if(item)
 						this.form = angular.copy(item);
@@ -98,7 +98,7 @@ App.run(function($http, $location) {
 				o.save = function(){
 					var dt = {}, url = BASE + this.url + (this.id ? '/' + this.id: '');
 					
-					if(this.res && this.res.item){
+					if(this.form && this.res && this.res.item){
 						for(var i in this.form)
 							if(this.form[i]!=this.res.item[i])
 								dt[i]=this.form[i];
