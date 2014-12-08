@@ -121,17 +121,19 @@
 </div>
 <span class="help-block"><span ng-transclude></span>&nbsp;</span>
 	</script>
-
 	<script type="text/ng-template" id="sw/bs/upl.html">
-<label>{{file}}</label>
-<button ng-file-select ng-file-change="upload($files)" ng-disabled="disabled" class="btn btn-success" type="button">
+	{{md}}
+<label ng-if="label">{{label}}</label>
+<button ng-disabled="disabled" class="btn btn-info" ng-show="!md" ng-file-select ng-file-change="upload($files)" ng-disabled="disabled" type="button">
 	<span class="glyphicon glyphicon-upload"></span> 
 </button>
-<a href="{{'/files/' + md.name +'.'+ md.ext}}" class="btn btn-info" target="_blank" ng-disabled="disabled" ><span class="glyphicon glyphicon-search"></span></a>
-	<button ng-click="Data.upload({scope:edit.form, del:'cpf'})" ng-disabled="disabled" class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove-circle"></span></button>
-
-</script>
-
+<a ng-disabled="disabled" class="btn btn-info" ng-show="md" href="{{'/files/' + md.name +'.'+ md.ext}}" target="_blank" >
+	<span class="glyphicon glyphicon-search"></span>
+</a>
+<button ng-disabled="disabled" class="btn btn-danger" ng-show="md" ng-click="upload({del:md})" type="button">
+	<span class="glyphicon glyphicon-remove-circle"></span>
+</button>
+	</script>
 	<script type="text/ng-template" id="sw/bs/cal.html">
 <label for="{{name}}"><span class="glyphicon glyphicon-calendar"></span> {{label}}</label>
 <input class="form-control" id="{{name}}" ng-model="md" bs-datepicker data-container="body" type="text" data-date-format="dd/MM/yyyy" data-max-date="{{max}}" data-min-date="{{min}}" ng-disabled="disabled" />

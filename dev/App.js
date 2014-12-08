@@ -159,7 +159,7 @@ App.run(function($http, $location) {
 
 					for (var i = 0; i < l; i++) {
 						var file = o.fls[i];
-						file.i=i;
+						var res = {};
 						file.progress=1;
 						$upload.upload({
 							url: this.base + '/' + o.url,
@@ -169,25 +169,31 @@ App.run(function($http, $location) {
 							//data: {myObj: $scope.myModelObj},
 							//fileName:'file_name' ,
 							//fileFormDataName: '/tmp/teste',
-							file: file
+							file: file,
+							res: res
 						}).progress(function(evt) {
 							evt.config.file.progress = parseInt(100.0 * evt.loaded / evt.total);
-							o.progress();
+							o.progress && o.progress();
 						}).success(function(data, status, headers, config) {
 							// file is uploaded successfully config.file.name
 							if(config.file.progress)
 								delete config.file.progress;
 							console.log(data);
-							var ind = config.file.i;
 							if(data.error){
 								config.file.error=data.error;
-								o.res && o.res[ind]=false;
+								o.file && (o.file=false);
+								o.files && (o.files[config.i]=false);
 							}else{
-								config.file.res = data;
-								o.res && (o.res[ind]=data);
+								angular.forEach(data, function(value, key) {
+								  this[key] = value;
+								}, config.res);
+
 							}
-						}).error(function(){	file.error = [{message:'Erro desconhecido'}];	});
-						
+						});//.error(function(){	file.error = [{message:'Erro desconhecido'}];	});
+
+						if(i==0)
+							o.first = res;
+						o.res.push(res);
 					}
 				}
 				return o;
@@ -344,8 +350,8 @@ App.directive('bsUpl', function(Data) {
     	//var file=Data.file({});
 
     	scope.upload = function(files){
-    		var file = Data.upload({fls:files,res:true});
-    		this.md = file.res;
+    		var up = Data.upload({fls:files,file:true});
+    		this.md = up.file;
     	};
     },
     scope: {
