@@ -1,103 +1,45 @@
-			<div id="content" ng-init="Data.tabs[$parent.tab.i].title='Editar Unidades'">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-11">
-							<div class="page-header">
-								<h2>Editar Unidade</h2>
-							</div>
-							<div class="alert alert-danger" role="alert">
-								<strong>Ops!</strong> Ocorreu um <a class="alert-link" href="arquivodeajuda">erro</a> ao tentar concluir esta ação, tente novamente ou contate o <a class="alert-link" href="linkdapagcontato">suporte</a>.
+<div ng-init="tab.title='Unidades'"></div>
+<div ng-init="tab.icon='glyphicon glyphicon-edit'"></div>
+<div ng-init="orgaos=Data.list({url:'model/Orgao'})"></div>
+<div ng-init="edit=Data.edit({url:'model/Unidade', scope: tab}).load(tab.id)"></div>
+<div ng-if="!tab.id" ng-init="tab.stat=2"></div>
+<div ng-if="!tab.id" ng-init="edit.disabled=false"></div>
 
-							</div>
-							<div class="alert alert-success" role="alert">
-								<strong>Ok!</strong> Dados gravados com sucesso.
-							</div>
-							<!-- Inputs -->
-							<form role="form">
-								<div class="row">
-									<div class="col-xs-4">
-										<label for="secretaria_vinculada">Secretaria Vinculada</label>
-										<select id="secretaria_vinculada" class="form-control">
-											<option value="0">Selecione...</option>
-											<option value="1">Secretaria 1</option>
-											<option value="2">Secretaria 2</option>
-											<option value="3">Secretaria 3</option>
-											<option value="4">Secretaria 4</option>
-											<option value="5">Secretaria 5</option>
-											<option value="6">Secretaria 6</option>
-											<option value="7">Secretaria 7</option>
-											<option value="8">Secretaria 8</option>
-										</select>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-6">
-										<label for="nome">Nome</label>
-										<input id="nome" class="form-control" type="text" placeholder="Nome" title="Nome da Unidade. Ex: Ouvidoria " bs-tooltip />
-									</div>
-									<div class="col-xs-3">
-										<label for="telefone">Telefone</label>
-										<input id="telefone" class="form-control" title="Telefone para contato da Unidade. Ex: 8899999999 " bs-tooltip />
-									</div>
-									<div class="col-xs-3">
-										<label for="email">Email</label>
-										<div class="input-group">
-											<!-- icone -->
-											<div class="input-group-addon">
-												@
-											</div><!-- icone -->
-											<input id="email" class="form-control" type="email" placeholder="Email" title="Email da Unidade. Ex: ouvidoria@seduc.crato.gov.ce.br " bs-tooltip>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-2">
-										<label for="cep">CEP</label>
-										<input id="cep" class="form-control" type="text" placeholder="CEP" title="CEP " bs-tooltip />
-										<a href="http://www.buscacep.correios.com.br/"target="_blank"><small><u><i>Buscar CEP</i></u></small></a>
-									</div>
-									<div class="col-xs-2">
-										<label for="tipo_logradouro">Tipo de logradouro</label>
-										<select id="tipo_logradouro" class="form-control">
-											<option value="0">Selecione...</option>
-											<option value="1">Rua</option>
-											<option value="2">Avenida</option>
-											<option value="3">Travessa</option>
-											<option value="4">Beco</option>
-											<option value="5">Alto</option>
-											<option value="6">Vila</option>
-											<option value="7">Sitio</option>
-											<option value="8">Outros</option>
-										</select>
-										<span class="help-block">&nbsp;</span>
-									</div>
-									<div class="col-xs-4">
-										<label for="logradouro">Logradouro</label>
-										<input id="logradouro" type="text"  placeholder="Logradouro" class="form-control" title="Logradouro da Unidade. Ex: Barbara de Alencar " bs-tooltip>
-									</div>
-									<div class="col-xs-3">
-										<label for="bairro">Bairro</label>
-										<input id="bairro" type="text" class="form-control" placeholder="Bairro" title="Bairro da Unidade. Ex: Centro " bs-tooltip />
-									</div>
-									<div class="col-xs-1">
-										<label for="numero">Número</label>
-										<input id="numero" type="text" class="form-control" placeholder="N°" title="Número. Ex: S/N " bs-tooltip />
-									</div>
-								</div>
-								<hr>
-								<div align="right" class="footer">
-									<button type="button" class="btn btn-info">
-										Editar
-									</button>
-									<button type="button" class="btn btn-success">
-										Salvar
-									</button>
-									<button type="button" class="btn btn-danger">
-										Cancelar
-									</button>
-								</div>
-							</form><!-- Inputs -->
-						</div>
-					</div>
-				</div><!-- container -->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12">
+
+			<bs-alert type="danger" arr="edit.res.error">
+				<strong>Ops!</strong> Erro ao tentar concluir a ação, corrija os erros mostrados a seguir e tente novamente ou contate o <a class="alert-link" href="http://caririweb.com/suport" target="_blank">suporte</a>.
+			</bs-alert>
+
+			<div class="alert alert-success" role="alert" ng-if="edit.res.ok">
+				<strong>Ok!</strong> Dados gravados com sucesso.
 			</div>
+
+			<form>
+				<div class="row">
+					<input type="text" class="form-control" ng-model="mopt" ng-change="edit.form.orgao_id=mopt" data-animation="am-flip-x" ng-options="opt.id as opt.nome for opt in orgaos.options({nome:$viewValue})" placeholder="Selecione..." bs-typeahead>
+					{{edit.form.orgao_id}}
+				</div>
+				<div class="row">
+					<bs-txt disabled="edit.disabled" class="col-md-6" md="edit.form.nome" label="Nome" >Nome</bs-txt>
+					<bs-txt disabled="edit.disabled" class="col-md-3" md="edit.form.tel" label="Telefone" placeholder="(xx)xxxxxxxx">Informe o telefone</bs-txt>
+					<bs-txt disabled="edit.disabled" class="col-md-3" md="edit.form.mail" label="Email" >Email</bs-txt>
+				</div>
+				<div class="row">
+					<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.end_cep" label="CEP" >
+						<a href="http://www.buscacep.correios.com.br/"target="_blank"><small><u><i>Buscar CEP</i></u></small></a>
+					</bs-txt>
+					<bs-sel disabled="edit.disabled" class="col-md-2" md="edit.form.end_tipo" label="Tipo de logradouro:" opts="Data.CFG.SELECTS.TPS_LOGRADOURO"></bs-sel>
+					<bs-txt disabled="edit.disabled" class="col-md-4" md="edit.form.end_logradouro" label="Logradouro" ></bs-txt>
+					<bs-txt disabled="edit.disabled" class="col-md-3" md="edit.form.end_bairro" label="Bairro" ></bs-txt>
+					<bs-txt disabled="edit.disabled" class="col-md-1" md="edit.form.end_numero" label="Número" >Número do endereço. Ex: S/N</bs-txt>
+				</div>
+				<hr>
+				<bs-footer class="footer" align="right"></bs-footer>
+			</form>
+
+		</div>
+	</div>
+</div>

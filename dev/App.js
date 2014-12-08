@@ -14,7 +14,7 @@ App.run(function($http, $location) {
 });
 /**/
 
-	App.service('Data', function ($http, $upload) {
+	App.service('Data', function ($http, $upload, $q) {
 
 		return {
 			debug:false,
@@ -251,10 +251,32 @@ App.run(function($http, $location) {
 					});
 					return this;
 				};
+				var count=0;
+				o.options=function(fs){
+					//BASE + this.url
+    				//var params = {address: val, sensor: false};
+    				count++;
+    				if(this.canceller){
+    					console.log('Cancelado ' + count);
+    					this.canceller.resolve("user cancelled");
+    					cancel = true;
+    				}
+					this.canceller = $q.defer();
+
+					this.optionsReq = $http.get(BASE + this.url, {timeout: this.canceller.promise, params:{filters:fs}})
+					 .then(function(res) {
+					 		console.log('Then ' + count);
+					 		console.log('Teste ' + this.teste);
+							console.log(res.data);
+							return res.data.data;
+						
+					 });
+					 
+					 return this.optionsReq;
+				};
 				//o.set();
 				console.log('List');
-				console.log(BASE + o.url);
-				console.log(o);
+
 				return o;
 			}
 		};

@@ -9,6 +9,7 @@ class MyController extends Controller {
 		$this->base = URL::to('/');
 		$this->gbl = App::make('gbl');
 		$this->gbl->files = '/tmp/sw_tmp/www/files';
+		$this->gbl->debug = true;
 		
 
 	}

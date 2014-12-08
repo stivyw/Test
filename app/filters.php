@@ -6,6 +6,10 @@ App::error(function(Exception $exception, $code)
 
 	$pathInfo = Request::getPathInfo();
 	$err->message = $exception->getMessage();
+	if(App::make('gbl')->debug){
+		$err->line = $exception->getLine();
+		$err->file = $exception->getFile();
+	}
 
 //	Log::error("$code - $message @ $pathInfo\r\n$exception");
 
