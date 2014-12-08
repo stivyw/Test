@@ -25,4 +25,5 @@ class MyModel extends Eloquent{
 		}
 
 	}
+	public function onSelect(){}
 }

@@ -54,7 +54,7 @@
 						<th>Endereço</th>
 						<th>E-mail</th>
 						<th>Fone/Fax</th>
-						<th colspan="2" style="margin-left: 2px">Operações</th>
+						<th width="140px">Operações</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,8 +64,10 @@
 						<td>{{item.end_logradouro}}, N° {{item.end_numero}}, {{item.end_bairro}}</td>
 						<td>{{item.mail}}</td>
 						<td>{{item.tel}}</td>
-						<td><a class="btn btn-small btn-warning" href="#" ng-click="Data.newTab({url:'views/rh/orgaos/editar.html', id:item.id})"><i class="glyphicon glyphicon-edit"></i> </a></td>
-						<td><a class="btn btn-small btn-info" href="#"><i class="glyphicon glyphicon-search"></i> </a></td>
+						<td>
+							<a class="btn btn-small btn-warning" href="#" ng-click="Data.newTab({url:'views/rh/orgaos/editar.html', id:item.id})"><i class="glyphicon glyphicon-edit"></i></a>
+							<a class="btn btn-small btn-info" href="#"><i class="glyphicon glyphicon-search"></i></a>
+						</td>
 					</tr>
 				</tbody>
 			</table>

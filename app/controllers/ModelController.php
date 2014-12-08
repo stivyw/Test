@@ -14,35 +14,38 @@ class ModelController extends MyController {
 		$this->isModel($model, true);
 
 		if(!empty($id)){
-			$this->res->item = $model::find($id)->onSelect();
-			return Response::json($this->res);
+			$item = $model::find($id);
+			if(empty($item))
+				App::abort(400, 'O item não está cadastrado!');
+			$item->onSelect();
+			$this->res->item = $item;
+		}else{
+
+			$per_page = Input::get('per_page');
+			
+			//filters and relations
+			$filters = Input::get('filters');
+	//foreach($filters as $k=>$v)$arr[$k] = $v;
+			$filters = (array) json_decode($filters);
+			
+			if($rels = Input::get('with'))
+				$item = $model::with($rels)->filter($filters);
+			else
+				$item = $model::filter($filters);
+			
+			//order_by
+			if(Input::has('orderBy') || Input::has('order'))
+				//$item->orderBy((Input::get('orderBy') ?: 'id'), Input::('order')=='asc' ? 'asc':'desc');
+				$item->orderBy(Input::get('orderBy') ?: 'id', Input::get('order'));
+			//, Input::('order')
+
+			$item->take(Input::get('take') ?: 30);
+			$item->skip(Input::get('skip'));
+			
+			$this->res = $item->paginate($per_page)->toArray();
+
+			//$this->res->items->toArray();
 		}
-
-		$per_page = Input::get('per_page');
-		
-		//filters and relations
-		$filters = Input::get('filters');
-//foreach($filters as $k=>$v)$arr[$k] = $v;
-		$filters = (array) json_decode($filters);
-		
-		if($rels = Input::get('with'))
-			$item = $model::with($rels)->filter($filters);
-		else
-			$item = $model::filter($filters);
-		
-		//order_by
-		if(Input::has('orderBy') || Input::has('order'))
-			//$item->orderBy((Input::get('orderBy') ?: 'id'), Input::('order')=='asc' ? 'asc':'desc');
-			$item->orderBy(Input::get('orderBy') ?: 'id', Input::get('order'));
-		//, Input::('order')
-
-		$item->take(Input::get('take') ?: 30);
-		$item->skip(Input::get('skip'));
-		
-		$this->res = $item->paginate($per_page)->toArray();
-
-		//$this->res->items->toArray();
-
 		return Response::json($this->res);
 	}
 
