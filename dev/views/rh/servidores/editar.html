@@ -1,8 +1,8 @@
-<div ngs-init="tab.title='Servidores'"></div>
-<div ngs-init="tab.icon='glyphicon glyphicon-edit'"></div>
+<div ng-init="tab.title='Servidores'"></div>
+<div ng-init="tab.icon='glyphicon glyphicon-edit'"></div>
 <div ng-init="edit=Data.edit({url:'model/Servidor', scope: tab}).load(tab.id)"></div>
-<div ngs-if="!tab.id" ng-init="tab.stat=2"></div>
-<div ngs-if="!tab.id" ng-init="edit.disabled=false"></div>
+<div ng-if="!tab.id" ng-init="tab.stat=2"></div>
+<div ng-if="!tab.id" ng-init="edit.disabled=false"></div>
 
 
 <bs-alert type="danger" arr="edit.res.error">
@@ -159,12 +159,12 @@
 			<thead>
 				<tr>
 					<th>Documentos</th>
-					<th width="300px">Ações</th>
+					<th width="40%"></th>
 				</tr>
 			</thead>
 			<tbody>
 <tr ng-class="{danger:!edit.form.media.cpf}" >
-	<td>RG{{edit}}</td>
+	<td>RG</td>
 	<td><bs-upl disabled="disabled" md="edit.form.media.rg" ></bs-upl>
 </tr>
 <tr ng-class="{danger:!edit.form.media.cpf}" >
