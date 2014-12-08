@@ -132,9 +132,9 @@ App.run(function($http, $location) {
 			upload: function(o){
 				if(!o) return;
 				o.res && (o.res = []);
-				!o.url && (o.url = 'tools/upload');
 				o.scope && (o.scope.stat = 1);
 				if(o.del){
+					!o.url && (o.url = 'tools/remove');
 					$http.post(this.base + '/' + o.url, o.del).success(function(x){
 						o.scope && (o.scope.stat = (x.error? 3 : 2));
 						o.res = x;
@@ -144,9 +144,9 @@ App.run(function($http, $location) {
 					});
 				}else
 				if(o.fls && o.fls.length){
-
 					var l = o.fls.length;
-					o.progress = function(){
+					!o.url && (o.url = 'tools/upload');
+					o.onProgress = function(){
 						var loaded = 0;
 						for (var i = 0; i < this.fls.length; i++) {
 							var file = this.fls[i];
@@ -154,7 +154,6 @@ App.run(function($http, $location) {
 								loaded += file.progress||0;
 						}
 						this.loaded = loaded;
-						this.scope && (this.scope.progress = this.loaded);
 					};
 
 					for (var i = 0; i < l; i++) {
@@ -173,12 +172,11 @@ App.run(function($http, $location) {
 							res: res
 						}).progress(function(evt) {
 							evt.config.file.progress = parseInt(100.0 * evt.loaded / evt.total);
-							o.progress && o.progress();
+							o.onProgress && o.onProgress();
 						}).success(function(data, status, headers, config) {
-							// file is uploaded successfully config.file.name
-							if(config.file.progress)
-								delete config.file.progress;
-							console.log(data);
+
+							//if(config.file.progress)delete config.file.progress;
+
 							if(data.error){
 								config.file.error=data.error;
 								o.file && (o.file=false);
@@ -191,9 +189,11 @@ App.run(function($http, $location) {
 							}
 						});//.error(function(){	file.error = [{message:'Erro desconhecido'}];	});
 
-						if(i==0)
+						if(i==0){
 							o.first = res;
-						o.res.push(res);
+							o.firstFile = file;
+						}
+						o.res && o.res.push(res);
 					}
 				}
 				return o;
@@ -350,8 +350,13 @@ App.directive('bsUpl', function(Data) {
     	//var file=Data.file({});
 
     	scope.upload = function(files){
-    		var up = Data.upload({fls:files,file:true});
-    		this.md = up.file;
+			var up = Data.upload({fls:files,res:true});
+			this.file = up.firstFile;
+			this.md = up.first;
+    	};
+    	scope.remove = function(file){
+			var up = Data.upload({del:file});
+			this.md = null;
     	};
     },
     scope: {
