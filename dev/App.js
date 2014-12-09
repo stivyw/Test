@@ -60,7 +60,7 @@ App.run(function($http, $location) {
 				var BASE = this.base + '/api/v1/';
 				!o.params && (o.params = {});
 				console.log(o);
-				o.load=function(id){
+				o.load=function(id,rels){
 					if(id){
 						
 						this.id = id;
@@ -69,8 +69,10 @@ App.run(function($http, $location) {
 						var url = BASE + this.url + (this.id ? '/' + this.id: '');
 						
 						console.log('Edit.load');
-
-						$http.get(url, {params:this.params}).success(function(x){
+						var params = angular.copy(this.params);
+						params.rels = rels;
+						console.log(params);
+						$http.get(url, {params:params}).success(function(x){
 							o.res = x;
 							console.log(x);
 							o.set(o.res.item);
@@ -245,7 +247,7 @@ App.run(function($http, $location) {
 						o.pg_label = (((x.current_page-1) * x.per_page) + 1) + '-' + 
 							(x.current_page == x.last_page ? x.total : (x.current_page * x.per_page)) + '/' + 
 							(x.total);
-					}).error(function(data, status){console.log([data,status]);
+					}).error(function(data, status){
 						o.scope && (o.scope.stat = 3);
 						o.res={error:[{message: "Verifique sua conexão com a internet."}]};
 					});

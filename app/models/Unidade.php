@@ -1,6 +1,10 @@
 <?php
 class Unidade extends MyModel{
 
+	public function orgaos(){
+		return $this->belongsTo('Orgao');
+	}
+
 	public function scopeFilter($q, $filter){
 		if(is_array($filter)){
 			foreach($filter as $k=>$v){

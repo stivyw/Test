@@ -1,10 +1,14 @@
 <?php
 class Orgao extends MyModel{
 
+	public function unidades(){
+		return $this->hasMany('Unidade');
+	}
+
 	public function scopeFilter($q, $filter){
 		if(is_array($filter)){
 			foreach($filter as $k=>$v){
-				
+
 				switch($k){
 					case 'nome':!empty($v) && $q->where('nome', 'like', '%'.$v.'%');break;
 					case 'mail':!empty($v) && $q->where('mail', 'like', $v.'%');break;
