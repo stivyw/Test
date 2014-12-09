@@ -15,12 +15,12 @@ class ModelController extends MyController {
 		//$rels = explode('|',Input::get('rels'));
 		$rels = Input::get('rels');
 		if(!empty($id)){
-			$item = $model::find($id);
+			if($rels = Input::get('rels'))
+				$item = $model::with($rels);
+			else
+				$item = $model::find($id);
 			if(empty($item))
 				App::abort(400, 'O item não está cadastrado!');
-
-			if($rels = Input::get('rels'))
-				$item->with = $rels;//$item->with($rels);
 
 			$item->onSelect();
 			$this->res->item = $item;
