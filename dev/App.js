@@ -1,5 +1,5 @@
 	undefined;
-	var App=angular.module('App',['mgcrea.ngStrap','ui.mask','angularFileUpload']);
+	var App=angular.module('App',['mgcrea.ngStrap','ui.mask','angularFileUpload','ui.bootstrap.typeahead']);
 	//angular.module('App.controllers', ['App.constants']);
 	//angular.module('App.constants', []).constant('_token', angular.element('meta[name=_token]')[0].content);
 	//angular.module('App.constants', []).constant('_token', 'Teste');
@@ -255,18 +255,18 @@ App.run(function($http, $location) {
 				o.options=function(fs){
 					//BASE + this.url
     				//var params = {address: val, sensor: false};
+ 
     				count++;
     				if(this.canceller){
     					console.log('Cancelado ' + count);
     					this.canceller.resolve("user cancelled");
-    					cancel = true;
+    					
     				}
 					this.canceller = $q.defer();
 
 					this.optionsReq = $http.get(BASE + this.url, {timeout: this.canceller.promise, params:{filters:fs}})
 					 .then(function(res) {
 					 		console.log('Then ' + count);
-					 		console.log('Teste ' + this.teste);
 							console.log(res.data);
 							return res.data.data;
 						
@@ -370,6 +370,35 @@ App.directive('bsUpl', function(Data) {
     	scope.name = 'obj_' + (++c_o);
     	scope.label = attr.label;
     	
+    	//var file=Data.file({});
+
+    	scope.upload = function(files){
+			var up = Data.upload({fls:files,res:true});
+			this.file = up.firstFile;
+			this.md = up.first;
+    	};
+    	scope.remove = function(file){
+			var up = Data.upload({del:file});
+			this.md = null;
+			this.file = null;
+    	};
+    },
+    scope: {
+    	md: '=',
+    	disabled:'='
+    }
+  };
+});
+
+App.directive('bsTyp', function(Data) {
+  return {
+    templateUrl: 'sw/bs/typ.html',
+    transclude: true,
+    link: function(scope, element, attr){
+    	scope.name = 'obj_' + (++c_o);
+    	scope.label = attr.label;
+    	scope.$matches = [{nome:'NOme 1', id:1},{nome:'NOme 2', id:2},{nome:'NOme 3', id:3}];
+    	scope.$selected = 2;
     	//var file=Data.file({});
 
     	scope.upload = function(files){

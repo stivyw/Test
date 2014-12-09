@@ -19,7 +19,10 @@
 
 			<form>
 				<div class="row">
-					<input type="text" class="form-control" ng-model="mopt" ng-change="edit.form.orgao_id=mopt" data-animation="am-flip-x" ng-options="opt.id as opt.nome for opt in orgaos.options({nome:$viewValue})" placeholder="Selecione..." bs-typeahead>
+					<div class="col-md-4">
+						<input type="text" ng-model="customSelected" typeahead="opt as opt.nome for opt in orgaos.options({nome:$viewValue}) | filter:{nome:$viewValue}" typeahead-loading="loadingLocations" class="form-control">
+					</div>
+					<!--bs-sel disabled="edit.disabled" class="col-md-2" md="edit.form.orgao_id" label="Tipo de logradouro:" opts="orgaos.options({nome:$viewValue})"></bs-sel-->
 					{{edit.form.orgao_id}}
 				</div>
 				<div class="row">
