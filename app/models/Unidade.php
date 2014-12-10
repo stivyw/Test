@@ -1,7 +1,7 @@
 <?php
 class Unidade extends MyModel{
 
-	public function orgaos(){
+	public function orgao(){
 		return $this->belongsTo('Orgao');
 	}
 

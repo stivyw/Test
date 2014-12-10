@@ -93,8 +93,10 @@ App.run(function($http, $location) {
 				};
 				//o.form = {};
 				o.set=function(item){
-					if(item)
+					if(item){
 						this.form = angular.copy(item);
+						this.pseudo = angular.copy(item);
+					}
 
 				};
 				o.save = function(){

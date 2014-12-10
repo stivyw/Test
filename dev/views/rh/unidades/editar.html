@@ -1,7 +1,7 @@
 <div ng-init="tab.title='Unidades'"></div>
 <div ng-init="tab.icon='glyphicon glyphicon-edit'"></div>
 <div ng-init="orgaos=Data.list({url:'model/Orgao'})"></div>
-<div ng-init="edit=Data.edit({url:'model/Unidade', scope: tab}).load(tab.id, 'orgaos')"></div>
+<div ng-init="edit=Data.edit({url:'model/Unidade', scope: tab}).load(tab.id, 'orgao')"></div>
 <div ng-if="!tab.id" ng-init="tab.stat=2"></div>
 <div ng-if="!tab.id" ng-init="edit.disabled=false"></div>
 
@@ -22,8 +22,8 @@
 
 					<div class="col-md-4">
 						<label for="secretaria">Secretaria/Órgão de vínculo</label>
-						<input type="text" id="secretaria" typeahead-on-select="edit.form.orgao_id=$item.id" ng-model="edit.res.orgao.nome" typeahead="opt as opt.nome for opt in orgaos.options({nome:$viewValue}) | filter:{nome:$viewValue}" typeahead-loading="true" class="form-control">
-						<span>Escolha uma secretaria</span>
+						<input ng-disabled="edit.disabled" type="text" id="secretaria" ng-model="edit.pseudo.orgao.nome" typeahead-on-select="edit.form.orgao_id=$item.id" typeahead="opt as opt.nome for opt in orgaos.options({nome:$viewValue}) | filter:{nome:$viewValue}" typeahead-loading="true" class="form-control">
+						<span class="help-block">Escolha uma secretaria</span>
 					</div>
 
 				</div>

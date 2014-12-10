@@ -13,16 +13,17 @@ class ModelController extends MyController {
 
 		$this->isModel($model, true);
 		//$rels = explode('|',Input::get('rels'));
-		$rels = Input::get('rels');
+
 		if(!empty($id)){
 			if($rels = Input::get('rels'))
-				$item = $model::with($rels);
+				$item = $model::find($id)->load($rels);
 			else
 				$item = $model::find($id);
+			$this->res->query=DB::getQueryLog();
 			if(empty($item))
 				App::abort(400, 'O item não está cadastrado!');
 
-			$item->onSelect();
+			//$item->onSelect();
 			$this->res->item = $item;
 		}else{
 
