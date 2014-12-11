@@ -60,28 +60,32 @@
 	<!-- Vagas -->
 	<div ng-class="{active:SelfTab==2}" class="tab-pane">
 
-		<div class="row">
+		<div class="alert alert-success" role="alert" ng-if="!edit.form.vagas.length">
+			<strong>Ops!</strong> Nenhuma vaga cadastrada para esta unidade, clique em nova vaga para adicionar.
+		</div>
+
+		<div class="rows">
 			<div class="col-xs-12">
 				<pagination class="pull-right"></pagination>
-				<table class="table table-bordered table-hover table-condensed" ng-if="lst.res.total>0">
+				<table class="table table-bordered table-hover table-condensed">
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Nome</th>
-							<th>Secretaria</th>
-							<th>Quantidade</th>
+							<th>Nome do servidor</th>
+							<th>Cargo</th>
 							<th width="140px">Operações</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="item in lst.res.data">
+						<tr ng-repeat="item in edit.form.vagas">
 							<td>{{item.id}}</td>
-							<td>{{item.nome}}</td>
-							<td>{{item.orgao.nome}}</td>
-							<td>{{item.QUANTIDADE}} QUANTIDADE</td>
+							<td>{{item.servidor.nome}}</td>
+							<td>{{item.cargo.nome}}</td>
 							<td>
-								<a class="btn btn-small btn-warning" href="#" ng-click="Data.newTab({url:'views/rh/cargos/editar.html', id:item.id})"><i class="glyphicon glyphicon-edit"></i></a>
-								<a class="btn btn-small btn-info" href="#"><i class="glyphicon glyphicon-search"></i></a>
+								<select ng-model="sel" ng-options="opt.name for opt in [{act:'Exonerar',modal:'1'}, {act:'Transferir',modal:'2'}]"></select>
+								{{sel.modal}}
+								<a class="btn btn-small btn-warning" href="#" ng-if="item.servidor" ng-modals=""><i class="glyphicon glyphicon-edit"></i></a>
+								<a class="btn btn-small btn-info" href="#" ng-if="item.servidor"><i class="glyphicon glyphicon-search"></i></a>
 							</td>
 						</tr>
 					</tbody>

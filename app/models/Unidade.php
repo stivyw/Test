@@ -4,6 +4,9 @@ class Unidade extends MyModel{
 	public function orgao(){
 		return $this->belongsTo('Orgao');
 	}
+	public function vagas(){
+		return $this->hasMany('Vaga');
+	}
 
 	public function scopeFilter($q, $filter){
 		if(is_array($filter)){
