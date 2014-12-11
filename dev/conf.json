@@ -20,9 +20,10 @@
 			{"label": "Eventos", "params":{"url": "views/sistema/eventos.html"}},
 			{"divider":true},
 			{"label": "Orgao 2", "params":{"url": "views/rh/orgaos/editar.html","id":2}},
-			{"label": "Serv 1", "params":{"url": "views/rh/servidores/editar.html","id":1}},
-			{"label": "Unid 1", "params":{"url": "views/rh/unidades/editar.html","id":1}},
-			{"label": "Simb 1", "params":{"url": "views/rh/simbologias/editar.html","id":1}}
+			{"label": "Unidade 1", "params":{"url": "views/rh/unidades/editar.html","id":1}},
+			{"label": "Cargo 1", "params":{"url": "views/rh/cargos/editar.html","id":1}},
+			{"label": "Simb 1", "params":{"url": "views/rh/simbologias/editar.html","id":1}},
+			{"label": "Servidor 1", "params":{"url": "views/rh/servidores/editar.html","id":1}}
 		]}
 	],
 	"SELECTS": {
