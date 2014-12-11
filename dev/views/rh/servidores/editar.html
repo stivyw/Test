@@ -1,6 +1,6 @@
 <div ng-init="tab.title='Servidores'"></div>
 <div ng-init="tab.icon='glyphicon glyphicon-edit'"></div>
-<div ng-init="edit=Data.edit({url:'model/Servidor', scope: tab}).load(tab.id)"></div>
+<div ng-init="edit=Data.edit({url:'model/Servidor', scope: tab}).load(tab.id, ['vaga.orgao','vaga.cargo','vaga.unidade'])"></div>
 <div ng-if="!tab.id" ng-init="tab.stat=2"></div>
 <div ng-if="!tab.id" ng-init="edit.disabled=false"></div>
 
@@ -120,12 +120,12 @@
 		<div class="row">
 			<div class="col-xs-4">
 				<label>Secretaria/Órgão</label>
-				<input type="text" class="form-control" value="{{edit.form.vaga}}" readonly>
-				<span class="help-block">Para editar vá até o menu RH > Secretaria/Órgãos</span>
+				<input type="text" class="form-control" value="{{edit.form.vaga.orgao.nome}}" readonly>
+				<span class="help-block">Para editar vá até o menu RH > Secretaria/Órgão</span>
 			</div>
 			<div class="col-xs-4">
 				<label>Unidade</label>
-				<input type="text" class="form-control" value="{{edit.form.vaga}}" readonly/>
+				<input type="text" class="form-control" value="{{edit.form.vaga.unidade.nome}}" readonly/>
 				<span class="help-block">Para editar vá até o menu RH > Unidades</span>
 			</div>
 
@@ -133,13 +133,13 @@
 		<div class="row">
 			<div class="col-xs-4">
 				<label>Cargo</label>
-				<input type="text" class="form-control" value="{{edit.form.vaga}}" readonly/>
+				<input type="text" class="form-control" value="{{edit.form.vaga.cargo.nome}}" readonly/>
 				<span class="help-block">Para editar vá até o menu RH > Cargos</span>
 			</div>
 
 			<div class="col-xs-4">
 				<label>Tipo de Cargo</label>
-				<input type="text" class="form-control" value="{{edit.form.vaga}}" readonly/>
+				<input type="text" class="form-control" value="{{edit.form.vaga.cargo.tipo}}" readonly/>
 				<span class="help-block">&nbsp;</span>
 			</div>
 		</div>
