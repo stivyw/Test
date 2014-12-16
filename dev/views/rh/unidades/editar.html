@@ -1,7 +1,7 @@
 <div ng-init="tab.title='Unidades'"></div>
 <div ng-init="tab.icon='glyphicon glyphicon-edit'"></div>
 <div ng-init="orgaos=Data.list({url:'model/Orgao'})"></div>
-<div ng-init="edit=Data.edit({url:'model/Unidade', scope: tab}).load(tab.id, ['orgao','vagas'])"></div>
+<div ng-init="edit=Data.edit({url:'model/Unidade', scope: tab}).load(tab.id, ['orgao', ['vagas.servidor', 'vagas.cargo']])"></div>
 <div ng-if="!tab.id" ng-init="tab.stat=2"></div>
 <div ng-if="!tab.id" ng-init="edit.disabled=false"></div>
 
@@ -15,7 +15,7 @@
 </div>
 
 
-<ul class="nav nav-tabs" role="tablist" ng-init="Data.tabs[$parent.tab.i].title='Editar Servidor'">
+<ul class="nav nav-tabs" role="tablist">
 	<li ng-class="{active:SelfTab==1}"><a ng-click="SelfTab=1" href="javascript:void(0);" ng-init="SelfTab=1">Dados</a></li>
 	<li ng-class="{active:SelfTab==2}"><a ng-click="SelfTab=2" href="javascript:void(0);">Vagas</a></li>
 </ul>
@@ -31,7 +31,8 @@
 
 						<div class="col-md-4">
 							<label for="secretaria">Secretaria/Órgão de vínculo</label>
-							<input ng-disabled="edit.disabled" type="text" id="secretaria" ng-model="edit.pseudo.orgao.nome" typeahead-on-select="edit.form.orgao_id=$item.id" typeahead="opt as opt.nome for opt in orgaos.options({nome:$viewValue}) | filter:{nome:$viewValue}" typeahead-loading="true" class="form-control">
+							<input ng-disabled="edit.disabled" type="text" id="secretaria" ng-model="edit.pseudo.orgao.nome"
+								typeahead-on-select="edit.form.orgao_id=$item.id" typeahead="opt as opt.nome for opt in orgaos.options({nome:$viewValue}) | filter:{nome:$viewValue}" typeahead-loading="true" class="form-control">
 							<span class="help-block">Escolha uma secretaria</span>
 						</div>
 
@@ -64,7 +65,7 @@
 			<strong>Ops!</strong> Nenhuma vaga cadastrada para esta unidade, clique em nova vaga para adicionar.
 		</div>
 
-		<div class="rows">
+		<div class="row">
 			<div class="col-xs-12">
 				<pagination class="pull-right"></pagination>
 				<table class="table table-bordered table-hover table-condensed">
@@ -73,7 +74,7 @@
 							<th>#</th>
 							<th>Nome do servidor</th>
 							<th>Cargo</th>
-							<th width="140px">Operações</th>
+							<th width="300px">Operações</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -82,10 +83,10 @@
 							<td>{{item.servidor.nome}}</td>
 							<td>{{item.cargo.nome}}</td>
 							<td>
-								<select ng-model="sel" ng-options="opt.name for opt in [{act:'Exonerar',modal:'1'}, {act:'Transferir',modal:'2'}]"></select>
-								{{sel.modal}}
-								<a class="btn btn-small btn-warning" href="#" ng-if="item.servidor" ng-modals=""><i class="glyphicon glyphicon-edit"></i></a>
+								<!--select ng-model="sel" ng-options="opt.modal as opt.act for opt in [{act:'Exonerar',modal:'1'}, {act:'Transferir',modal:'2'}]"></select-->
+								<a class="btn btn-small btn-warning" href="#" ng-if="!item.servidor" data-template="{{'/Test/dev/views/rh/unidades/modal.lotar.html'}}" bs-modal="{item:item}"><i class="glyphicon glyphicon-edit"></i></a>
 								<a class="btn btn-small btn-info" href="#" ng-if="item.servidor"><i class="glyphicon glyphicon-search"></i></a>
+								<a class="btn btn-small btn-danger" href="#" ng-if="item.servidor"><i class="glyphicon glyphicon-remove"></i></a>
 							</td>
 						</tr>
 					</tbody>
