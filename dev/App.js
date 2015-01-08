@@ -18,7 +18,7 @@ App.run(function($http, $location) {
 
 		return {
 			debug:false,
-			base: 'http://sw/Test/public',
+			base: 'http://stivyw.no-ip.org:5/Test/public',
 			tabPrefix: 'tab_',
 			tabIndex:0,
 			tabs:[],

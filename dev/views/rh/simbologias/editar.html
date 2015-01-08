@@ -1,48 +1,29 @@
-<div id="content" ng-init="Data.tabs[$parent.tab.i].title='Editar Simbologia'">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-11">
-				<div class="page-header">
-					<h2>Editar Simbologia</h2>
-				</div>
-				<div class="alert alert-danger" role="alert">
-					<strong>Ops!</strong> Ocorreu um <a class="alert-link" href="arquivodeajuda">erro</a> ao tentar concluir esta ação, tente novamente ou contate o <a class="alert-link" href="linkdapagcontato">suporte</a>.
-				</div>
-				<div class="alert alert-success" role="alert">
-					<strong>Ok!</strong> Dados gravados com sucesso.
-				</div>
-				<!-- Inputs -->
-				<form role="form">
-					<div class="row">
-						<div class="col-xs-3">
-							<label for="nome">Nomeclatura da Simbologia</label>
-							<input id="nome" class="form-control" type="text" placeholder="Nomeclatura da simbologia" title="Nomeclatura da Simbologia. Ex: CDS01 " bs-tooltip />
-						</div>
-						<div class="col-xs-2">
-							<label for="sal_base">Sal base</label>
-							<input id="sal_base" class="form-control" type="text" placeholder="Salario base" title="Salário base da Simbologia. Ex: 72400 " bs-tooltip/>
-						</div>
-						<div class="col-xs-2">
-						    <label for="check">Editar</label>
-						    <div class="dorm-inline">
-							   	<input type="checkbox" title="Habilitando este campo, você será capaz de alterar o valor do Salário Base, que por padrão trará o valor do Salário Mínimo" bs-tooltip>
-						    </div>
-						</div>
-					</div>
-					<hr>
-					<div align="right" class="footer">
-						<button type="button" class="btn btn-info">
-							Editar
-						</button>
-						<button type="button" class="btn btn-success">
-							Salvar
-						</button>
-						<button type="button" class="btn btn-danger">
-							Cancelar
-						</button>
-					</div>
-				</form><!-- Inputs -->
+<div ng-init="tab.title='Simbologia'"></div>
+<div ng-init="tab.icon='glyphicon glyphicon-edit'"></div>
+<div ng-init="edit=Data.edit({url:'model/Simbologia', scope: tab}).load(tab.id)"></div>
+<div ng-if="!tab.id" ng-init="tab.stat=2"></div>
+<div ng-if="!tab.id" ng-init="edit.disabled=false"></div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12">
+
+			<bs-alert type="danger" arr="edit.res.error">
+				<strong>Ops!</strong> Erro ao tentar concluir a ação, corrija os erros mostrados a seguir e tente novamente ou contate o <a class="alert-link" href="http://caririweb.com/suport" target="_blank">suporte</a>.
+			</bs-alert>
+
+			<div class="alert alert-success" role="alert" ng-if="edit.res.ok">
+				<strong>Ok!</strong> Dados gravados com sucesso.
 			</div>
+
+			<form>
+				<div class="row">
+					<bs-txt disabled="edit.disabled" class="col-md-3" md="edit.form.nome" label="Nomeclatura da simbologia" >Nomeclatura</bs-txt>
+					<bs-txt disabled="edit.disabled" class="col-md-2" md="edit.form.salario_base" label="Sal Base" placeholder="0,00">Informe o salário base</bs-txt>
+				</div>
+				<bs-footer class="footer" align="right"></bs-footer>
+			</form>
+
 		</div>
-	</div><!-- container -->
+	</div>
 </div>
