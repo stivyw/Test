@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="App.css"/>
 	<!--script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script-->
 
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
 
 	<!--script src="http://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.tpl.min.js"></script-->
@@ -96,7 +96,7 @@
 <div class="alert" role="alert" ng-if="arr" ng-class="cl">
 	<div ng-transclude></div>
 	<div ng-repeat="item in arr">
-		<span class="glyphicon glyphicon-exclamation-sign"></span> <b>{{item.code}}</b>, {{item.message}}
+		<span class="glyphicon glyphicon-exclamation-sign"></span> <b>{{item.code}}</b>, {{item.message}} ({{item.file}} - {{item.line}})
 		<a href="{{item.id}}" ng-if="item.id" class="alert-link">Ver Detalhes!</a>
 	</div>
 </div>

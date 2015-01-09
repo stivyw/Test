@@ -15,10 +15,13 @@ class ModelController extends MyController {
 		$rels = Input::get('rels');
 		if(is_string($rels) && $rels[0] == '[')
 			$rels = json_decode($rels);
+#$this->res->rels = $rels;
+#return Response::json($this->res);
 
-		
+
+
 		if(!empty($id)){
-			if($rels = json_decode(Input::get('rels')))
+			if($rels)
 				$item = $model::find($id)->load($rels);
 			else
 				$item = $model::find($id);
@@ -38,7 +41,7 @@ class ModelController extends MyController {
 	//foreach($filters as $k=>$v)$arr[$k] = $v;
 			$filters = (array) json_decode($filters);
 			
-			if($rels = Input::get('rels'))
+			if($rels)
 				$item = $model::with($rels)->filter($filters);
 			else
 				$item = $model::filter($filters);

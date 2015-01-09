@@ -1,7 +1,7 @@
 <div ng-init="tab.title='Unidades'"></div>
 <div ng-init="tab.icon='glyphicon glyphicon-edit'"></div>
 <div ng-init="orgaos=Data.list({url:'model/Orgao'})"></div>
-<div ng-init="edit=Data.edit({url:'model/Unidade', scope: tab}).load(tab.id, ['orgao', ['vagas.servidor', 'vagas.cargo']])"></div>
+<div ng-init="edit=Data.edit({url:'model/Unidade', scope: tab}).load(tab.id, ['orgao', 'vagas.servidor', 'vagas.cargo'])"></div>
 <div ng-if="!tab.id" ng-init="tab.stat=2"></div>
 <div ng-if="!tab.id" ng-init="edit.disabled=false"></div>
 

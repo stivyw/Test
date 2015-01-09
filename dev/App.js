@@ -70,7 +70,9 @@ App.run(function($http, $location) {
 						
 						console.log('Edit.load');
 						var params = angular.copy(this.params);
-						params.rels = rels;
+						params.rels = JSON.stringify(rels);
+
+
 						console.log(params);
 						$http.get(url, {params:params}).success(function(x){
 							o.res = x;
