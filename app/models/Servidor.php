@@ -1,6 +1,9 @@
 <?php
 class Servidor extends MyModel{
 	protected $table = 'servidores';
+	public function vaga(){
+		return $this->hasOne('Vaga');
+	}
 	public function scopeFilter($q, $filter){
 		if(is_array($filter)){
 			foreach($filter as $k=>$v){

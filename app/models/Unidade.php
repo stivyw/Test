@@ -4,6 +4,7 @@ class Unidade extends MyModel{
 	public function orgao(){
 		return $this->belongsTo('Orgao');
 	}
+	//DÙVIDA SE EXISTE
 	public function vagas(){
 		return $this->hasMany('Vaga');
 	}

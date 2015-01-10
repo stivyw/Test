@@ -1,17 +1,23 @@
 <?php
 
-App::error(function(Exception $exception, $code)
+App::error(function(Exception $e, $code)
 {
 	$err = new stdClass;
 
 	$pathInfo = Request::getPathInfo();
-	$err->message = $exception->getMessage();
+	$err->message = $e->getMessage();
+	$err->dump = '';
 	if(App::make('gbl')->debug){
-		$err->line = $exception->getLine();
-		$err->file = $exception->getFile();
+		#$err->line = $e->getLine();
+		#$err->file = $e->getFile();
+
+	do {
+		$err->dump .= $e->getFile() .':'. $e->getLine() .' '. $e->getMessage() .' ('. $e->getCode() .') ['. get_class($e) . ")\n";
+	} while($e = $e->getPrevious());
+
 	}
 
-//	Log::error("$code - $message @ $pathInfo\r\n$exception");
+//	Log::error("$code - $message @ $pathInfo\r\n$e");
 
 	if (Config::get('app.debug')) {
 		return;

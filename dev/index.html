@@ -96,7 +96,8 @@
 <div class="alert" role="alert" ng-if="arr" ng-class="cl">
 	<div ng-transclude></div>
 	<div ng-repeat="item in arr">
-		<span class="glyphicon glyphicon-exclamation-sign"></span> <b>{{item.code}}</b>, {{item.message}} ({{item.file}} - {{item.line}})
+		<span class="glyphicon glyphicon-exclamation-sign"></span> <b>{{item.code}}</b>, {{item.message}}
+		<pre>{{item.dump}}</pre>
 		<a href="{{item.id}}" ng-if="item.id" class="alert-link">Ver Detalhes!</a>
 	</div>
 </div>

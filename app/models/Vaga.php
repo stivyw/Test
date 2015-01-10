@@ -7,8 +7,8 @@ class Vaga extends MyModel{
 	public function servidor(){
 		return $this->belongsTo('Servidor');
 	}
-	public function unidade(){
-		return $this->belongsTo('Unidade');
+	public function orgao(){
+		return $this->belongsTo('Orgao');
 	}
 
 	public function scopeFilter($q, $filter){
@@ -17,7 +17,7 @@ class Vaga extends MyModel{
 				switch($k){
 					case 'cargo':$q->where('cargo_id', $v);break;
 					case 'servidor':$q->where('servidor_id', $v);break;
-					case 'unidade':$q->where('unidade_id', $v);break;
+					case 'orgao':$q->where('orgao_id', $v);break;
 					default:;
 				}
 
